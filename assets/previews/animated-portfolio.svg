@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="abg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="aaccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00f5ff"/>
+      <stop offset="100%" style="stop-color:#7b2fff"/>
+    </linearGradient>
+    <linearGradient id="apink" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff2faf"/>
+      <stop offset="100%" style="stop-color:#ff6b6b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#abg)"/>
+
+  <!-- Animated lines background -->
+  <line x1="0" y1="100" x2="800" y2="100" stroke="#1a1a3e" stroke-width="1"/>
+  <line x1="0" y1="200" x2="800" y2="200" stroke="#1a1a3e" stroke-width="1"/>
+  <line x1="0" y1="300" x2="800" y2="300" stroke="#1a1a3e" stroke-width="1"/>
+  <line x1="0" y1="400" x2="800" y2="400" stroke="#1a1a3e" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="500" stroke="#1a1a3e" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="500" stroke="#1a1a3e" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="500" stroke="#1a1a3e" stroke-width="1"/>
+
+  <!-- Hero text area -->
+  <rect x="50" y="120" width="400" height="50" rx="8" fill="url(#aaccent)"/>
+  <rect x="50" y="185" width="300" height="20" rx="5" fill="#fff"/>
+  <rect x="50" y="220" width="250" height="12" rx="4" fill="#555"/>
+  <rect x="50" y="245" width="280" height="12" rx="4" fill="#555"/>
+
+  <rect x="50" y="290" width="130" height="45" rx="10" fill="url(#aaccent)"/>
+  <rect x="200" y="290" width="130" height="45" rx="10" fill="none" stroke="#00f5ff" stroke-width="2"/>
+
+  <!-- Floating image/shape -->
+  <rect x="500" y="100" width="250" height="250" rx="20" fill="#12121a" stroke="url(#aaccent)" stroke-width="2"/>
+
+  <!-- Animated shape inside -->
+  <circle cx="625" cy="200" r="60" fill="none" stroke="url(#aaccent)" stroke-width="3" stroke-dasharray="10 5"/>
+  <circle cx="625" cy="200" r="40" fill="url(#aaccent)" opacity="0.2"/>
+  <polygon points="625,160 655,220 595,220" fill="url(#apink)"/>
+
+  <!-- Scroll indicator -->
+  <rect x="390" y="430" width="20" height="40" rx="10" fill="none" stroke="#fff" stroke-width="2"/>
+  <circle cx="400" cy="445" r="4" fill="#fff"/>
+
+  <!-- Section indicators -->
+  <circle cx="760" cy="200" r="6" fill="url(#aaccent)"/>
+  <circle cx="760" cy="230" r="6" fill="#333"/>
+  <circle cx="760" cy="260" r="6" fill="#333"/>
+  <circle cx="760" cy="290" r="6" fill="#333"/>
+
+  <!-- Decorative elements -->
+  <circle cx="100" cy="400" r="80" fill="url(#aaccent)" opacity="0.05"/>
+  <circle cx="700" cy="450" r="100" fill="url(#apink)" opacity="0.05"/>
+
+  <!-- Animated dots pattern -->
+  <circle cx="450" cy="80" r="3" fill="#00f5ff"/>
+  <circle cx="480" cy="60" r="2" fill="#7b2fff"/>
+  <circle cx="520" cy="90" r="2" fill="#ff2faf"/>
+  <circle cx="550" cy="50" r="3" fill="#00f5ff"/>
+
+  <!-- Code snippet decoration -->
+  <rect x="50" y="380" width="200" height="80" rx="10" fill="#0a0a15"/>
+  <rect x="65" y="395" width="60" height="8" rx="2" fill="#7b2fff"/>
+  <rect x="130" y="395" width="40" height="8" rx="2" fill="#00f5ff"/>
+  <rect x="65" y="410" width="100" height="8" rx="2" fill="#555"/>
+  <rect x="65" y="425" width="80" height="8" rx="2" fill="#ff2faf"/>
+  <rect x="150" y="425" width="50" height="8" rx="2" fill="#00f5ff"/>
+  <rect x="65" y="440" width="40" height="8" rx="2" fill="#7b2fff"/>
+</svg>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Product Cards — E-commerce Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0c0c1d;
+            --card: #1a1a3e;
+            --text: #ffffff;
+            --muted: #888;
+            --accent: #ff6b6b;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cart {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: var(--card);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cart:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 22px;
+            height: 22px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Products Grid */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            perspective: 1000px;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: var(--card);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: rotateY(-5deg) rotateX(5deg) translateY(-20px);
+            box-shadow:
+                30px 30px 50px rgba(0,0,0,0.3),
+                0 0 50px rgba(255,107,107,0.1);
+        }
+
+        .product-image {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            opacity: 0.9;
+        }
+
+        .product-card:nth-child(2) .product-image::before {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .product-card:nth-child(3) .product-image::before {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .product-card:nth-child(4) .product-image::before {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+        }
+
+        .product-card:nth-child(5) .product-image::before {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+        }
+
+        .product-card:nth-child(6) .product-image::before {
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+        }
+
+        .product-3d {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: all 0.5s;
+        }
+
+        .product-card:hover .product-3d {
+            transform: translate(-50%, -50%) scale(1.2) rotateY(15deg);
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge.sale {
+            background: var(--accent);
+        }
+
+        .product-info {
+            padding: 30px;
+        }
+
+        .product-category {
+            color: var(--muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .product-rating {
+            color: #feca57;
+            margin-bottom: 15px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .product-price .old {
+            font-size: 1rem;
+            color: var(--muted);
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+        .add-to-cart {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+        }
+
+        .add-to-cart:active {
+            transform: scale(0.95);
+        }
+
+        /* Floating Elements */
+        .floating-shapes {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: #667eea;
+            top: -100px;
+            left: -100px;
+        }
+
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: #ff6b6b;
+            bottom: -50px;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        /* Cart Notification */
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-weight: 600;
+            transform: translateY(150%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .products { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">ShopX</div>
+            <div class="cart">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </header>
+
+        <h1>Featured <span>Products</span></h1>
+
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-3d">👟</div>
+                    <span class="badge">New</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Footwear</div>
+                    <h3 class="product-name">Air Max Pro</h3>
+                    <div class="product-rating">★★★★★</div>
+                    <div class="product-footer">
+                        <div class="product-price">$199</div>
+                        <button class="add-to-cart" onclick="addToCart(this)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-3d">🎧</div>
+                    <span class="badge sale">-30%</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Electronics</div>
+                    <h3 class="product-name">Wireless Headphones</h3>
+                    <div class="product-rating">★★★★☆</div>
+                    <div class="product-footer">
+                        <div class="product-price">$149 <span class="old">$199</span></div>
+                        <button class="add-to-cart" onclick="addToCart(this)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-3d">⌚</div>
+                    <span class="badge">Hot</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Accessories</div>
+                    <h3 class="product-name">Smart Watch Ultra</h3>
+                    <div class="product-rating">★★★★★</div>
+                    <div class="product-footer">
+                        <div class="product-price">$399</div>
+                        <button class="add-to-cart" onclick="addToCart(this)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-3d">📱</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Electronics</div>
+                    <h3 class="product-name">Phone Case Pro</h3>
+                    <div class="product-rating">★★★★☆</div>
+                    <div class="product-footer">
+                        <div class="product-price">$49</div>
+                        <button class="add-to-cart" onclick="addToCart(this)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-3d">🎒</div>
+                    <span class="badge sale">-20%</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Bags</div>
+                    <h3 class="product-name">Urban Backpack</h3>
+                    <div class="product-rating">★★★★★</div>
+                    <div class="product-footer">
+                        <div class="product-price">$79 <span class="old">$99</span></div>
+                        <button class="add-to-cart" onclick="addToCart(this)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-3d">🕶️</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Accessories</div>
+                    <h3 class="product-name">Designer Shades</h3>
+                    <div class="product-rating">★★★★☆</div>
+                    <div class="product-footer">
+                        <div class="product-price">$129</div>
+                        <button class="add-to-cart" onclick="addToCart(this)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        ✓ Added to cart!
+    </div>
+
+    <script>
+        let cartCount = 0;
+        const cartCountEl = document.getElementById('cartCount');
+        const notification = document.getElementById('notification');
+
+        function addToCart(btn) {
+            cartCount++;
+            cartCountEl.textContent = cartCount;
+
+            // Animate button
+            btn.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                btn.style.transform = '';
+            }, 150);
+
+            // Show notification
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+
+            // Animate cart
+            const cart = document.querySelector('.cart');
+            cart.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                cart.style.transform = '';
+            }, 200);
+        }
+
+        // 3D tilt effect
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>

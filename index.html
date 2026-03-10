@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rostis1av — Frontend-разработчик и UI/UX дизайнер. Создаю современные, высокопроизводительные сайты с вниманием к каждой детали.">
+    <meta name="keywords" content="веб-разработчик, frontend, верстка, сайты, портфолио, UI/UX">
+    <meta name="author" content="Rostis1av">
+
+    <title>Rostis1av | Frontend-разработчик</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-content">
+            <a href="#" class="nav-logo">&lt;<span>R</span>/&gt;</a>
+
+            <ul class="nav-links">
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#skills">Навыки</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#process">Процесс</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+
+            <a href="#contact" class="btn btn-primary nav-cta">Связаться</a>
+
+            <button class="nav-toggle" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <canvas id="hero-canvas" class="hero-canvas"></canvas>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    Открыт для новых проектов
+                </div>
+
+                <h1 class="hero-title">
+                    Привет, я <span class="gradient-text">Rostis1av</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    <span class="typewriter"></span><span class="typewriter-cursor">|</span>
+                </p>
+
+                <p class="hero-description">
+                    Создаю современные, быстрые и красивые сайты, которые выделяют бизнес среди конкурентов.
+                    Чистый код, пиксель-перфект дизайн и безупречный пользовательский опыт.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary magnetic">
+                        <span>Смотреть услуги</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn-outline magnetic">
+                        <span>Написать мне</span>
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value" data-target="50" data-suffix="+">0</div>
+                        <div class="stat-label">Проектов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" data-target="3" data-suffix="+">0</div>
+                        <div class="stat-label">Лет опыта</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" data-target="15" data-suffix="+">0</div>
+                        <div class="stat-label">Технологий</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <h2 class="section-title reveal">Обо <span class="gradient-text">мне</span></h2>
+
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>
+                        Я — увлечённый Frontend-разработчик с острым взглядом на дизайн и любовью к чистому,
+                        эффективному коду. Специализируюсь на превращении креативных идей в пиксель-перфектные,
+                        адаптивные сайты с безупречным пользовательским опытом.
+                    </p>
+                    <p>
+                        Мой подход сочетает техническую экспертизу с творческим мышлением, гарантируя,
+                        что каждый проект не просто соответствует, а превосходит ожидания клиента.
+                        Я постоянно слежу за новейшими веб-технологиями и лучшими практиками.
+                    </p>
+                    <p>
+                        Когда я не пишу код, вы найдёте меня изучающим новые дизайн-тренды,
+                        экспериментирующим с креативным кодингом или работающим над open-source проектами.
+                    </p>
+
+                    <div style="margin-top: 30px;">
+                        <a href="#contact" class="btn btn-primary">Скачать резюме</a>
+                    </div>
+                </div>
+
+                <div class="skills-grid reveal">
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">HTML5 / CSS3</span>
+                            <span class="skill-percent">99%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="99"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">React / Vue</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">TypeScript</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">UI/UX Дизайн</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Git / GitHub</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title reveal">Что я <span class="gradient-text">умею</span></h2>
+
+            <div class="extra-grid">
+                <div class="glass-card extra-card reveal stagger-1">
+                    <div class="icon">🎨</div>
+                    <h4>Веб-дизайн</h4>
+                    <p>Создание современных, интуитивных интерфейсов с учётом UX/UI принципов</p>
+                </div>
+
+                <div class="glass-card extra-card reveal stagger-2">
+                    <div class="icon">💻</div>
+                    <h4>Frontend-разработка</h4>
+                    <p>Создание адаптивных, быстрых сайтов с чистым, поддерживаемым кодом</p>
+                </div>
+
+                <div class="glass-card extra-card reveal stagger-3">
+                    <div class="icon">📱</div>
+                    <h4>Адаптивная вёрстка</h4>
+                    <p>Безупречный опыт на всех устройствах и размерах экранов</p>
+                </div>
+
+                <div class="glass-card extra-card reveal stagger-4">
+                    <div class="icon">⚡</div>
+                    <h4>Производительность</h4>
+                    <p>Оптимизация скорости, SEO и Core Web Vitals для лучших результатов</p>
+                </div>
+
+                <div class="glass-card extra-card reveal stagger-5">
+                    <div class="icon">🔧</div>
+                    <h4>Анимации</h4>
+                    <p>Создание плавных, захватывающих микро-взаимодействий и анимаций</p>
+                </div>
+
+                <div class="glass-card extra-card reveal stagger-6">
+                    <div class="icon">🚀</div>
+                    <h4>Современный стек</h4>
+                    <p>Работа с React, Vue, TypeScript и новейшими технологиями</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title reveal">Мои <span class="gradient-text">услуги</span></h2>
+
+            <div class="services-grid">
+                <!-- Service 1: Landing Pages -->
+                <div class="glass-card service-card reveal stagger-1">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Лендинги</h3>
+                    <p class="service-description">Продающие одностраничные сайты с высокой конверсией. Современный дизайн, адаптивная вёрстка, SEO-оптимизация.</p>
+                    <ul class="service-features">
+                        <li>Уникальный дизайн</li>
+                        <li>Мобильная адаптация</li>
+                        <li>Быстрая загрузка</li>
+                        <li>Формы обратной связи</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: Multi-page Sites -->
+                <div class="glass-card service-card reveal stagger-2">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Многостраничные сайты</h3>
+                    <p class="service-description">Полноценные корпоративные сайты и визитки. Удобная навигация, логичная структура, единый стиль.</p>
+                    <ul class="service-features">
+                        <li>До 10+ страниц</li>
+                        <li>Блог и новости</li>
+                        <li>Галереи и портфолио</li>
+                        <li>Интеграция с CMS</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: E-commerce -->
+                <div class="glass-card service-card reveal stagger-3">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
+                            <circle cx="9" cy="21" r="1"/>
+                            <circle cx="20" cy="21" r="1"/>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Интернет-магазины</h3>
+                    <p class="service-description">Вёрстка интернет-магазинов с каталогом товаров, фильтрами и корзиной. Интуитивный интерфейс покупки.</p>
+                    <ul class="service-features">
+                        <li>Каталог товаров</li>
+                        <li>Фильтры и сортировка</li>
+                        <li>Корзина и оформление</li>
+                        <li>Карточки товаров</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4: Adaptive Layout -->
+                <div class="glass-card service-card reveal stagger-4">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Адаптивная вёрстка</h3>
+                    <p class="service-description">Перевод существующих сайтов в адаптивный формат. Идеальное отображение на всех устройствах.</p>
+                    <ul class="service-features">
+                        <li>Mobile-first подход</li>
+                        <li>Все размеры экранов</li>
+                        <li>Retina-графика</li>
+                        <li>Touch-оптимизация</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5: UI Components -->
+                <div class="glass-card service-card reveal stagger-5">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">UI-компоненты</h3>
+                    <p class="service-description">Разработка отдельных UI-элементов: формы, модальные окна, слайдеры, табы, аккордеоны.</p>
+                    <ul class="service-features">
+                        <li>Интерактивные формы</li>
+                        <li>Модальные окна</li>
+                        <li>Слайдеры и карусели</li>
+                        <li>Анимации и эффекты</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6: PSD/Figma to HTML -->
+                <div class="glass-card service-card reveal stagger-6">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Вёрстка по макету</h3>
+                    <p class="service-description">Пиксель-перфект вёрстка из Figma, PSD, Sketch или любого другого формата макета.</p>
+                    <ul class="service-features">
+                        <li>Figma / PSD / Sketch</li>
+                        <li>Пиксель-перфект</li>
+                        <li>Чистый код</li>
+                        <li>Кроссбраузерность</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="services-cta reveal">
+                <p>Не нашли нужную услугу? Напишите мне — обсудим ваш проект!</p>
+                <a href="#contact" class="btn btn-primary magnetic">
+                    <span>Обсудить проект</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process section" id="process">
+        <div class="container">
+            <h2 class="section-title reveal">Как я <span class="gradient-text">работаю</span></h2>
+
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="glass-card timeline-content">
+                        <span class="timeline-number">01</span>
+                        <div class="timeline-dot"></div>
+                        <h3>Бриф и анализ</h3>
+                        <p>Детальное изучение ваших целей, целевой аудитории и требований к проекту.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="glass-card timeline-content">
+                        <span class="timeline-number">02</span>
+                        <div class="timeline-dot"></div>
+                        <h3>Дизайн и прототип</h3>
+                        <p>Создание макетов и визуального дизайна в Figma с учётом ваших пожеланий.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="glass-card timeline-content">
+                        <span class="timeline-number">03</span>
+                        <div class="timeline-dot"></div>
+                        <h3>Разработка</h3>
+                        <p>Пиксель-перфект вёрстка, адаптивность, оптимизация и чистый код.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="glass-card timeline-content">
+                        <span class="timeline-number">04</span>
+                        <div class="timeline-dot"></div>
+                        <h3>Тестирование</h3>
+                        <p>Проверка на всех устройствах и браузерах, оптимизация производительности.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="glass-card timeline-content">
+                        <span class="timeline-number">05</span>
+                        <div class="timeline-dot"></div>
+                        <h3>Запуск и поддержка</h3>
+                        <p>Деплой проекта и дальнейшая техническая поддержка при необходимости.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title reveal">Связаться <span class="gradient-text">со мной</span></h2>
+
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3>Давайте работать вместе</h3>
+                    <p>Есть идея проекта? Давайте обсудим, как я могу помочь воплотить её в жизнь. Я всегда открыт для новых возможностей и интересных проектов.</p>
+
+                    <div class="contact-links">
+                        <a href="mailto:rostislavharin341@gmail.com" class="glass-card contact-link">
+                            <div class="icon">✉️</div>
+                            <span>rostislavharin341@gmail.com</span>
+                        </a>
+
+                        <a href="https://t.me/kaydoGOAT" target="_blank" class="glass-card contact-link">
+                            <div class="icon">📱</div>
+                            <span>@kaydoGOAT</span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <form class="contact-form glass-card reveal">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-input" placeholder=" " required>
+                        <label class="form-label">Ваше имя</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-input" placeholder=" " required>
+                        <label class="form-label">Ваш email</label>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="message" class="form-input" placeholder=" " required></textarea>
+                        <label class="form-label">Сообщение</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary form-submit magnetic">
+                        <span>Отправить</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p class="footer-text">© 2024 Rostis1av. Сделано с душой и чистым кодом.</p>
+
+            <div class="footer-socials">
+                <a href="https://t.me/kaydoGOAT" target="_blank" class="social-link" title="Telegram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                </a>
+                <a href="mailto:rostislavharin341@gmail.com" class="social-link" title="Email">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/typewriter.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

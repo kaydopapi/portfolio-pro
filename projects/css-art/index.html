@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure CSS Art Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #1a0a2e;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00f5ff, #7b2fff, #ff2faf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.2rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .art-card {
+            background: #2d1b4e;
+            border-radius: 25px;
+            overflow: hidden;
+            transition: transform 0.5s;
+        }
+
+        .art-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .art-frame {
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a0a2e, #2d1b4e);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .art-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .art-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .art-info p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* ========== CSS ART 1: Sunset Scene ========== */
+        .sunset-scene {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff6b6b 0%, #feca57 30%, #ff9ff3 60%, #5f27cd 100%);
+            position: relative;
+        }
+
+        .sun {
+            width: 80px;
+            height: 80px;
+            background: #feca57;
+            border-radius: 50%;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 60px #feca57;
+            animation: sunPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes sunPulse {
+            0%, 100% { box-shadow: 0 0 60px #feca57; }
+            50% { box-shadow: 0 0 100px #feca57; }
+        }
+
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .mountain:nth-child(1) {
+            border-width: 0 100px 120px 100px;
+            border-color: transparent transparent #1a0533 transparent;
+            left: -50px;
+        }
+
+        .mountain:nth-child(2) {
+            border-width: 0 150px 140px 150px;
+            border-color: transparent transparent #2d0a4e transparent;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .mountain:nth-child(3) {
+            border-width: 0 120px 100px 120px;
+            border-color: transparent transparent #1a0533 transparent;
+            right: -60px;
+        }
+
+        .water {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to bottom, rgba(254,202,87,0.3), rgba(95,39,205,0.5));
+        }
+
+        .water::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.1) 20px,
+                rgba(255,255,255,0.1) 22px
+            );
+            animation: waterWave 3s linear infinite;
+        }
+
+        @keyframes waterWave {
+            from { transform: translateX(0); }
+            to { transform: translateX(42px); }
+        }
+
+        /* ========== CSS ART 2: Neon Cube ========== */
+        .neon-cube-container {
+            perspective: 500px;
+        }
+
+        .neon-cube {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 10s linear infinite;
+        }
+
+        @keyframes rotateCube {
+            from { transform: rotateX(-20deg) rotateY(0deg); }
+            to { transform: rotateX(-20deg) rotateY(360deg); }
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 2px solid #00f5ff;
+            background: rgba(0,245,255,0.1);
+            box-shadow: 0 0 20px #00f5ff, inset 0 0 20px rgba(0,245,255,0.2);
+        }
+
+        .cube-face:nth-child(1) { transform: translateZ(60px); }
+        .cube-face:nth-child(2) { transform: rotateY(180deg) translateZ(60px); }
+        .cube-face:nth-child(3) { transform: rotateY(90deg) translateZ(60px); border-color: #7b2fff; box-shadow: 0 0 20px #7b2fff, inset 0 0 20px rgba(123,47,255,0.2); }
+        .cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(60px); border-color: #7b2fff; box-shadow: 0 0 20px #7b2fff, inset 0 0 20px rgba(123,47,255,0.2); }
+        .cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(60px); border-color: #ff2faf; box-shadow: 0 0 20px #ff2faf, inset 0 0 20px rgba(255,47,175,0.2); }
+        .cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(60px); border-color: #ff2faf; box-shadow: 0 0 20px #ff2faf, inset 0 0 20px rgba(255,47,175,0.2); }
+
+        /* ========== CSS ART 3: Loader Animation ========== */
+        .loader-art {
+            display: flex;
+            gap: 15px;
+        }
+
+        .loader-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: loaderBounce 1.4s ease-in-out infinite;
+        }
+
+        .loader-dot:nth-child(1) {
+            background: #00f5ff;
+            animation-delay: 0s;
+        }
+
+        .loader-dot:nth-child(2) {
+            background: #7b2fff;
+            animation-delay: 0.2s;
+        }
+
+        .loader-dot:nth-child(3) {
+            background: #ff2faf;
+            animation-delay: 0.4s;
+        }
+
+        .loader-dot:nth-child(4) {
+            background: #feca57;
+            animation-delay: 0.6s;
+        }
+
+        .loader-dot:nth-child(5) {
+            background: #22c55e;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes loaderBounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* ========== CSS ART 4: Heart Beat ========== */
+        .heart-container {
+            position: relative;
+        }
+
+        .heart {
+            width: 100px;
+            height: 90px;
+            position: relative;
+            animation: heartbeat 1s ease-in-out infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 52px;
+            height: 80px;
+            border-radius: 50px 50px 0 0;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+
+        .heart::before {
+            left: 50px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10% { transform: scale(1.1); }
+            20% { transform: scale(1); }
+            30% { transform: scale(1.1); }
+            40% { transform: scale(1); }
+        }
+
+        .heart-glow {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,107,107,0.5) 0%, transparent 70%);
+            animation: heartGlow 1s ease-in-out infinite;
+        }
+
+        @keyframes heartGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            30% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* ========== CSS ART 5: Morphing Shape ========== */
+        .morph-shape {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            background-size: 200% 200%;
+            animation: morphAnim 8s ease-in-out infinite, gradientShift 5s ease infinite;
+        }
+
+        @keyframes morphAnim {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            50% { border-radius: 50% 50% 30% 70% / 40% 70% 50% 60%; }
+            75% { border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%; }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* ========== CSS ART 6: DNA Helix ========== */
+        .dna-container {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dna {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dna-row {
+            display: flex;
+            align-items: center;
+            animation: dnaWave 2s ease-in-out infinite;
+        }
+
+        .dna-row:nth-child(odd) { animation-direction: reverse; }
+
+        .dna-row:nth-child(1) { animation-delay: 0s; }
+        .dna-row:nth-child(2) { animation-delay: 0.1s; }
+        .dna-row:nth-child(3) { animation-delay: 0.2s; }
+        .dna-row:nth-child(4) { animation-delay: 0.3s; }
+        .dna-row:nth-child(5) { animation-delay: 0.4s; }
+        .dna-row:nth-child(6) { animation-delay: 0.5s; }
+        .dna-row:nth-child(7) { animation-delay: 0.6s; }
+        .dna-row:nth-child(8) { animation-delay: 0.7s; }
+
+        .dna-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dna-dot.left { background: #00f5ff; }
+        .dna-dot.right { background: #ff2faf; }
+
+        .dna-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #00f5ff, #ff2faf);
+            margin: 0 5px;
+        }
+
+        @keyframes dnaWave {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(0.3); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+
+        footer span {
+            background: linear-gradient(135deg, #00f5ff, #7b2fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pure CSS Art Gallery</h1>
+        <p class="subtitle">No images. No JavaScript. Just CSS magic.</p>
+    </header>
+
+    <div class="gallery">
+        <!-- Sunset Scene -->
+        <div class="art-card">
+            <div class="art-frame">
+                <div class="sunset-scene">
+                    <div class="sun"></div>
+                    <div class="mountains">
+                        <div class="mountain"></div>
+                        <div class="mountain"></div>
+                        <div class="mountain"></div>
+                    </div>
+                    <div class="water"></div>
+                </div>
+            </div>
+            <div class="art-info">
+                <h3>Sunset Paradise</h3>
+                <p>Gradients, pseudo-elements, animations</p>
+            </div>
+        </div>
+
+        <!-- Neon Cube -->
+        <div class="art-card">
+            <div class="art-frame">
+                <div class="neon-cube-container">
+                    <div class="neon-cube">
+                        <div class="cube-face"></div>
+                        <div class="cube-face"></div>
+                        <div class="cube-face"></div>
+                        <div class="cube-face"></div>
+                        <div class="cube-face"></div>
+                        <div class="cube-face"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="art-info">
+                <h3>Neon Cube</h3>
+                <p>3D transforms, perspective, glow effects</p>
+            </div>
+        </div>
+
+        <!-- Loader -->
+        <div class="art-card">
+            <div class="art-frame">
+                <div class="loader-art">
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                </div>
+            </div>
+            <div class="art-info">
+                <h3>Wave Loader</h3>
+                <p>Keyframe animations, delays</p>
+            </div>
+        </div>
+
+        <!-- Heart -->
+        <div class="art-card">
+            <div class="art-frame">
+                <div class="heart-container">
+                    <div class="heart-glow"></div>
+                    <div class="heart"></div>
+                </div>
+            </div>
+            <div class="art-info">
+                <h3>Heartbeat</h3>
+                <p>Pseudo-elements, transform-origin</p>
+            </div>
+        </div>
+
+        <!-- Morph -->
+        <div class="art-card">
+            <div class="art-frame">
+                <div class="morph-shape"></div>
+            </div>
+            <div class="art-info">
+                <h3>Morphing Blob</h3>
+                <p>Border-radius animation, gradients</p>
+            </div>
+        </div>
+
+        <!-- DNA -->
+        <div class="art-card">
+            <div class="art-frame">
+                <div class="dna-container">
+                    <div class="dna">
+                        <div class="dna-row">
+                            <div class="dna-dot left"></div>
+                            <div class="dna-line"></div>
+                            <div class="dna-dot right"></div>
+                        </div>
+                        <div class="dna-row">
+                            <div class="dna-dot left"></div>
+                            <div class="dna-line"></div>
+                            <div class="dna-dot right"></div>
+                        </div>
+                        <div class="dna-row">
+                            <div class="dna-dot left"></div>
+                            <div class="dna-line"></div>
+                            <div class="dna-dot right"></div>
+                        </div>
+                        <div class="dna-row">
+                            <div class="dna-dot left"></div>
+                            <div class="dna-line"></div>
+                            <div class="dna-dot right"></div>
+                        </div>
+                        <div class="dna-row">
+                            <div class="dna-dot left"></div>
+                            <div class="dna-line"></div>
+                            <div class="dna-dot right"></div>
+                        </div>
+                        <div class="dna-row">
+                            <div class="dna-dot left"></div>
+                            <div class="dna-line"></div>
+                            <div class="dna-dot right"></div>
+                        </div>
+                        <div class="dna-row">
+                            <div class="dna-dot left"></div>
+                            <div class="dna-line"></div>
+                            <div class="dna-dot right"></div>
+                        </div>
+                        <div class="dna-row">
+                            <div class="dna-dot left"></div>
+                            <div class="dna-line"></div>
+                            <div class="dna-dot right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="art-info">
+                <h3>DNA Helix</h3>
+                <p>Synchronized animations, flexbox</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created with <span>pure CSS</span> by Rostis1av</p>
+    </footer>
+</body>
+</html>
