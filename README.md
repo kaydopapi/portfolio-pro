@@ -1,70 +1,19 @@
-# Rostis1av — Портфолио Frontend-разработчика
+# Portfolio — ten original frontend concepts
 
-![Статус](https://img.shields.io/badge/Статус-Онлайн-00f5ff?style=for-the-badge)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+Live: https://kaydopapi.github.io/portfolio-pro/
 
-Современное, высокопроизводительное портфолио с потрясающими визуальными эффектами и плавными анимациями.
+Ten independent, concept-driven frontend builds. No shared template: each has its own
+typography, palette, layout and interaction. Vanilla HTML/CSS/JS, no build step.
 
-## ✨ Особенности
-
-- **Canvas-частицы** — интерактивный фон с соединёнными частицами
-- **Кастомный курсор** — эффект следа с hover-состояниями
-- **Эффект печатной машинки** — динамическая анимация текста
-- **Glassmorphism UI** — современный дизайн карточек с размытием
-- **Scroll-анимации** — плавное появление элементов при прокрутке
-- **60 FPS анимации** — оптимизация через transform и opacity
-- **Полная адаптивность** — mobile-first подход
-- **Тёмная тема** — неоновые акценты с градиентами
-
-## 🛠️ Каталог услуг
-
-| Услуга | Описание |
-|--------|----------|
-| Лендинги | Продающие одностраничные сайты с высокой конверсией |
-| Многостраничные сайты | Корпоративные сайты и визитки |
-| Интернет-магазины | Вёрстка каталогов с фильтрами и корзиной |
-| Адаптивная вёрстка | Перевод сайтов в адаптивный формат |
-| UI-компоненты | Формы, модальные окна, слайдеры |
-| Вёрстка по макету | Пиксель-перфект из Figma/PSD/Sketch |
-
-## 📁 Структура проекта
-
-```
-portfolio-pro/
-├── index.html              # Главная страница
-├── css/
-│   ├── main.css           # Основные стили
-│   ├── animations.css     # Keyframes и анимации
-│   └── components.css     # UI компоненты
-├── js/
-│   ├── main.js            # Основной функционал
-│   ├── cursor.js          # Кастомный курсор
-│   ├── particles.js       # Canvas-частицы
-│   └── typewriter.js      # Эффект печати
-└── assets/
-    └── previews/          # SVG превью
-```
-
-## 🛠️ Технологии
-
-- **HTML5** — семантичная разметка
-- **CSS3** — Grid, Flexbox, Custom Properties, Animations
-- **Vanilla JavaScript** — ES6+, Canvas API, Intersection Observer
-- **Без фреймворков** — демонстрация чистого кода
-
-## 📊 Производительность
-
-- Lighthouse Score: 95+
-- First Contentful Paint: < 1s
-- Оптимизированные анимации через `transform` и `opacity`
-
-## 📬 Контакты
-
-- **Email:** rostislavharin341@gmail.com
-- **Telegram:** [@kaydoGOAT](https://t.me/kaydoGOAT)
-
----
-
-Сделано с ❤️ by Rostis1av
+| # | Project | Concept | Live |
+|---|---------|---------|------|
+| 01 | Meridian | Type foundry with a live specimen tester | `/meridian` |
+| 02 | Aurora Roasters | Specialty coffee brand, editorial | `/aurora` |
+| 03 | Null Pointer | Error-tracking devtool, live event stream | `/nullpointer` |
+| 04 | Volt | EV charging network, animated charge ring | `/volt` |
+| 05 | Kiln | Ceramics studio, interactive glaze selector | `/kiln` |
+| 06 | Cadence | Run club, race countdown + pace calculator | `/cadence` |
+| 07 | Frame 24 | Film photography portfolio with lightbox | `/frame24` |
+| 08 | Botanica | Plant shop with light-based plant finder | `/botanica` |
+| 09 | Orbit | Canvas Solar System explorer | `/orbit` |
+| 10 | Tidal | Sleep-sound app, real Web Audio mixer | `/tidal` |

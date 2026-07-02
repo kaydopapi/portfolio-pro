@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Volt — Fast charging, everywhere you stop</title>
+<meta name="description" content="Volt is a fast-charging network with 4,200 stalls. Plug in, grab a coffee, drive off in 18 minutes." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#eaeef2; --surface:#f6f8fa; --ink:#12161c; --mute:#5c6672; --line:#d3dae1;
+    --volt:#1f5bff; --chrome:#c3ccd6; --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;line-height:1.55;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--volt);color:#fff}
+  .mono{font-family:"Space Mono",monospace}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+
+  nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 85%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nr{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.3rem;letter-spacing:-.02em}
+  .bolt{width:26px;height:26px;background:var(--volt);border-radius:7px;display:grid;place-items:center;color:#fff;font-size:.95rem}
+  .nl{display:flex;gap:2rem;font-size:.92rem;color:var(--mute);font-weight:500}
+  .nl a:hover{color:var(--ink)}
+  .app{background:var(--ink);color:#fff;padding:.6rem 1.2rem;border-radius:999px;font-weight:600;font-size:.9rem;transition:.2s}
+  .app:hover{background:var(--volt)}
+  @media(max-width:840px){.nl{display:none}}
+
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;
+    padding:clamp(2.5rem,6vw,5rem) 0}
+  .eb{font-family:"Space Mono";font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--volt);margin-bottom:1.4rem}
+  .hero h1{font-size:clamp(2.7rem,6.5vw,5rem);line-height:1;letter-spacing:-.035em;font-weight:800}
+  .hero p{color:var(--mute);font-size:1.12rem;max-width:40ch;margin:1.5rem 0 2.2rem}
+  .hb{display:flex;gap:.9rem;flex-wrap:wrap}
+  .btn{padding:.9rem 1.6rem;border-radius:999px;font-weight:700;font-size:.95rem;transition:.2s}
+  .btn.p{background:var(--volt);color:#fff}
+  .btn.p:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(31,91,255,.35)}
+  .btn.g{border:1px solid var(--ink)}
+  .btn.g:hover{background:var(--ink);color:#fff}
+
+  /* charge ring */
+  .ringwrap{display:grid;place-items:center;background:linear-gradient(160deg,var(--surface),#e6ebf0);
+    border:1px solid var(--line);border-radius:24px;padding:2rem;aspect-ratio:1;position:relative;overflow:hidden}
+  .ringwrap::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(31,91,255,.10),transparent 60%)}
+  .ring{position:relative;width:min(320px,70%)}
+  .ring svg{transform:rotate(-90deg);width:100%;height:auto;display:block}
+  .ring .bgc{fill:none;stroke:var(--chrome);stroke-width:14}
+  .ring .fg{fill:none;stroke:var(--volt);stroke-width:14;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1)}
+  .ring .lbl{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+  .ring .pct{font-size:3.2rem;font-weight:800;letter-spacing:-.03em}
+  .ring .sub{font-family:"Space Mono";font-size:.78rem;color:var(--mute);letter-spacing:.05em}
+  @media(max-width:840px){.hero{grid-template-columns:1fr}.ringwrap{aspect-ratio:16/12}}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2.5rem 0}
+  .stat .num{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+  .stat .num small{color:var(--volt)}
+  .stat .cap{color:var(--mute);font-size:.9rem;margin-top:.2rem}
+  @media(max-width:720px){.stats{grid-template-columns:1fr 1fr;gap:2rem}}
+
+  section{padding:clamp(3rem,7vw,5.5rem) 0}
+  .sh{max-width:54ch;margin-bottom:2.5rem}
+  .sh h2{font-size:clamp(1.9rem,4.5vw,3rem);letter-spacing:-.025em;line-height:1.05}
+  .sh p{color:var(--mute);margin-top:.8rem;font-size:1.05rem}
+
+  /* BENTO */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:1rem}
+  .cell{border-radius:var(--radius);padding:1.6rem;border:1px solid var(--line);background:var(--surface);
+    display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;transition:.25s}
+  .cell:hover{transform:translateY(-4px)}
+  .cell h3{font-size:1.2rem;letter-spacing:-.01em}
+  .cell p{color:var(--mute);font-size:.92rem}
+  .c1{grid-column:span 2;grid-row:span 2;background:var(--ink);color:#fff}
+  .c1 p{color:#aeb7c2}
+  .c1 .photo{position:absolute;inset:0;opacity:.28}
+  .c1 .photo img{width:100%;height:100%;object-fit:cover}
+  .c1 .in{position:relative}
+  .c2{grid-column:span 2}
+  .c3{grid-column:span 1}.c4{grid-column:span 1}
+  .c2 .bars{display:flex;align-items:flex-end;gap:6px;height:60px;margin-top:1rem}
+  .c2 .bars span{flex:1;background:var(--volt);border-radius:3px 3px 0 0;opacity:.35}
+  .c2 .bars span.on{opacity:1}
+  .tag{font-family:"Space Mono";font-size:.72rem;color:var(--volt);text-transform:uppercase;letter-spacing:.1em}
+  @media(max-width:860px){.bento{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+    .c1{grid-column:span 2;grid-row:span 1}}
+  @media(max-width:520px){.bento{grid-template-columns:1fr}.c1,.c2{grid-column:auto}}
+
+  /* CTA band */
+  .band{background:var(--ink);color:#fff;border-radius:24px;padding:clamp(2.2rem,5vw,4rem);
+    display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;align-items:center}
+  .band h2{font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.025em;line-height:1.05}
+  .band p{color:#aeb7c2;margin:1rem 0 0;max-width:40ch}
+  .band .stores{display:flex;gap:.8rem;flex-wrap:wrap}
+  .store{border:1px solid #333c48;border-radius:12px;padding:.8rem 1.2rem;font-weight:600;font-size:.9rem;
+    transition:.2s;display:flex;flex-direction:column}
+  .store small{color:#8892a0;font-weight:400;font-size:.72rem}
+  .store:hover{border-color:var(--volt);background:#171d26}
+  @media(max-width:760px){.band{grid-template-columns:1fr}}
+
+  footer{padding:2.5rem 0;color:var(--mute);font-size:.88rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a{color:var(--volt);font-weight:600}
+
+  @media(prefers-reduced-motion:reduce){.ring .fg{transition:none}html{scroll-behavior:auto}.btn,.cell{transition:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nr">
+    <div class="brand"><span class="bolt">⚡</span>Volt</div>
+    <div class="nl"><a href="#network">Network</a><a href="#how">How it works</a><a href="#app">App</a></div>
+    <a href="#app" class="app">Get the app</a>
+  </div>
+</nav>
+
+<header class="wrap hero">
+  <div>
+    <div class="eb">4,200 fast stalls · 48 states</div>
+    <h1>Charged before<br>your coffee<br>gets cold.</h1>
+    <p>350 kW fast charging on the routes you actually drive. Plug in, and Volt tells you exactly when to unplug.</p>
+    <div class="hb">
+      <a href="#app" class="btn p">Find a charger</a>
+      <a href="#network" class="btn g">See the network</a>
+    </div>
+  </div>
+  <div class="ringwrap">
+    <div class="ring">
+      <svg viewBox="0 0 240 240" aria-hidden="true">
+        <circle class="bgc" cx="120" cy="120" r="104"/>
+        <circle class="fg" id="fg" cx="120" cy="120" r="104"/>
+      </svg>
+      <div class="lbl">
+        <div class="pct" id="pct">0%</div>
+        <div class="sub" id="eta">plug in to start</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats" id="stats">
+    <div class="stat"><div class="num" data-to="4200">0</div><div class="cap">Fast charging stalls</div></div>
+    <div class="stat"><div class="num" data-to="18"><span>0</span><small> min</small></div><div class="cap">Median 10-80% charge</div></div>
+    <div class="stat"><div class="num" data-to="99" data-suffix="%">0</div><div class="cap">Stall uptime, last quarter</div></div>
+    <div class="stat"><div class="num" data-to="350" data-suffix=" kW">0</div><div class="cap">Peak charging power</div></div>
+  </div>
+</div>
+
+<section class="wrap" id="network">
+  <div class="sh">
+    <h2>Built for the long drive, not the parking lot.</h2>
+    <p>Every site is chosen for the trip: highway-close, canopied, and lit. Real amenities, not a dark corner behind a mall.</p>
+  </div>
+  <div class="bento">
+    <div class="cell c1">
+      <div class="photo"><img src="https://picsum.photos/seed/volt-highway-station/700/700" alt="Charging station at dusk" loading="lazy"/></div>
+      <div class="in"><span class="tag">Flagship site</span></div>
+      <div class="in"><h3>Canopied, lit, and open 24/7</h3><p>Covered stalls, real restrooms, and a lounge you would actually wait in.</p></div>
+    </div>
+    <div class="cell c2">
+      <div><span class="tag">Live load</span><h3>See stall availability before you arrive</h3></div>
+      <div class="bars" id="bars" aria-hidden="true"></div>
+    </div>
+    <div class="cell c3"><span class="tag">Plug & charge</span><div><h3>No app tapping</h3><p>Plug in and billing just happens.</p></div></div>
+    <div class="cell c4"><span class="tag">Any car</span><div><h3>CCS & NACS</h3><p>Adapters on site if you forget yours.</p></div></div>
+  </div>
+</section>
+
+<section class="wrap" id="how">
+  <div class="sh"><h2>Three taps, then drive.</h2></div>
+  <div class="bento" style="grid-auto-rows:auto">
+    <div class="cell c3" style="grid-column:span 1"><div><div class="tag">01</div><h3>Route</h3><p>Enter your destination. Volt drops charging stops in automatically.</p></div></div>
+    <div class="cell c3" style="grid-column:span 1"><div><div class="tag">02</div><h3>Plug</h3><p>Pull up, plug in. The stall recognizes your car in seconds.</p></div></div>
+    <div class="cell c3" style="grid-column:span 1"><div><div class="tag">03</div><h3>Unplug</h3><p>We ping you at 80%, the sweet spot for speed and battery health.</p></div></div>
+    <div class="cell c3" style="grid-column:span 1;background:var(--volt);color:#fff;border-color:var(--volt)"><div><div class="tag" style="color:#cfe0ff">04</div><h3 style="color:#fff">Go</h3><p style="color:#dbe6ff">Payment settles on its own. No receipt hunting.</p></div></div>
+  </div>
+</section>
+
+<section class="wrap" id="app">
+  <div class="band">
+    <div>
+      <h2>Your car's range anxiety, uninstalled.</h2>
+      <p>Live availability, trip planning, and one bill across the whole network. Free to download.</p>
+    </div>
+    <div class="stores">
+      <a class="store" href="#"><small>Download on the</small>App Store</a>
+      <a class="store" href="#"><small>Get it on</small>Google Play</a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Volt · concept demo · photos via picsum.photos</span>
+  <a href="../index.html">← back to portfolio</a>
+</footer>
+
+<script>
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  // Charge ring: animate to 80% and label ETA
+  const R=104, C=2*Math.PI*R;
+  const fg=document.getElementById('fg'), pct=document.getElementById('pct'), eta=document.getElementById('eta');
+  fg.style.strokeDasharray=C; fg.style.strokeDashoffset=C;
+  function charge(target){
+    fg.style.strokeDashoffset=C*(1-target/100);
+    if(reduce){pct.textContent=target+'%';eta.textContent='ready · unplug now';return;}
+    let cur=0;const step=()=>{cur+=1;if(cur<=target){pct.textContent=cur+'%';
+      eta.textContent=cur<target?('~'+Math.max(1,Math.round((target-cur)/5))+' min left'):'ready · unplug now';
+      requestAnimationFrame(()=>setTimeout(step,18));}};step();
+  }
+  // start when hero visible
+  new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){charge(80);o.disconnect();}})},{threshold:.4})
+    .observe(document.querySelector('.ringwrap'));
+
+  // count-up stats on scroll
+  const stats=document.getElementById('stats');
+  const runStats=()=>{
+    stats.querySelectorAll('.num').forEach(el=>{
+      const to=+el.dataset.to, suf=el.dataset.suffix||'';
+      const inner=el.querySelector('span')||el, small=el.querySelector('small');
+      if(reduce){inner.textContent=to+ (small?'':suf); return;}
+      let c=0;const t=setInterval(()=>{c+=Math.ceil(to/40);if(c>=to){c=to;clearInterval(t);}
+        if(small){el.querySelector('span').textContent=c;}else{el.childNodes[0].nodeValue='';el.textContent=c+suf;}
+      },26);
+    });
+  };
+  new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){runStats();o.disconnect();}})},{threshold:.5}).observe(stats);
+
+  // live availability bars
+  const bars=document.getElementById('bars');
+  if(bars){
+    const data=[1,1,1,0,1,1,0,1,1,1,0,1];
+    bars.innerHTML=data.map((v,i)=>`<span class="${v?'on':''}" style="height:${40+((i*37)%55)}%"></span>`).join('');
+    if(!reduce){setInterval(()=>{const sp=bars.children[Math.floor(Math.random()*bars.children.length)];sp.classList.toggle('on');},1600);}
+  }
+</script>
+</body>
+</html>

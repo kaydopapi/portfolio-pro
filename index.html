@@ -1,608 +1,188 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rostis1av — Frontend-разработчик и UI/UX дизайнер. Создаю современные, высокопроизводительные сайты с вниманием к каждой детали.">
-    <meta name="keywords" content="веб-разработчик, frontend, верстка, сайты, портфолио, UI/UX">
-    <meta name="author" content="Rostis1av">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rostislav — Frontend works</title>
+<meta name="description" content="Ten original frontend concepts, each built from a different idea. Type foundry, coffee brand, devtool, sleep app and more." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{ --bg:#0b0b0d; --panel:#131316; --line:#26262b; --text:#ededf0; --mute:#82828c; --accent:#d6ff3f; --radius:12px; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"Space Grotesk",system-ui,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#000}
+  .mono{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1500px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3.5rem)}
 
-    <title>Rostis1av | Frontend-разработчик</title>
+  nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 85%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nr{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{font-weight:700;font-size:1.15rem;letter-spacing:-.02em}
+  .brand b{color:var(--accent)}
+  .navmeta{font-family:"JetBrains Mono";font-size:.78rem;color:var(--mute);display:flex;gap:1.5rem}
+  .navmeta a:hover{color:var(--accent)}
+  @media(max-width:640px){.navmeta a:not(.mail){display:none}}
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/components.css">
+  /* HERO */
+  header{padding:clamp(3rem,8vw,7rem) 0 clamp(2rem,5vw,4rem)}
+  .eb{font-family:"JetBrains Mono";font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin-bottom:2rem}
+  h1{font-size:clamp(2.6rem,8vw,7rem);line-height:.92;letter-spacing:-.035em;font-weight:700;max-width:16ch}
+  h1 em{font-style:normal;color:var(--accent)}
+  .hsub{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;margin-top:2.5rem;
+    border-top:1px solid var(--line);padding-top:1.5rem}
+  .hsub p{max-width:44ch;color:var(--mute);font-size:1.05rem}
+  .hsub .cnt{font-family:"JetBrains Mono";font-size:.82rem;color:var(--text);text-align:right}
+  .hsub .cnt b{color:var(--accent)}
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  /* INDEX + live preview */
+  .studio{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:start;
+    padding-bottom:clamp(3rem,7vw,6rem)}
+  .index{border-top:1px solid var(--line)}
+  .row{display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:center;
+    padding:clamp(1.1rem,2.5vw,1.9rem) 0;border-bottom:1px solid var(--line);
+    position:relative;transition:padding-left .35s cubic-bezier(.16,1,.3,1);cursor:pointer}
+  .row:hover{padding-left:1.2rem}
+  .row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--rc,var(--accent));
+    transform:scaleY(0);transform-origin:bottom;transition:transform .35s}
+  .row:hover::before{transform:scaleY(1)}
+  .row .num{font-family:"JetBrains Mono";font-size:.82rem;color:var(--mute);width:2.5rem}
+  .row:hover .num{color:var(--rc,var(--accent))}
+  .row .main .name{font-size:clamp(1.5rem,4vw,2.6rem);font-weight:600;letter-spacing:-.02em;line-height:1.05}
+  .row .main .desc{color:var(--mute);font-size:.92rem;margin-top:.3rem;max-width:48ch}
+  .row .cat{font-family:"JetBrains Mono";font-size:.74rem;color:var(--mute);text-align:right;line-height:1.6}
+  .row .cat .open{color:var(--rc,var(--accent));opacity:0;transition:.3s}
+  .row:hover .cat .open{opacity:1}
+  @media(max-width:560px){.row .cat{display:none}.row{grid-template-columns:auto 1fr}}
+
+  /* preview panel */
+  .preview{position:sticky;top:96px}
+  .frame{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel);
+    aspect-ratio:16/10;position:relative}
+  .frame .bar{display:flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border-bottom:1px solid var(--line);
+    font-family:"JetBrains Mono";font-size:.72rem;color:var(--mute)}
+  .frame .bar .dots{display:flex;gap:.4rem}
+  .frame .bar .dots i{width:9px;height:9px;border-radius:50%;background:#33333a}
+  .frame .bar .url{margin-left:auto;color:var(--rc,var(--accent))}
+  .viewport{position:relative;width:100%;height:calc(100% - 34px);overflow:hidden;background:#000}
+  .viewport iframe{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;
+    transform:scale(var(--k));transform-origin:top left;pointer-events:none}
+  .viewport .empty{position:absolute;inset:0;display:grid;place-content:center;text-align:center;
+    color:var(--mute);font-family:"JetBrains Mono";font-size:.82rem;padding:2rem}
+  .previewnote{margin-top:1rem;font-family:"JetBrains Mono";font-size:.74rem;color:var(--mute);text-align:center}
+  @media(max-width:900px){.studio{grid-template-columns:1fr}.preview{display:none}}
+
+  footer{border-top:1px solid var(--line);padding:clamp(2.5rem,6vw,4rem) 0 3rem}
+  .fgrid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;align-items:end}
+  .fgrid .big{font-size:clamp(1.8rem,5vw,3.4rem);font-weight:700;letter-spacing:-.02em;line-height:1}
+  .fgrid .big em{font-style:normal;color:var(--accent)}
+  .fgrid .links{font-family:"JetBrains Mono";font-size:.85rem;display:grid;gap:.6rem;text-align:right}
+  .fgrid .links a:hover{color:var(--accent)}
+  .fbtm{margin-top:2.5rem;font-family:"JetBrains Mono";font-size:.74rem;color:var(--mute);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+  @media(prefers-reduced-motion:reduce){.row,.row::before{transition:none}html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container nav-content">
-            <a href="#" class="nav-logo">&lt;<span>R</span>/&gt;</a>
+<nav>
+  <div class="wrap nr">
+    <div class="brand">Rostislav<b>.</b></div>
+    <div class="navmeta">
+      <span>10 works / 2026</span>
+      <a href="#index">Index</a>
+      <a class="mail" href="mailto:rostislavharin341@gmail.com">Email</a>
+    </div>
+  </div>
+</nav>
 
-            <ul class="nav-links">
-                <li><a href="#about">Обо мне</a></li>
-                <li><a href="#skills">Навыки</a></li>
-                <li><a href="#portfolio">Последние работы</a></li>
-                <li><a href="#services">Услуги</a></li>
-                <li><a href="#process">Процесс</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
+<header class="wrap">
+  <div class="eb">Frontend / concept-driven builds</div>
+  <h1>Ten sites, ten <em>ideas</em>, no template underneath.</h1>
+  <div class="hsub">
+    <p>Each project starts from a different concept and gets its own type, palette, and motion. Hover any title to see it running, live.</p>
+    <div class="cnt">TYPE · BRAND · TOOLS<br>INTERACTIVE · <b>ALL LIVE</b><br>BUILT 2026</div>
+  </div>
+</header>
 
-            <a href="#contact" class="btn btn-primary nav-cta">Связаться</a>
+<div class="wrap studio">
+  <div class="index" id="index">
+    <!-- rows injected -->
+  </div>
+  <aside class="preview">
+    <div class="frame">
+      <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url" id="pvUrl">hover a project</span></div>
+      <div class="viewport" id="viewport">
+        <div class="empty" id="pvEmpty">◦ hover a title on the left<br>to load the real site here</div>
+      </div>
+    </div>
+    <div class="previewnote">live preview · click a title to open full screen</div>
+  </aside>
+</div>
 
-            <button class="nav-toggle" aria-label="Меню">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="big">Want one of<br>these for <em>you</em>?</div>
+      <div class="links">
+        <a href="mailto:rostislavharin341@gmail.com">rostislavharin341@gmail.com</a>
+        <a href="https://github.com/kaydopapi">github.com/kaydopapi</a>
+      </div>
+    </div>
+    <div class="fbtm"><span>Rostislav · frontend portfolio</span><span>Built by hand · deployed on GitHub Pages</span></div>
+  </div>
+</footer>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <canvas id="hero-canvas" class="hero-canvas"></canvas>
+<script>
+  const projects=[
+    {slug:'meridian',name:'Meridian',cat:'Type foundry',year:'2026',rc:'#ff3b1f',desc:'Independent type foundry with a live specimen tester and kinetic hero.'},
+    {slug:'aurora',name:'Aurora Roasters',cat:'Coffee brand',year:'2026',rc:'#c67a24',desc:'Specialty coffee brand, editorial layout, forest and amber palette.'},
+    {slug:'nullpointer',name:'Null Pointer',cat:'Dev tool',year:'2026',rc:'#3ddc84',desc:'Error-tracking devtool with a live event stream and bento features.'},
+    {slug:'volt',name:'Volt',cat:'EV network',year:'2026',rc:'#1f5bff',desc:'EV charging network, animated charge ring and count-up network stats.'},
+    {slug:'kiln',name:'Kiln',cat:'Ceramics studio',year:'2026',rc:'#c1573b',desc:'Handmade ceramics with an interactive glaze selector and gallery.'},
+    {slug:'cadence',name:'Cadence',cat:'Run club',year:'2026',rc:'#d6f000',desc:'Brutalist run club with a live race countdown and pace calculator.'},
+    {slug:'frame24',name:'Frame 24',cat:'Photography',year:'2026',rc:'#c9a271',desc:'Film photography portfolio with a keyboard-driven lightbox.'},
+    {slug:'botanica',name:'Botanica',cat:'Plant shop',year:'2026',rc:'#b0472e',desc:'Houseplant shop with a light-based plant finder and filtering.'},
+    {slug:'orbit',name:'Orbit',cat:'Interactive',year:'2026',rc:'#f5b942',desc:'Canvas Solar System you can click and tilt to explore each planet.'},
+    {slug:'tidal',name:'Tidal',cat:'Sleep app',year:'2026',rc:'#e9a15f',desc:'Sleep-sound app with a real Web Audio mixer, synthesized live.'},
+  ];
+  const pad=n=>String(n+1).padStart(2,'0');
+  const index=document.getElementById('index');
+  index.innerHTML=projects.map((p,i)=>`
+    <a class="row" href="${p.slug}/index.html" data-src="${p.slug}/index.html" data-url="/${p.slug}" style="--rc:${p.rc}">
+      <span class="num">${pad(i)}</span>
+      <span class="main"><span class="name">${p.name}</span><span class="desc">${p.desc}</span></span>
+      <span class="cat">${p.cat}<br>${p.year}<br><span class="open">open →</span></span>
+    </a>`).join('');
 
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="dot"></span>
-                    Открыт для новых проектов
-                </div>
-
-                <h1 class="hero-title">
-                    Привет, я <span class="gradient-text">Rostis1av</span>
-                </h1>
-
-                <p class="hero-subtitle">
-                    <span class="typewriter"></span><span class="typewriter-cursor">|</span>
-                </p>
-
-                <p class="hero-description">
-                    Создаю современные, быстрые и красивые сайты, которые выделяют бизнес среди конкурентов.
-                    Чистый код, пиксель-перфект дизайн и безупречный пользовательский опыт.
-                </p>
-
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary magnetic">
-                        <span>Смотреть услуги</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                    <a href="#contact" class="btn btn-outline magnetic">
-                        <span>Написать мне</span>
-                    </a>
-                </div>
-
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-value" data-target="50" data-suffix="+">0</div>
-                        <div class="stat-label">Проектов</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" data-target="3" data-suffix="+">0</div>
-                        <div class="stat-label">Лет опыта</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" data-target="15" data-suffix="+">0</div>
-                        <div class="stat-label">Технологий</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about section" id="about">
-        <div class="container">
-            <h2 class="section-title reveal">Обо <span class="gradient-text">мне</span></h2>
-
-            <div class="about-grid">
-                <div class="about-text reveal">
-                    <p>
-                        Я — увлечённый Frontend-разработчик с острым взглядом на дизайн и любовью к чистому,
-                        эффективному коду. Специализируюсь на превращении креативных идей в пиксель-перфектные,
-                        адаптивные сайты с безупречным пользовательским опытом.
-                    </p>
-                    <p>
-                        Мой подход сочетает техническую экспертизу с творческим мышлением, гарантируя,
-                        что каждый проект не просто соответствует, а превосходит ожидания клиента.
-                        Я постоянно слежу за новейшими веб-технологиями и лучшими практиками.
-                    </p>
-                    <p>
-                        Когда я не пишу код, вы найдёте меня изучающим новые дизайн-тренды,
-                        экспериментирующим с креативным кодингом или работающим над open-source проектами.
-                    </p>
-
-                    <div style="margin-top: 30px;">
-                        <a href="#contact" class="btn btn-primary">Скачать резюме</a>
-                    </div>
-                </div>
-
-                <div class="skills-grid reveal">
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">HTML5 / CSS3</span>
-                            <span class="skill-percent">99%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="99"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">JavaScript</span>
-                            <span class="skill-percent">90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">React / Vue</span>
-                            <span class="skill-percent">85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">TypeScript</span>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">UI/UX Дизайн</span>
-                            <span class="skill-percent">85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Git / GitHub</span>
-                            <span class="skill-percent">95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="95"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section" id="skills">
-        <div class="container">
-            <h2 class="section-title reveal">Что я <span class="gradient-text">умею</span></h2>
-
-            <div class="extra-grid">
-                <div class="glass-card extra-card reveal stagger-1">
-                    <div class="icon">🎨</div>
-                    <h4>Веб-дизайн</h4>
-                    <p>Создание современных, интуитивных интерфейсов с учётом UX/UI принципов</p>
-                </div>
-
-                <div class="glass-card extra-card reveal stagger-2">
-                    <div class="icon">💻</div>
-                    <h4>Frontend-разработка</h4>
-                    <p>Создание адаптивных, быстрых сайтов с чистым, поддерживаемым кодом</p>
-                </div>
-
-                <div class="glass-card extra-card reveal stagger-3">
-                    <div class="icon">📱</div>
-                    <h4>Адаптивная вёрстка</h4>
-                    <p>Безупречный опыт на всех устройствах и размерах экранов</p>
-                </div>
-
-                <div class="glass-card extra-card reveal stagger-4">
-                    <div class="icon">⚡</div>
-                    <h4>Производительность</h4>
-                    <p>Оптимизация скорости, SEO и Core Web Vitals для лучших результатов</p>
-                </div>
-
-                <div class="glass-card extra-card reveal stagger-5">
-                    <div class="icon">🔧</div>
-                    <h4>Анимации</h4>
-                    <p>Создание плавных, захватывающих микро-взаимодействий и анимаций</p>
-                </div>
-
-                <div class="glass-card extra-card reveal stagger-6">
-                    <div class="icon">🚀</div>
-                    <h4>Современный стек</h4>
-                    <p>Работа с React, Vue, TypeScript и новейшими технологиями</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="section" id="portfolio">
-        <div class="container">
-            <h2 class="section-title reveal">Последние <span class="gradient-text">работы</span></h2>
-
-            <div class="portfolio-grid">
-                <!-- Project 1: Nity Diary -->
-                <div class="portfolio-card reveal stagger-1">
-                    <div class="portfolio-preview">
-                        <img src="projects/images/nity-main.jpeg" alt="Эмоциональный дневник Nity" class="portfolio-image">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Эмоциональный дневник Nity</h3>
-                        <p>Веб-приложение для отслеживания эмоций и настроения</p>
-                        <a href="projects/nity-diary.html" class="portfolio-link" target="_blank">
-                            <span>Смотреть</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2: Semiglobe Brasil -->
-                <div class="portfolio-card reveal stagger-2">
-                    <div class="portfolio-preview">
-                        <img src="projects/images/semiglobe-main.jpg" alt="Semiglobe Brasil" class="portfolio-image">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Semiglobe Brasil</h3>
-                        <p>Корпоративный сайт бразильской компании</p>
-                        <a href="projects/semiglobe-brasil.html" class="portfolio-link" target="_blank">
-                            <span>Смотреть</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3: Shemberg -->
-                <div class="portfolio-card reveal stagger-3">
-                    <div class="portfolio-preview">
-                        <img src="projects/images/shemberg-main.jpg" alt="Shemberg" class="portfolio-image">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Shemberg</h3>
-                        <p>Лендинг для бренда с яркими акцентами</p>
-                        <a href="projects/shemberg.html" class="portfolio-link" target="_blank">
-                            <span>Смотреть</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4: Hero Design Portfolio -->
-                <div class="portfolio-card reveal stagger-4">
-                    <div class="portfolio-preview">
-                        <img src="projects/images/hero-design-main.jpg" alt="Hero Design Portfolio" class="portfolio-image">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Hero Design Portfolio</h3>
-                        <p>Креативное портфолио дизайнера</p>
-                        <a href="projects/hero-design.html" class="portfolio-link" target="_blank">
-                            <span>Смотреть</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 5: Robots 2026 -->
-                <div class="portfolio-card reveal stagger-5">
-                    <div class="portfolio-preview">
-                        <img src="projects/images/robots-main.png" alt="Роботы 2026" class="portfolio-image">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Роботы 2026</h3>
-                        <p>Футуристический лендинг о робототехнике</p>
-                        <a href="projects/robots-2026.html" class="portfolio-link" target="_blank">
-                            <span>Смотреть</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="section" id="services">
-        <div class="container">
-            <h2 class="section-title reveal">Мои <span class="gradient-text">услуги</span></h2>
-
-            <div class="services-grid">
-                <!-- Service 1: Landing Pages -->
-                <div class="glass-card service-card reveal stagger-1">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Лендинги</h3>
-                    <p class="service-description">Продающие одностраничные сайты с высокой конверсией. Современный дизайн, адаптивная вёрстка, SEO-оптимизация.</p>
-                    <ul class="service-features">
-                        <li>Уникальный дизайн</li>
-                        <li>Мобильная адаптация</li>
-                        <li>Быстрая загрузка</li>
-                        <li>Формы обратной связи</li>
-                    </ul>
-                </div>
-
-                <!-- Service 2: Multi-page Sites -->
-                <div class="glass-card service-card reveal stagger-2">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Многостраничные сайты</h3>
-                    <p class="service-description">Полноценные корпоративные сайты и визитки. Удобная навигация, логичная структура, единый стиль.</p>
-                    <ul class="service-features">
-                        <li>До 10+ страниц</li>
-                        <li>Блог и новости</li>
-                        <li>Галереи и портфолио</li>
-                        <li>Интеграция с CMS</li>
-                    </ul>
-                </div>
-
-                <!-- Service 3: E-commerce -->
-                <div class="glass-card service-card reveal stagger-3">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
-                            <circle cx="9" cy="21" r="1"/>
-                            <circle cx="20" cy="21" r="1"/>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Интернет-магазины</h3>
-                    <p class="service-description">Вёрстка интернет-магазинов с каталогом товаров, фильтрами и корзиной. Интуитивный интерфейс покупки.</p>
-                    <ul class="service-features">
-                        <li>Каталог товаров</li>
-                        <li>Фильтры и сортировка</li>
-                        <li>Корзина и оформление</li>
-                        <li>Карточки товаров</li>
-                    </ul>
-                </div>
-
-                <!-- Service 4: Adaptive Layout -->
-                <div class="glass-card service-card reveal stagger-4">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
-                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                            <line x1="12" y1="18" x2="12.01" y2="18"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Адаптивная вёрстка</h3>
-                    <p class="service-description">Перевод существующих сайтов в адаптивный формат. Идеальное отображение на всех устройствах.</p>
-                    <ul class="service-features">
-                        <li>Mobile-first подход</li>
-                        <li>Все размеры экранов</li>
-                        <li>Retina-графика</li>
-                        <li>Touch-оптимизация</li>
-                    </ul>
-                </div>
-
-                <!-- Service 5: UI Components -->
-                <div class="glass-card service-card reveal stagger-5">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
-                            <rect x="3" y="3" width="7" height="7"/>
-                            <rect x="14" y="3" width="7" height="7"/>
-                            <rect x="14" y="14" width="7" height="7"/>
-                            <rect x="3" y="14" width="7" height="7"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">UI-компоненты</h3>
-                    <p class="service-description">Разработка отдельных UI-элементов: формы, модальные окна, слайдеры, табы, аккордеоны.</p>
-                    <ul class="service-features">
-                        <li>Интерактивные формы</li>
-                        <li>Модальные окна</li>
-                        <li>Слайдеры и карусели</li>
-                        <li>Анимации и эффекты</li>
-                    </ul>
-                </div>
-
-                <!-- Service 6: PSD/Figma to HTML -->
-                <div class="glass-card service-card reveal stagger-6">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Вёрстка по макету</h3>
-                    <p class="service-description">Пиксель-перфект вёрстка из Figma, PSD, Sketch или любого другого формата макета.</p>
-                    <ul class="service-features">
-                        <li>Figma / PSD / Sketch</li>
-                        <li>Пиксель-перфект</li>
-                        <li>Чистый код</li>
-                        <li>Кроссбраузерность</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="services-cta reveal">
-                <p>Не нашли нужную услугу? Напишите мне — обсудим ваш проект!</p>
-                <a href="#contact" class="btn btn-primary magnetic">
-                    <span>Обсудить проект</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process section" id="process">
-        <div class="container">
-            <h2 class="section-title reveal">Как я <span class="gradient-text">работаю</span></h2>
-
-            <div class="timeline">
-                <div class="timeline-item reveal">
-                    <div class="glass-card timeline-content">
-                        <span class="timeline-number">01</span>
-                        <div class="timeline-dot"></div>
-                        <h3>Бриф и анализ</h3>
-                        <p>Детальное изучение ваших целей, целевой аудитории и требований к проекту.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="glass-card timeline-content">
-                        <span class="timeline-number">02</span>
-                        <div class="timeline-dot"></div>
-                        <h3>Дизайн и прототип</h3>
-                        <p>Создание макетов и визуального дизайна в Figma с учётом ваших пожеланий.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="glass-card timeline-content">
-                        <span class="timeline-number">03</span>
-                        <div class="timeline-dot"></div>
-                        <h3>Разработка</h3>
-                        <p>Пиксель-перфект вёрстка, адаптивность, оптимизация и чистый код.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="glass-card timeline-content">
-                        <span class="timeline-number">04</span>
-                        <div class="timeline-dot"></div>
-                        <h3>Тестирование</h3>
-                        <p>Проверка на всех устройствах и браузерах, оптимизация производительности.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="glass-card timeline-content">
-                        <span class="timeline-number">05</span>
-                        <div class="timeline-dot"></div>
-                        <h3>Запуск и поддержка</h3>
-                        <p>Деплой проекта и дальнейшая техническая поддержка при необходимости.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="container">
-            <h2 class="section-title reveal">Связаться <span class="gradient-text">со мной</span></h2>
-
-            <div class="contact-grid">
-                <div class="contact-info reveal">
-                    <h3>Давайте работать вместе</h3>
-                    <p>Есть идея проекта? Давайте обсудим, как я могу помочь воплотить её в жизнь. Я всегда открыт для новых возможностей и интересных проектов.</p>
-
-                    <div class="contact-links">
-                        <a href="mailto:rostislavharin341@gmail.com" class="glass-card contact-link">
-                            <div class="icon">✉️</div>
-                            <span>rostislavharin341@gmail.com</span>
-                        </a>
-
-                        <a href="https://t.me/kaydoGOAT" target="_blank" class="glass-card contact-link">
-                            <div class="icon">📱</div>
-                            <span>@kaydoGOAT</span>
-                        </a>
-
-                    </div>
-                </div>
-
-                <form class="contact-form glass-card reveal">
-                    <div class="form-group">
-                        <input type="text" name="name" class="form-input" placeholder=" " required>
-                        <label class="form-label">Ваше имя</label>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-input" placeholder=" " required>
-                        <label class="form-label">Ваш email</label>
-                    </div>
-
-                    <div class="form-group">
-                        <textarea name="message" class="form-input" placeholder=" " required></textarea>
-                        <label class="form-label">Сообщение</label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary form-submit magnetic">
-                        <span>Отправить</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="22" y1="2" x2="11" y2="13"/>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                        </svg>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <p class="footer-text">© 2024 Rostis1av. Сделано с душой и чистым кодом.</p>
-
-            <div class="footer-socials">
-                <a href="https://t.me/kaydoGOAT" target="_blank" class="social-link" title="Telegram">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                    </svg>
-                </a>
-                <a href="mailto:rostislavharin341@gmail.com" class="social-link" title="Email">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                        <polyline points="22,6 12,13 2,6"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="js/particles.js"></script>
-    <script src="js/cursor.js"></script>
-    <script src="js/typewriter.js"></script>
-    <script src="js/main.js"></script>
+  // Live preview on hover (lazy: iframe only set on first hover)
+  const viewport=document.getElementById('viewport'), pvUrl=document.getElementById('pvUrl'), pvEmpty=document.getElementById('pvEmpty');
+  let iframe=null, curk=1;
+  function fit(){
+    const w=viewport.clientWidth; curk=w/1440;
+    viewport.style.setProperty('--k',curk);
+    if(iframe)iframe.style.height=(viewport.clientHeight/curk)+'px';
+  }
+  addEventListener('resize',fit);
+  let hoverTimer;
+  document.querySelectorAll('.row').forEach(row=>{
+    row.addEventListener('mouseenter',()=>{
+      document.querySelector('.frame').style.setProperty('--rc',row.style.getPropertyValue('--rc'));
+      pvUrl.textContent=row.dataset.url;
+      clearTimeout(hoverTimer);
+      hoverTimer=setTimeout(()=>{
+        if(!iframe){iframe=document.createElement('iframe');iframe.loading='lazy';iframe.setAttribute('scrolling','no');viewport.appendChild(iframe);}
+        pvEmpty.style.display='none';
+        fit();
+        if(iframe.dataset.src!==row.dataset.src){iframe.dataset.src=row.dataset.src;iframe.src=row.dataset.src;}
+      },140);
+    });
+  });
+  fit();
+</script>
 </body>
 </html>

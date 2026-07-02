@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tidal — Sounds for falling asleep</title>
+<meta name="description" content="Tidal mixes rain, waves and wind into your own soundscape, then fades it out while you sleep." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a1226; --bg2:#0d1a3a; --panel:#111f42; --line:#213258;
+    --text:#e9edf8; --mute:#8b97ba; --warm:#e9a15f; --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--warm);color:var(--bg)}
+  .mono{font-family:"Space Mono",monospace}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+
+  /* ambient background */
+  .aura{position:fixed;inset:0;z-index:-1;background:
+    radial-gradient(60% 50% at 20% 15%,rgba(233,161,95,.10),transparent 60%),
+    radial-gradient(55% 45% at 85% 85%,rgba(90,120,220,.16),transparent 60%),
+    linear-gradient(160deg,var(--bg),var(--bg2));
+    background-size:200% 200%;animation:drift 24s ease-in-out infinite alternate}
+  @keyframes drift{to{background-position:100% 100%}}
+
+  nav{position:relative;z-index:10}
+  .nr{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{font-weight:800;font-size:1.35rem;letter-spacing:-.02em;display:flex;align-items:center;gap:.55rem}
+  .moon{width:20px;height:20px;border-radius:50%;background:var(--warm);
+    box-shadow:inset -6px -3px 0 rgba(10,18,38,.55),0 0 18px rgba(233,161,95,.5)}
+  .nl{display:flex;gap:2rem;font-size:.9rem;color:var(--mute)}
+  .nl a:hover{color:var(--text)}
+  .get{background:var(--warm);color:var(--bg);padding:.55rem 1.2rem;border-radius:999px;font-weight:700;font-size:.88rem;transition:.2s}
+  .get:hover{filter:brightness(1.08)}
+  @media(max-width:760px){.nl{display:none}}
+
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;
+    padding:clamp(2.5rem,6vw,5rem) 0}
+  .hero .eb{font-family:"Space Mono";font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--warm);margin-bottom:1.4rem}
+  .hero h1{font-size:clamp(2.6rem,6.5vw,4.8rem);line-height:1;letter-spacing:-.03em;font-weight:800}
+  .hero p{color:var(--mute);font-size:1.1rem;max-width:38ch;margin:1.5rem 0 2rem}
+  .stores{display:flex;gap:.8rem;flex-wrap:wrap}
+  .store{border:1px solid var(--line);border-radius:12px;padding:.7rem 1.1rem;font-weight:600;font-size:.88rem;
+    display:flex;flex-direction:column;transition:.2s}
+  .store small{color:var(--mute);font-weight:400;font-size:.7rem}
+  .store:hover{border-color:var(--warm)}
+
+  /* MIXER (real Web Audio component) */
+  .mixer{background:color-mix(in srgb,var(--panel) 88%,transparent);border:1px solid var(--line);
+    border-radius:var(--radius);padding:1.8rem;backdrop-filter:blur(8px)}
+  .mixer .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+  .mixer .top h3{font-size:1.15rem}
+  .mixer .top .now{font-family:"Space Mono";font-size:.74rem;color:var(--mute)}
+  .play{display:flex;align-items:center;gap:1rem;margin-bottom:1.6rem}
+  .playbtn{width:56px;height:56px;border-radius:50%;border:none;background:var(--warm);color:var(--bg);
+    font-size:1.4rem;cursor:pointer;display:grid;place-items:center;transition:.2s;flex:none}
+  .playbtn:hover{transform:scale(1.05)}
+  .master{flex:1}
+  .master .lbl{font-size:.78rem;color:var(--mute);margin-bottom:.3rem}
+  .track{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;padding:.7rem 0;border-top:1px solid var(--line)}
+  .track .name{font-weight:600;font-size:.95rem;display:flex;align-items:center;gap:.6rem;min-width:6.5rem}
+  .track .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#1a2c54;font-size:.95rem}
+  .track .val{font-family:"Space Mono";font-size:.74rem;color:var(--mute);width:2.6rem;text-align:right}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;
+    background:#22345c;outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;
+    background:var(--warm);cursor:pointer;box-shadow:0 0 0 4px rgba(233,161,95,.18)}
+  input[type=range]::-moz-range-thumb{width:16px;height:16px;border:none;border-radius:50%;background:var(--warm);cursor:pointer}
+  .track.off .ic{opacity:.4}
+  .hintbar{margin-top:1.3rem;font-size:.78rem;color:var(--mute);text-align:center}
+  @media(max-width:840px){.hero{grid-template-columns:1fr}}
+
+  section{padding:clamp(3rem,7vw,5rem) 0}
+  .sh{text-align:center;max-width:52ch;margin:0 auto 2.5rem}
+  .sh h2{font-size:clamp(1.8rem,4.5vw,3rem);letter-spacing:-.02em}
+  .sh p{color:var(--mute);margin-top:.6rem}
+  .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .feat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;text-align:center}
+  .feat .fi{width:48px;height:48px;border-radius:14px;background:#1a2c54;display:grid;place-items:center;
+    margin:0 auto 1rem;font-size:1.3rem}
+  .feat h4{font-size:1.15rem;margin-bottom:.4rem}
+  .feat p{color:var(--mute);font-size:.92rem}
+  @media(max-width:760px){.feats{grid-template-columns:1fr}}
+
+  .quote{text-align:center;max-width:44ch;margin:0 auto}
+  .quote blockquote{font-size:clamp(1.4rem,3.5vw,2.1rem);line-height:1.35;font-weight:600;letter-spacing:-.01em}
+  .quote .who{color:var(--mute);margin-top:1.2rem;font-size:.92rem}
+  .quote .who b{color:var(--warm);font-weight:600}
+
+  footer{padding:2.5rem 0;border-top:1px solid var(--line);color:var(--mute);font-size:.88rem;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a{color:var(--warm)}
+
+  @media(prefers-reduced-motion:reduce){.aura{animation:none}html{scroll-behavior:auto}.playbtn{transition:none}}
+</style>
+</head>
+<body>
+<div class="aura" aria-hidden="true"></div>
+<nav class="wrap">
+  <div class="nr">
+    <div class="brand"><span class="moon"></span>Tidal</div>
+    <div class="nl"><a href="#mix">Mixer</a><a href="#features">Features</a></div>
+    <a href="#features" class="get">Get Tidal</a>
+  </div>
+</nav>
+
+<header class="wrap hero">
+  <div>
+    <div class="eb">Real audio · no files, synthesized live</div>
+    <h1>Build the quiet you fall asleep to.</h1>
+    <p>Layer rain, waves, and wind into one soundscape. Set a fade timer and Tidal drifts to silence after you are gone.</p>
+    <div class="stores">
+      <a class="store" href="#"><small>Download on the</small>App Store</a>
+      <a class="store" href="#"><small>Get it on</small>Google Play</a>
+    </div>
+  </div>
+
+  <div class="mixer" id="mix">
+    <div class="top"><h3>Tonight's mix</h3><span class="now" id="now">stopped</span></div>
+    <div class="play">
+      <button class="playbtn" id="play" aria-label="Play soundscape">▶</button>
+      <div class="master">
+        <div class="lbl">Master volume</div>
+        <input type="range" id="master" min="0" max="100" value="70" aria-label="Master volume"/>
+      </div>
+    </div>
+    <div class="track" data-sound="waves">
+      <div class="name"><span class="ic">🌊</span>Waves</div>
+      <input type="range" min="0" max="100" value="60" aria-label="Waves volume"/>
+      <span class="val">60</span>
+    </div>
+    <div class="track off" data-sound="rain">
+      <div class="name"><span class="ic">🌧</span>Rain</div>
+      <input type="range" min="0" max="100" value="0" aria-label="Rain volume"/>
+      <span class="val">0</span>
+    </div>
+    <div class="track off" data-sound="wind">
+      <div class="name"><span class="ic">🍃</span>Wind</div>
+      <input type="range" min="0" max="100" value="0" aria-label="Wind volume"/>
+      <span class="val">0</span>
+    </div>
+    <div class="hintbar">Press play, then drag each slider to build your own mix.</div>
+  </div>
+</header>
+
+<section class="wrap" id="features">
+  <div class="sh"><h2>Made to be forgotten</h2><p>The best sleep app is one you stop noticing. Tidal is built to disappear.</p></div>
+  <div class="feats">
+    <div class="feat"><div class="fi">⏲</div><h4>Fade timer</h4><p>Set 20, 45, or 90 minutes. The mix fades out gently instead of cutting off and waking you.</p></div>
+    <div class="feat"><div class="fi">💾</div><h4>Saved mixes</h4><p>Found the perfect blend? Save it once and it is one tap away every night.</p></div>
+    <div class="feat"><div class="fi">🔋</div><h4>Kind to battery</h4><p>Sounds are generated on the fly, so there is nothing to stream and nothing to drain overnight.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="quote">
+    <blockquote>"I have tried every sleep app. This is the first one my brain actually switches off to."</blockquote>
+    <div class="who"><b>Mireille S.</b> · in the reviews, probably</div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Tidal · concept demo · audio synthesized with the Web Audio API</span>
+  <a href="../index.html">← back to portfolio</a>
+</footer>
+
+<script>
+  // ---- Web Audio soundscape (synthesized noise, no files) ----
+  let ctx, master, playing=false;
+  const nodes={}; // per sound: {gain, filter, src, target}
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  function noiseBuffer(type){
+    const len=2*ctx.sampleRate, buf=ctx.createBuffer(1,len,ctx.sampleRate), d=buf.getChannelData(0);
+    let last=0;
+    for(let i=0;i<len;i++){
+      const white=Math.random()*2-1;
+      if(type==='brown'){last=(last+0.02*white)/1.02;d[i]=last*3.2;}
+      else{d[i]=white;}
+    }
+    return buf;
+  }
+  function makeSound(name,cfg){
+    const src=ctx.createBufferSource();
+    src.buffer=noiseBuffer(cfg.brown?'brown':'white'); src.loop=true;
+    const filter=ctx.createBiquadFilter();
+    filter.type=cfg.type; filter.frequency.value=cfg.freq; if(cfg.q)filter.Q.value=cfg.q;
+    const gain=ctx.createGain(); gain.gain.value=0;
+    src.connect(filter); filter.connect(gain); gain.connect(master);
+    src.start();
+    // slow LFO on the filter for waves/wind movement
+    if(cfg.lfo && !reduce){
+      const lfo=ctx.createOscillator(), lg=ctx.createGain();
+      lfo.frequency.value=cfg.lfo; lg.gain.value=cfg.lfoAmt||300;
+      lfo.connect(lg); lg.connect(filter.frequency); lfo.start();
+    }
+    nodes[name]={gain,target:0};
+  }
+  function ensureCtx(){
+    if(ctx)return;
+    ctx=new (window.AudioContext||window.webkitAudioContext)();
+    master=ctx.createGain(); master.gain.value=(document.getElementById('master').value/100)*0.9; master.connect(ctx.destination);
+    makeSound('waves',{brown:true,type:'lowpass',freq:600,lfo:0.06,lfoAmt:260});
+    makeSound('rain',{brown:false,type:'highpass',freq:1200,q:0.6});
+    makeSound('wind',{brown:true,type:'bandpass',freq:500,q:0.8,lfo:0.09,lfoAmt:220});
+    // set initial targets from sliders
+    document.querySelectorAll('.track').forEach(t=>{
+      const v=t.querySelector('input').value/100; nodes[t.dataset.sound].target=v; applyGain(t.dataset.sound,v);
+    });
+  }
+  function applyGain(name,v){
+    if(!nodes[name])return;
+    const g=nodes[name].gain.gain;
+    g.cancelScheduledValues(ctx.currentTime);
+    g.linearRampToValueAtTime(playing?v*0.7:0, ctx.currentTime+0.4);
+  }
+
+  const playBtn=document.getElementById('play'), now=document.getElementById('now');
+  playBtn.addEventListener('click',()=>{
+    ensureCtx();
+    if(ctx.state==='suspended')ctx.resume();
+    playing=!playing;
+    playBtn.textContent=playing?'❚❚':'▶';
+    now.textContent=playing?'playing · '+activeList():'stopped';
+    document.querySelectorAll('.track').forEach(t=>applyGain(t.dataset.sound,t.querySelector('input').value/100));
+  });
+  function activeList(){
+    const on=[...document.querySelectorAll('.track')].filter(t=>+t.querySelector('input').value>0).map(t=>t.dataset.sound);
+    return on.length?on.join(' + '):'silence';
+  }
+
+  document.querySelectorAll('.track input').forEach(inp=>{
+    const track=inp.closest('.track'), val=track.querySelector('.val');
+    inp.addEventListener('input',()=>{
+      val.textContent=inp.value;
+      track.classList.toggle('off',+inp.value===0);
+      if(ctx){applyGain(track.dataset.sound,inp.value/100);}
+      if(playing)now.textContent='playing · '+activeList();
+    });
+  });
+  document.getElementById('master').addEventListener('input',e=>{
+    if(master)master.gain.linearRampToValueAtTime((e.target.value/100)*0.9,ctx.currentTime+0.1);
+  });
+</script>
+</body>
+</html>

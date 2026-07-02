@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Null Pointer — Error tracking that shuts up</title>
+<meta name="description" content="Null Pointer catches exceptions, groups the noise, and pings you once. Built for small teams who hate alert fatigue." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0e0d; --panel:#111716; --panel2:#161d1b; --line:#233029;
+    --text:#e7ece9; --mute:#7d8a84; --signal:#3ddc84; --radius:12px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"IBM Plex Sans",system-ui,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--signal);color:var(--bg)}
+  .mono{font-family:"IBM Plex Mono",monospace}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+
+  nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 82%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nr{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.1rem}
+  .brand .m{font-family:"IBM Plex Mono";color:var(--signal);font-weight:600}
+  .nl{display:flex;gap:2rem;font-size:.9rem;color:var(--mute)}
+  .nl a:hover{color:var(--text)}
+  .cta{background:var(--signal);color:var(--bg);padding:.5rem 1.1rem;border-radius:8px;font-weight:600;
+    font-size:.88rem;transition:.2s}
+  .cta:hover{box-shadow:0 0 0 3px rgba(61,220,132,.2)}
+  @media(max-width:820px){.nl{display:none}}
+
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(1.5rem,4vw,3rem);
+    align-items:center;padding:clamp(3rem,7vw,5.5rem) 0 clamp(2rem,5vw,3.5rem)}
+  .tagpill{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:999px;
+    padding:.35rem .9rem;font-size:.78rem;color:var(--mute);margin-bottom:1.8rem}
+  .tagpill i{width:7px;height:7px;border-radius:50%;background:var(--signal);
+    box-shadow:0 0 8px var(--signal);animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.35}}
+  .hero h1{font-size:clamp(2.6rem,6.2vw,4.6rem);line-height:1.02;letter-spacing:-.03em;font-weight:700}
+  .hero h1 em{font-style:normal;color:var(--signal)}
+  .hero p{color:var(--mute);font-size:1.1rem;max-width:42ch;margin:1.5rem 0 2rem}
+  .hbtns{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
+  .btn{padding:.8rem 1.4rem;border-radius:8px;font-weight:600;font-size:.95rem;transition:.2s}
+  .btn.p{background:var(--signal);color:var(--bg)}
+  .btn.p:hover{transform:translateY(-2px)}
+  .btn.g{border:1px solid var(--line);color:var(--text)}
+  .btn.g:hover{border-color:var(--signal)}
+
+  /* LIVE STREAM (real component, updates from JS) */
+  .stream{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .stream .top{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;
+    border-bottom:1px solid var(--line);font-family:"IBM Plex Mono";font-size:.78rem;color:var(--mute)}
+  .stream .top b{color:var(--text);font-weight:500}
+  .live{display:flex;align-items:center;gap:.4rem;color:var(--signal)}
+  .live i{width:6px;height:6px;border-radius:50%;background:var(--signal);animation:pulse 1.6s infinite}
+  .events{list-style:none;height:280px;overflow:hidden;padding:.4rem 0}
+  .events li{display:grid;grid-template-columns:auto 1fr auto;gap:.8rem;align-items:center;
+    padding:.55rem 1rem;font-family:"IBM Plex Mono";font-size:.8rem;border-bottom:1px solid rgba(35,48,41,.5);
+    animation:enter .4s ease both}
+  @keyframes enter{from{opacity:0;transform:translateY(-6px)}}
+  .events .lvl{font-size:.68rem;padding:.1rem .45rem;border-radius:4px;font-weight:600}
+  .lvl.err{background:rgba(255,90,80,.16);color:#ff7b70}
+  .lvl.warn{background:rgba(230,180,60,.16);color:#e6c25a}
+  .lvl.info{background:rgba(61,220,132,.14);color:var(--signal)}
+  .events .txt{color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .events .ct{color:var(--mute);font-size:.72rem}
+  @media(max-width:840px){.hero{grid-template-columns:1fr}}
+
+  /* BENTO features */
+  section{padding:clamp(3rem,7vw,5.5rem) 0}
+  .sh{max-width:52ch;margin-bottom:2.5rem}
+  .sh h2{font-size:clamp(1.8rem,4.5vw,2.8rem);letter-spacing:-.02em;line-height:1.05}
+  .sh p{color:var(--mute);margin-top:.8rem}
+  .bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(150px,auto);gap:1rem}
+  .cell{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;
+    display:flex;flex-direction:column;justify-content:space-between;transition:.25s}
+  .cell:hover{border-color:var(--signal)}
+  .cell h3{font-size:1.15rem;margin-bottom:.4rem}
+  .cell p{color:var(--mute);font-size:.92rem}
+  .cell .big{font-family:"IBM Plex Mono";font-size:2.6rem;font-weight:600;color:var(--signal);line-height:1}
+  .c-a{grid-column:span 3}.c-b{grid-column:span 3}
+  .c-c{grid-column:span 2;background:linear-gradient(160deg,#12241b,#0d1512)}
+  .c-d{grid-column:span 2}.c-e{grid-column:span 2}
+  .spark{display:flex;align-items:flex-end;gap:3px;height:52px;margin-top:1rem}
+  .spark span{flex:1;background:var(--signal);opacity:.5;border-radius:2px 2px 0 0}
+  @media(max-width:820px){.bento{grid-template-columns:1fr 1fr}.c-a,.c-b,.c-c,.c-d,.c-e{grid-column:span 1}}
+  @media(max-width:520px){.bento{grid-template-columns:1fr}.c-a,.c-b,.c-c,.c-d,.c-e{grid-column:auto}}
+
+  /* INSTALL */
+  .install{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+  .code{background:#070a09;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .code .bar{display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;
+    border-bottom:1px solid var(--line);font-family:"IBM Plex Mono";font-size:.76rem;color:var(--mute)}
+  .code pre{padding:1.3rem 1rem;font-family:"IBM Plex Mono";font-size:.86rem;line-height:1.7;overflow-x:auto}
+  .code .k{color:var(--signal)}.code .s{color:#e6c25a}.code .c{color:var(--mute)}
+  .copy{background:none;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:.25rem .7rem;
+    font-family:"IBM Plex Mono";font-size:.72rem;cursor:pointer;transition:.2s}
+  .copy:hover{border-color:var(--signal);color:var(--signal)}
+  .steps{display:grid;gap:1.4rem}
+  .st{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start}
+  .st .n{font-family:"IBM Plex Mono";color:var(--signal);border:1px solid var(--line);border-radius:8px;
+    width:34px;height:34px;display:grid;place-items:center;font-size:.85rem}
+  .st h4{font-size:1.05rem}.st p{color:var(--mute);font-size:.92rem}
+  @media(max-width:820px){.install{grid-template-columns:1fr}}
+
+  /* PRICING */
+  .prices{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:820px;margin:0 auto}
+  .tier{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:2rem}
+  .tier.hot{border-color:var(--signal);background:var(--panel2)}
+  .tier .name{font-family:"IBM Plex Mono";font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--mute)}
+  .tier .amt{font-size:2.6rem;font-weight:700;margin:.6rem 0;letter-spacing:-.02em}
+  .tier .amt small{font-size:1rem;color:var(--mute);font-weight:400}
+  .tier ul{list-style:none;margin:1.3rem 0;display:grid;gap:.7rem;font-size:.92rem;color:var(--mute)}
+  .tier li::before{content:"→ ";color:var(--signal)}
+  .tier .btn{display:block;text-align:center}
+  @media(max-width:620px){.prices{grid-template-columns:1fr}}
+
+  footer{border-top:1px solid var(--line);padding:2.5rem 0;color:var(--mute);font-size:.88rem;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer a{color:var(--signal)}
+
+  @media(prefers-reduced-motion:reduce){
+    .tagpill i,.live i,.events li{animation:none}html{scroll-behavior:auto}.btn,.cell{transition:none}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nr">
+    <div class="brand"><span class="m">null</span>pointer</div>
+    <div class="nl"><a href="#features">Features</a><a href="#install">Install</a><a href="#pricing">Pricing</a></div>
+    <a href="#pricing" class="cta">Start free</a>
+  </div>
+</nav>
+
+<header class="wrap hero">
+  <div>
+    <div class="tagpill"><i></i> 2,041 exceptions grouped into 6 issues today</div>
+    <h1>Your app will break.<br>You will hear about it <em>once</em>.</h1>
+    <p>Null Pointer catches every exception, folds duplicates into a single issue, and pings you when something is actually new. No 3 a.m. wall of the same stack trace.</p>
+    <div class="hbtns">
+      <a href="#install" class="btn p">Get your DSN</a>
+      <a href="#features" class="btn g">See how grouping works</a>
+    </div>
+  </div>
+  <div class="stream">
+    <div class="top"><b>production · web-api</b><span class="live"><i></i>live</span></div>
+    <ul class="events" id="events"></ul>
+  </div>
+</header>
+
+<section class="wrap" id="features">
+  <div class="sh">
+    <h2>Signal, not a firehose.</h2>
+    <p>Everything is tuned around one goal: fewer, better alerts. Here is what does the work.</p>
+  </div>
+  <div class="bento">
+    <div class="cell c-a">
+      <div><h3>Smart grouping</h3><p>Fingerprints stack traces so 4,000 copies of the same crash become one issue with a count.</p></div>
+      <div class="big">2041 → 6</div>
+    </div>
+    <div class="cell c-b">
+      <div><h3>Release health</h3><p>Watch crash-free sessions per deploy. Spot the bad release before your users tweet about it.</p></div>
+      <div class="spark" id="spark" aria-hidden="true"></div>
+    </div>
+    <div class="cell c-c"><div><h3>Source maps</h3><p>Minified line 1, column 9040 becomes the real file and line in your editor.</p></div></div>
+    <div class="cell c-d"><div class="big">180ms</div><p>Median ingest latency from your app to a searchable event.</p></div>
+    <div class="cell c-e"><div><h3>Quiet hours</h3><p>Batch non-urgent issues into a morning digest. Page only on new regressions.</p></div></div>
+  </div>
+</section>
+
+<section class="wrap" id="install">
+  <div class="sh"><h2>Two lines and a deploy.</h2></div>
+  <div class="install">
+    <div class="code">
+      <div class="bar"><span>terminal</span><button class="copy" id="copy" data-code="npm i @nullpointer/sdk">copy</button></div>
+      <pre><span class="c"># 1. install the sdk</span>
+npm i <span class="s">@nullpointer/sdk</span>
+
+<span class="c"># 2. wire it up once</span>
+<span class="k">import</span> { init } <span class="k">from</span> <span class="s">'@nullpointer/sdk'</span>
+init({ dsn: <span class="s">'https://YOUR_KEY@in.nullpointer.dev'</span> })</pre>
+    </div>
+    <div class="steps">
+      <div class="st"><div class="n">1</div><div><h4>Drop in the SDK</h4><p>One package for browser and Node. TypeScript types included, zero config to start.</p></div></div>
+      <div class="st"><div class="n">2</div><div><h4>Ship it</h4><p>The next unhandled error shows up in your dashboard with breadcrumbs and the full trace.</p></div></div>
+      <div class="st"><div class="n">3</div><div><h4>Connect your editor</h4><p>Jump from a stack frame straight to the line in VS Code or your git host.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="pricing">
+  <div class="sh" style="text-align:center;margin-inline:auto"><h2>Honest pricing.</h2><p>Free while you are small. Pay when you are not.</p></div>
+  <div class="prices">
+    <div class="tier">
+      <div class="name">Solo</div>
+      <div class="amt">$0<small> / forever</small></div>
+      <ul><li>5k events / month</li><li>1 project</li><li>7-day retention</li><li>Email alerts</li></ul>
+      <a href="#" class="btn g">Start free</a>
+    </div>
+    <div class="tier hot">
+      <div class="name">Team</div>
+      <div class="amt">$29<small> / month</small></div>
+      <ul><li>500k events / month</li><li>Unlimited projects</li><li>90-day retention</li><li>Slack, Discord, PagerDuty</li><li>Release health</li></ul>
+      <a href="#" class="btn p">Start 14-day trial</a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Null Pointer · concept demo, no real backend</span>
+  <a href="../index.html">← back to portfolio</a>
+</footer>
+
+<script>
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const ev=document.getElementById('events');
+  const samples=[
+    ['err','TypeError: cannot read length of undefined','checkout.js:88'],
+    ['warn','Slow query 1.2s on orders.findMany','db.ts:210'],
+    ['info','Deploy v2.4.1 promoted to production','ci'],
+    ['err','Unhandled rejection in payment webhook','stripe.ts:44'],
+    ['warn','Rate limit near threshold for /api/search','edge'],
+    ['err','NullPointerException at UserSession.hydrate','auth.kt:31'],
+    ['info','Crash-free sessions holding at 99.4%','health'],
+    ['warn','Memory at 82% on worker-3','infra'],
+  ];
+  function stamp(){const d=new Date();return d.toTimeString().slice(0,8)}
+  function add(rec){
+    const [lvl,txt]=rec;
+    const li=document.createElement('li');
+    li.innerHTML=`<span class="lvl ${lvl}">${lvl.toUpperCase()}</span><span class="txt">${txt}</span><span class="ct">${stamp()}</span>`;
+    ev.prepend(li);
+    while(ev.children.length>8) ev.lastChild.remove();
+  }
+  // seed
+  samples.slice(0,7).forEach(add);
+  if(!reduce){
+    setInterval(()=>add(samples[Math.floor(Math.random()*samples.length)]),2200);
+  }
+
+  // sparkline for release health
+  const spark=document.getElementById('spark');
+  if(spark){
+    const vals=[62,70,66,74,80,72,86,90,84,92,88,95];
+    spark.innerHTML=vals.map(v=>`<span style="height:${v}%"></span>`).join('');
+  }
+
+  // copy install command
+  const copy=document.getElementById('copy');
+  copy.addEventListener('click',async()=>{
+    try{await navigator.clipboard.writeText(copy.dataset.code);
+      const t=copy.textContent;copy.textContent='copied ✓';copy.style.color='var(--signal)';
+      setTimeout(()=>{copy.textContent=t;copy.style.color=''},1400);
+    }catch(e){copy.textContent='copy failed'}
+  });
+</script>
+</body>
+</html>
