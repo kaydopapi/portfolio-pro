@@ -1,101 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cadence — Run club / Night Half Marathon</title>
-<meta name="description" content="Cadence is a run club that meets three nights a week. Next up: the Cadence Night Half Marathon." />
+<title>Cadence — беговой клуб / ночной полумарафон</title>
+<meta name="description" content="Cadence — беговой клуб, который встречается три вечера в неделю. Ближайшее событие: ночной полумарафон Cadence." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   :root{ --bg:#0c0c0c; --paper:#f2f2ec; --acid:#d6f000; --line:#2a2a2a; --mute:#8a8a82; }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--paper);font-family:"Archivo",system-ui,sans-serif;line-height:1.4;
+  body{background:var(--bg);color:var(--paper);font-family:"Oswald",system-ui,sans-serif;line-height:1.4;
     -webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--acid);color:#000}
-  .mono{font-family:"Space Mono",monospace}
+  .mono{font-family:"JetBrains Mono",monospace}
   .wrap{max-width:1360px;margin:0 auto;padding:0 clamp(1rem,3vw,2.5rem)}
   .u{text-transform:uppercase}
 
   nav{border-bottom:2px solid var(--paper);position:sticky;top:0;background:var(--bg);z-index:40}
   .nr{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{font-weight:900;font-size:1.4rem;letter-spacing:-.03em;text-transform:uppercase}
+  .brand{font-weight:700;font-size:1.4rem;letter-spacing:.02em;text-transform:uppercase}
   .brand b{color:var(--acid)}
-  .nl{display:flex;gap:1.6rem;font-family:"Space Mono";font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
+  .nl{display:flex;gap:1.6rem;font-family:"JetBrains Mono";font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
   .nl a:hover{color:var(--acid)}
   .reg{background:var(--acid);color:#000;font-weight:700;font-size:.82rem;padding:.5rem 1.1rem;text-transform:uppercase;letter-spacing:.06em}
   @media(max-width:820px){.nl{display:none}}
 
   /* HERO */
   header{border-bottom:2px solid var(--paper)}
-  .htop{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:"Space Mono";
+  .htop{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:"JetBrains Mono";
     font-size:.76rem;letter-spacing:.08em;color:var(--mute);padding:1.2rem 0;border-bottom:1px solid var(--line)}
   .htop b{color:var(--paper)}
-  .hero-type{font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.82;
-    font-size:clamp(3.4rem,18vw,15rem);padding:clamp(1.5rem,4vw,3rem) 0 clamp(1rem,3vw,2rem)}
+  .hero-type{font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:.86;
+    font-size:clamp(3rem,15vw,13rem);padding:clamp(1.5rem,4vw,3rem) 0 clamp(1rem,3vw,2rem)}
   .hero-type .o{color:var(--acid)}
   .hero-type .stroke{color:transparent;-webkit-text-stroke:2px var(--paper)}
   .hbar{display:grid;grid-template-columns:2fr 1fr 1fr;border-top:1px solid var(--line)}
   .hbar>div{padding:1.4rem 0;border-right:1px solid var(--line)}
   .hbar>div:last-child{border-right:none}
-  .hbar .lab{font-family:"Space Mono";font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--mute);margin-bottom:.5rem}
-  .hbar .val{font-weight:700;font-size:1.05rem}
-  .hbar p{color:var(--mute);font-size:.92rem;max-width:36ch}
+  .hbar .lab{font-family:"JetBrains Mono";font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--mute);margin-bottom:.5rem}
+  .hbar .val{font-weight:700;font-size:1.2rem;text-transform:uppercase}
+  .hbar p{color:var(--mute);font-size:.98rem;max-width:38ch}
   @media(max-width:760px){.hbar{grid-template-columns:1fr}.hbar>div{border-right:none;border-bottom:1px solid var(--line)}}
 
   /* COUNTDOWN */
   .count{border-bottom:2px solid var(--paper);background:var(--acid);color:#000}
   .count .in{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:2rem;padding:2rem 0}
-  .count .lbl{font-family:"Space Mono";font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.9rem}
+  .count .lbl{font-family:"JetBrains Mono";font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.9rem}
   .clock{display:flex;gap:clamp(1rem,4vw,3rem);justify-content:flex-end}
   .clock .u{text-align:center}
-  .clock .n{font-weight:900;font-size:clamp(2.4rem,8vw,5rem);line-height:.9;letter-spacing:-.03em}
-  .clock .t{font-family:"Space Mono";font-size:.72rem;text-transform:uppercase;letter-spacing:.14em}
+  .clock .n{font-weight:700;font-size:clamp(2.4rem,8vw,5rem);line-height:.9;letter-spacing:-.02em}
+  .clock .t{font-family:"JetBrains Mono";font-size:.72rem;text-transform:uppercase;letter-spacing:.14em}
   @media(max-width:640px){.count .in{grid-template-columns:1fr}.clock{justify-content:flex-start}}
 
   section{border-bottom:2px solid var(--paper);padding:clamp(2.5rem,6vw,4.5rem) 0}
   .sh{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem}
-  .sh h2{font-weight:900;text-transform:uppercase;font-size:clamp(1.8rem,5vw,3.4rem);letter-spacing:-.03em;line-height:.95}
+  .sh h2{font-weight:700;text-transform:uppercase;font-size:clamp(1.8rem,5vw,3.4rem);letter-spacing:-.01em;line-height:.95}
   .sh .mono{color:var(--mute);font-size:.8rem}
 
   /* SCHEDULE */
   .sched{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
   .day{padding:1.8rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
   .day:nth-child(3n){border-right:none}
-  .day .d{font-family:"Space Mono";font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--acid);margin-bottom:.8rem}
-  .day h3{font-weight:900;text-transform:uppercase;font-size:1.5rem;letter-spacing:-.02em}
-  .day .meta{font-family:"Space Mono";font-size:.8rem;color:var(--mute);margin-top:.6rem}
-  .day .pace{margin-top:1rem;font-weight:700}
+  .day .d{font-family:"JetBrains Mono";font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--acid);margin-bottom:.8rem}
+  .day h3{font-weight:700;text-transform:uppercase;font-size:1.6rem;letter-spacing:0}
+  .day .meta{font-family:"JetBrains Mono";font-size:.8rem;color:var(--mute);margin-top:.6rem}
+  .day .pace{margin-top:1rem;font-weight:600}
   @media(max-width:760px){.sched{grid-template-columns:1fr}.day{border-right:none}}
 
   /* PACE CALC */
   .calc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem)}
   .calc .intro p{color:var(--mute);max-width:38ch;margin-top:1rem}
   .field{margin-bottom:1.4rem}
-  .field label{display:block;font-family:"Space Mono";font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--mute);margin-bottom:.5rem}
+  .field label{display:block;font-family:"JetBrains Mono";font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--mute);margin-bottom:.5rem}
   .field input,.field select{width:100%;background:#000;border:1px solid var(--line);color:var(--paper);
-    padding:.8rem 1rem;font-family:"Space Mono";font-size:1rem}
+    padding:.8rem 1rem;font-family:"JetBrains Mono";font-size:1rem}
   .field input:focus,.field select:focus{outline:none;border-color:var(--acid)}
   .split{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
   .result{border:2px solid var(--acid);padding:1.6rem;margin-top:.5rem}
-  .result .lab{font-family:"Space Mono";font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--mute)}
-  .result .big{font-weight:900;font-size:clamp(2.4rem,7vw,4rem);color:var(--acid);letter-spacing:-.03em;line-height:1}
-  .result .row{display:flex;justify-content:space-between;font-family:"Space Mono";font-size:.9rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}
+  .result .lab{font-family:"JetBrains Mono";font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--mute)}
+  .result .big{font-weight:700;font-size:clamp(2.4rem,7vw,4rem);color:var(--acid);letter-spacing:-.02em;line-height:1}
+  .result .row{display:flex;justify-content:space-between;font-family:"JetBrains Mono";font-size:.9rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}
   @media(max-width:760px){.calc{grid-template-columns:1fr}}
 
   /* CTA */
   .cta-band{padding:clamp(3rem,8vw,6rem) 0;text-align:center}
-  .cta-band h2{font-weight:900;text-transform:uppercase;font-size:clamp(2.4rem,9vw,7rem);letter-spacing:-.04em;line-height:.85}
+  .cta-band h2{font-weight:700;text-transform:uppercase;font-size:clamp(2.4rem,9vw,7rem);letter-spacing:-.01em;line-height:.85}
   .cta-band h2 .o{color:var(--acid)}
   .cta-band a{display:inline-block;margin-top:2rem;background:var(--acid);color:#000;font-weight:700;
     text-transform:uppercase;letter-spacing:.06em;padding:1.1rem 2.4rem;font-size:1rem;
     border:2px solid var(--acid);transition:.2s}
   .cta-band a:hover{background:transparent;color:var(--acid)}
 
-  footer{padding:2rem 0;font-family:"Space Mono";font-size:.76rem;color:var(--mute);
+  footer{padding:2rem 0;font-family:"JetBrains Mono";font-size:.76rem;color:var(--mute);
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;text-transform:uppercase;letter-spacing:.08em}
   footer a{color:var(--acid)}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -105,77 +105,77 @@
 <nav>
   <div class="wrap nr">
     <div class="brand">CA<b>DEN</b>CE</div>
-    <div class="nl"><a href="#schedule">Schedule</a><a href="#pace">Pace calc</a><a href="#register">Race</a></div>
-    <a href="#register" class="reg">Register</a>
+    <div class="nl"><a href="#schedule">Расписание</a><a href="#pace">Калькулятор темпа</a><a href="#register">Забег</a></div>
+    <a href="#register" class="reg">Регистрация</a>
   </div>
 </nav>
 
 <header>
   <div class="wrap">
-    <div class="htop"><span>RUN CLUB / <b>EST. 2019</b></span><span>3 NIGHTS A WEEK</span><span>ALL PACES / <b>NO DROPS</b></span></div>
-    <h1 class="hero-type">RUN <span class="o">WHEN</span><br><span class="stroke">THE CITY</span><br>SLEEPS</h1>
+    <div class="htop"><span>БЕГОВОЙ КЛУБ / <b>С 2019</b></span><span>3 ВЕЧЕРА В НЕДЕЛЮ</span><span>ЛЮБОЙ ТЕМП / <b>НИКОГО НЕ БРОСАЕМ</b></span></div>
+    <h1 class="hero-type">БЕГИ <span class="o">КОГДА</span><br><span class="stroke">ГОРОД</span><br>СПИТ</h1>
   </div>
   <div class="wrap">
     <div class="hbar">
-      <div><div class="lab">The club</div><p>We meet Tuesday, Thursday, and Sunday. Turn up once, you are in. No fee, no app, no drama.</p></div>
-      <div><div class="lab">Members</div><div class="val">640 runners</div></div>
-      <div><div class="lab">Weekly km</div><div class="val">11,200 logged</div></div>
+      <div><div class="lab">Клуб</div><p>Встречаемся по вторникам, четвергам и воскресеньям. Пришёл один раз, ты уже с нами. Без взносов, без приложения, без драмы.</p></div>
+      <div><div class="lab">Участников</div><div class="val">640 бегунов</div></div>
+      <div><div class="lab">Км в неделю</div><div class="val">11 200 записано</div></div>
     </div>
   </div>
 </header>
 
 <div class="count">
   <div class="wrap in">
-    <div class="lbl">Cadence Night<br>Half Marathon →</div>
+    <div class="lbl">Cadence · ночной<br>полумарафон →</div>
     <div class="clock" id="clock">
-      <div class="u"><div class="n" id="dd">00</div><div class="t">days</div></div>
-      <div class="u"><div class="n" id="hh">00</div><div class="t">hrs</div></div>
-      <div class="u"><div class="n" id="mm">00</div><div class="t">min</div></div>
-      <div class="u"><div class="n" id="ss">00</div><div class="t">sec</div></div>
+      <div class="u"><div class="n" id="dd">00</div><div class="t">дн</div></div>
+      <div class="u"><div class="n" id="hh">00</div><div class="t">ч</div></div>
+      <div class="u"><div class="n" id="mm">00</div><div class="t">мин</div></div>
+      <div class="u"><div class="n" id="ss">00</div><div class="t">сек</div></div>
     </div>
   </div>
 </div>
 
 <section id="schedule">
   <div class="wrap">
-    <div class="sh"><h2>Weekly runs</h2><span class="mono">// turn up, no signup</span></div>
+    <div class="sh"><h2>Еженедельные пробежки</h2><span class="mono">// приходи, без записи</span></div>
     <div class="sched">
-      <div class="day"><div class="d">Tuesday · 19:30</div><h3>Speed</h3><div class="meta">Track intervals · 8 km total</div><div class="pace">Effort: hard</div></div>
-      <div class="day"><div class="d">Thursday · 19:00</div><h3>Tempo</h3><div class="meta">Riverside loop · 10 km</div><div class="pace">Effort: comfortably hard</div></div>
-      <div class="day"><div class="d">Sunday · 08:00</div><h3>Long</h3><div class="meta">Hills route · 16-22 km</div><div class="pace">Effort: conversational</div></div>
+      <div class="day"><div class="d">Вторник · 19:30</div><h3>Скорость</h3><div class="meta">Интервалы на стадионе · 8 км</div><div class="pace">Нагрузка: тяжёлая</div></div>
+      <div class="day"><div class="d">Четверг · 19:00</div><h3>Темп</h3><div class="meta">Круг вдоль реки · 10 км</div><div class="pace">Нагрузка: умеренно тяжёлая</div></div>
+      <div class="day"><div class="d">Воскресенье · 08:00</div><h3>Длинная</h3><div class="meta">Маршрут по холмам · 16-22 км</div><div class="pace">Нагрузка: разговорная</div></div>
     </div>
   </div>
 </section>
 
 <section id="pace">
   <div class="wrap">
-    <div class="sh"><h2>Pace calculator</h2><span class="mono">// what pace hits your goal</span></div>
+    <div class="sh"><h2>Калькулятор темпа</h2><span class="mono">// какой темп даст твою цель</span></div>
     <div class="calc">
       <div class="intro">
         <div class="field">
-          <label for="dist">Distance</label>
+          <label for="dist">Дистанция</label>
           <select id="dist">
-            <option value="5">5 km</option>
-            <option value="10">10 km</option>
-            <option value="21.0975" selected>Half marathon</option>
-            <option value="42.195">Marathon</option>
+            <option value="5">5 км</option>
+            <option value="10">10 км</option>
+            <option value="21.0975" selected>Полумарафон</option>
+            <option value="42.195">Марафон</option>
           </select>
         </div>
         <div class="field">
-          <label>Goal time</label>
+          <label>Целевое время</label>
           <div class="split">
-            <input type="number" id="gh" min="0" max="9" value="1" aria-label="hours" />
-            <input type="number" id="gm" min="0" max="59" value="45" aria-label="minutes" />
+            <input type="number" id="gh" min="0" max="9" value="1" aria-label="часы" />
+            <input type="number" id="gm" min="0" max="59" value="45" aria-label="минуты" />
           </div>
         </div>
-        <p>Enter your target finish. We will tell you the pace you need to hold and the splits to watch for.</p>
+        <p>Введите желаемый финиш. Мы подскажем темп, который нужно держать, и промежуточные отсечки.</p>
       </div>
       <div>
         <div class="result">
-          <div class="lab">Required pace</div>
-          <div class="big" id="pace-out">5:07 <span style="font-size:1.4rem">/km</span></div>
-          <div class="row"><span>SPEED</span><span id="speed-out">11.7 km/h</span></div>
-          <div class="row"><span>HALFWAY SPLIT</span><span id="half-out">52:30</span></div>
+          <div class="lab">Нужный темп</div>
+          <div class="big" id="pace-out">5:07 <span style="font-size:1.4rem">/км</span></div>
+          <div class="row"><span>СКОРОСТЬ</span><span id="speed-out">11.7 км/ч</span></div>
+          <div class="row"><span>ПОЛОВИНА ДИСТАНЦИИ</span><span id="half-out">52:30</span></div>
         </div>
       </div>
     </div>
@@ -184,14 +184,14 @@
 
 <section id="register">
   <div class="wrap cta-band">
-    <h2>LACE <span class="o">UP.</span><br>TOE THE LINE.</h2>
-    <a href="#">Register for the night half →</a>
+    <h2>ШНУРУЙСЯ. <span class="o">НА СТАРТ.</span></h2>
+    <a href="#">Регистрация на ночной полумарафон →</a>
   </div>
 </section>
 
 <footer class="wrap">
-  <span>Cadence Run Club · concept demo</span>
-  <a href="../index.html">← back to portfolio</a>
+  <span>Cadence Run Club · концепт-демо</span>
+  <a href="../index.html">← назад в портфолио</a>
 </footer>
 
 <script>
@@ -215,10 +215,10 @@
   function fmt(totalSec){const m=Math.floor(totalSec/60),s=Math.round(totalSec%60);return m+':'+pad(s);}
   function calc(){
     const km=+dist.value; const totalMin=(+gh.value||0)*60+(+gm.value||0);
-    if(km<=0||totalMin<=0){paceOut.textContent='—';return;}
+    if(km<=0||totalMin<=0){paceOut.textContent='-';return;}
     const paceSec=(totalMin*60)/km;
-    paceOut.innerHTML=fmt(paceSec)+' <span style="font-size:1.4rem">/km</span>';
-    speedOut.textContent=(km/(totalMin/60)).toFixed(1)+' km/h';
+    paceOut.innerHTML=fmt(paceSec)+' <span style="font-size:1.4rem">/км</span>';
+    speedOut.textContent=(km/(totalMin/60)).toFixed(1)+' км/ч';
     halfOut.textContent=fmt(totalMin*60/2);
   }
   [dist,gh,gm].forEach(el=>el.addEventListener('input',calc)); calc();

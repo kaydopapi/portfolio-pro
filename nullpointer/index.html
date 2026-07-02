@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Null Pointer — Error tracking that shuts up</title>
-<meta name="description" content="Null Pointer catches exceptions, groups the noise, and pings you once. Built for small teams who hate alert fatigue." />
+<title>Null Pointer — трекинг ошибок, который молчит</title>
+<meta name="description" content="Null Pointer ловит исключения, сворачивает шум и пишет вам один раз. Для небольших команд, которым надоели лишние алерты." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -42,9 +42,9 @@
   .tagpill i{width:7px;height:7px;border-radius:50%;background:var(--signal);
     box-shadow:0 0 8px var(--signal);animation:pulse 2s ease-in-out infinite}
   @keyframes pulse{50%{opacity:.35}}
-  .hero h1{font-size:clamp(2.6rem,6.2vw,4.6rem);line-height:1.02;letter-spacing:-.03em;font-weight:700}
+  .hero h1{font-size:clamp(2.4rem,5.8vw,4.4rem);line-height:1.04;letter-spacing:-.03em;font-weight:700}
   .hero h1 em{font-style:normal;color:var(--signal)}
-  .hero p{color:var(--mute);font-size:1.1rem;max-width:42ch;margin:1.5rem 0 2rem}
+  .hero p{color:var(--mute);font-size:1.1rem;max-width:44ch;margin:1.5rem 0 2rem}
   .hbtns{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
   .btn{padding:.8rem 1.4rem;border-radius:8px;font-weight:600;font-size:.95rem;transition:.2s}
   .btn.p{background:var(--signal);color:var(--bg)}
@@ -134,102 +134,102 @@
 <nav>
   <div class="wrap nr">
     <div class="brand"><span class="m">null</span>pointer</div>
-    <div class="nl"><a href="#features">Features</a><a href="#install">Install</a><a href="#pricing">Pricing</a></div>
-    <a href="#pricing" class="cta">Start free</a>
+    <div class="nl"><a href="#features">Возможности</a><a href="#install">Установка</a><a href="#pricing">Тарифы</a></div>
+    <a href="#pricing" class="cta">Начать бесплатно</a>
   </div>
 </nav>
 
 <header class="wrap hero">
   <div>
-    <div class="tagpill"><i></i> 2,041 exceptions grouped into 6 issues today</div>
-    <h1>Your app will break.<br>You will hear about it <em>once</em>.</h1>
-    <p>Null Pointer catches every exception, folds duplicates into a single issue, and pings you when something is actually new. No 3 a.m. wall of the same stack trace.</p>
+    <div class="tagpill"><i></i> 2 041 исключение свёрнуто в 6 проблем сегодня</div>
+    <h1>Приложение упадёт.<br>Вы узнаете об этом <em>один раз</em>.</h1>
+    <p>Null Pointer ловит каждое исключение, сворачивает дубликаты в одну проблему и пишет, только когда появилось что-то действительно новое. Никакой стены из одного и того же стектрейса в три часа ночи.</p>
     <div class="hbtns">
-      <a href="#install" class="btn p">Get your DSN</a>
-      <a href="#features" class="btn g">See how grouping works</a>
+      <a href="#install" class="btn p">Получить DSN</a>
+      <a href="#features" class="btn g">Как работает группировка</a>
     </div>
   </div>
   <div class="stream">
-    <div class="top"><b>production · web-api</b><span class="live"><i></i>live</span></div>
+    <div class="top"><b>production · web-api</b><span class="live"><i></i>онлайн</span></div>
     <ul class="events" id="events"></ul>
   </div>
 </header>
 
 <section class="wrap" id="features">
   <div class="sh">
-    <h2>Signal, not a firehose.</h2>
-    <p>Everything is tuned around one goal: fewer, better alerts. Here is what does the work.</p>
+    <h2>Сигнал, а не поток.</h2>
+    <p>Всё настроено вокруг одной цели: меньше алертов, но по делу. Вот что делает работу.</p>
   </div>
   <div class="bento">
     <div class="cell c-a">
-      <div><h3>Smart grouping</h3><p>Fingerprints stack traces so 4,000 copies of the same crash become one issue with a count.</p></div>
+      <div><h3>Умная группировка</h3><p>Снимает отпечаток со стектрейса, и 4 000 копий одного падения становятся одной проблемой со счётчиком.</p></div>
       <div class="big">2041 → 6</div>
     </div>
     <div class="cell c-b">
-      <div><h3>Release health</h3><p>Watch crash-free sessions per deploy. Spot the bad release before your users tweet about it.</p></div>
+      <div><h3>Здоровье релиза</h3><p>Следите за долей сессий без падений на каждый деплой. Заметьте плохой релиз раньше, чем о нём напишут пользователи.</p></div>
       <div class="spark" id="spark" aria-hidden="true"></div>
     </div>
-    <div class="cell c-c"><div><h3>Source maps</h3><p>Minified line 1, column 9040 becomes the real file and line in your editor.</p></div></div>
-    <div class="cell c-d"><div class="big">180ms</div><p>Median ingest latency from your app to a searchable event.</p></div>
-    <div class="cell c-e"><div><h3>Quiet hours</h3><p>Batch non-urgent issues into a morning digest. Page only on new regressions.</p></div></div>
+    <div class="cell c-c"><div><h3>Source maps</h3><p>Строка 1, столбец 9040 в минифайле превращается в реальный файл и строку в редакторе.</p></div></div>
+    <div class="cell c-d"><div class="big">180мс</div><p>Медианная задержка от приложения до события, доступного для поиска.</p></div>
+    <div class="cell c-e"><div><h3>Тихие часы</h3><p>Несрочные проблемы собираются в утренний дайджест. Будим только при новых регрессиях.</p></div></div>
   </div>
 </section>
 
 <section class="wrap" id="install">
-  <div class="sh"><h2>Two lines and a deploy.</h2></div>
+  <div class="sh"><h2>Две строки и деплой.</h2></div>
   <div class="install">
     <div class="code">
-      <div class="bar"><span>terminal</span><button class="copy" id="copy" data-code="npm i @nullpointer/sdk">copy</button></div>
-      <pre><span class="c"># 1. install the sdk</span>
+      <div class="bar"><span>терминал</span><button class="copy" id="copy" data-code="npm i @nullpointer/sdk">копировать</button></div>
+      <pre><span class="c"># 1. ставим sdk</span>
 npm i <span class="s">@nullpointer/sdk</span>
 
-<span class="c"># 2. wire it up once</span>
+<span class="c"># 2. подключаем один раз</span>
 <span class="k">import</span> { init } <span class="k">from</span> <span class="s">'@nullpointer/sdk'</span>
 init({ dsn: <span class="s">'https://YOUR_KEY@in.nullpointer.dev'</span> })</pre>
     </div>
     <div class="steps">
-      <div class="st"><div class="n">1</div><div><h4>Drop in the SDK</h4><p>One package for browser and Node. TypeScript types included, zero config to start.</p></div></div>
-      <div class="st"><div class="n">2</div><div><h4>Ship it</h4><p>The next unhandled error shows up in your dashboard with breadcrumbs and the full trace.</p></div></div>
-      <div class="st"><div class="n">3</div><div><h4>Connect your editor</h4><p>Jump from a stack frame straight to the line in VS Code or your git host.</p></div></div>
+      <div class="st"><div class="n">1</div><div><h4>Подключите SDK</h4><p>Один пакет для браузера и Node. Типы TypeScript в комплекте, старт без конфигурации.</p></div></div>
+      <div class="st"><div class="n">2</div><div><h4>Задеплойте</h4><p>Следующая необработанная ошибка появится в дашборде вместе с хлебными крошками и полным трейсом.</p></div></div>
+      <div class="st"><div class="n">3</div><div><h4>Свяжите редактор</h4><p>Из кадра стектрейса переходите прямо к строке в VS Code или в вашем git-хостинге.</p></div></div>
     </div>
   </div>
 </section>
 
 <section class="wrap" id="pricing">
-  <div class="sh" style="text-align:center;margin-inline:auto"><h2>Honest pricing.</h2><p>Free while you are small. Pay when you are not.</p></div>
+  <div class="sh" style="text-align:center;margin-inline:auto"><h2>Честные тарифы.</h2><p>Бесплатно, пока вы маленькие. Платите, когда выросли.</p></div>
   <div class="prices">
     <div class="tier">
       <div class="name">Solo</div>
-      <div class="amt">$0<small> / forever</small></div>
-      <ul><li>5k events / month</li><li>1 project</li><li>7-day retention</li><li>Email alerts</li></ul>
-      <a href="#" class="btn g">Start free</a>
+      <div class="amt">0 ₽<small> / навсегда</small></div>
+      <ul><li>5 тыс. событий в месяц</li><li>1 проект</li><li>Хранение 7 дней</li><li>Алерты на почту</li></ul>
+      <a href="#" class="btn g">Начать бесплатно</a>
     </div>
     <div class="tier hot">
-      <div class="name">Team</div>
-      <div class="amt">$29<small> / month</small></div>
-      <ul><li>500k events / month</li><li>Unlimited projects</li><li>90-day retention</li><li>Slack, Discord, PagerDuty</li><li>Release health</li></ul>
-      <a href="#" class="btn p">Start 14-day trial</a>
+      <div class="name">Команда</div>
+      <div class="amt">2 490 ₽<small> / месяц</small></div>
+      <ul><li>500 тыс. событий в месяц</li><li>Проектов без ограничений</li><li>Хранение 90 дней</li><li>Slack, Telegram, PagerDuty</li><li>Здоровье релиза</li></ul>
+      <a href="#" class="btn p">Пробный период 14 дней</a>
     </div>
   </div>
 </section>
 
 <footer class="wrap">
-  <span>Null Pointer · concept demo, no real backend</span>
-  <a href="../index.html">← back to portfolio</a>
+  <span>Null Pointer · концепт-демо, без реального бэкенда</span>
+  <a href="../index.html">← назад в портфолио</a>
 </footer>
 
 <script>
   const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   const ev=document.getElementById('events');
   const samples=[
-    ['err','TypeError: cannot read length of undefined','checkout.js:88'],
-    ['warn','Slow query 1.2s on orders.findMany','db.ts:210'],
-    ['info','Deploy v2.4.1 promoted to production','ci'],
-    ['err','Unhandled rejection in payment webhook','stripe.ts:44'],
-    ['warn','Rate limit near threshold for /api/search','edge'],
-    ['err','NullPointerException at UserSession.hydrate','auth.kt:31'],
-    ['info','Crash-free sessions holding at 99.4%','health'],
-    ['warn','Memory at 82% on worker-3','infra'],
+    ['err','TypeError: не прочитать length у undefined','checkout.js:88'],
+    ['warn','Медленный запрос 1.2s к orders.findMany','db.ts:210'],
+    ['info','Деплой v2.4.1 переведён в production','ci'],
+    ['err','Необработанный reject в вебхуке оплаты','stripe.ts:44'],
+    ['warn','Лимит запросов близко к порогу /api/search','edge'],
+    ['err','NullPointerException в UserSession.hydrate','auth.kt:31'],
+    ['info','Сессий без падений держится на 99.4%','health'],
+    ['warn','Память на 82% на worker-3','infra'],
   ];
   function stamp(){const d=new Date();return d.toTimeString().slice(0,8)}
   function add(rec){
@@ -256,9 +256,9 @@ init({ dsn: <span class="s">'https://YOUR_KEY@in.nullpointer.dev'</span> })</pre
   const copy=document.getElementById('copy');
   copy.addEventListener('click',async()=>{
     try{await navigator.clipboard.writeText(copy.dataset.code);
-      const t=copy.textContent;copy.textContent='copied ✓';copy.style.color='var(--signal)';
+      const t=copy.textContent;copy.textContent='скопировано ✓';copy.style.color='var(--signal)';
       setTimeout(()=>{copy.textContent=t;copy.style.color=''},1400);
-    }catch(e){copy.textContent='copy failed'}
+    }catch(e){copy.textContent='ошибка'}
   });
 </script>
 </body>

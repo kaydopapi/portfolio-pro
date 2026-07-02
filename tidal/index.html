@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tidal — Sounds for falling asleep</title>
-<meta name="description" content="Tidal mixes rain, waves and wind into your own soundscape, then fades it out while you sleep." />
+<title>Tidal — звуки для засыпания</title>
+<meta name="description" content="Tidal смешивает дождь, волны и ветер в ваш собственный саундскейп и плавно затихает, пока вы спите." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet" />
 <style>
   :root{
     --bg:#0a1226; --bg2:#0d1a3a; --panel:#111f42; --line:#213258;
@@ -15,11 +15,11 @@
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+  body{background:var(--bg);color:var(--text);font-family:"Onest",system-ui,sans-serif;
     line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--warm);color:var(--bg)}
-  .mono{font-family:"Space Mono",monospace}
+  .mono{font-family:"JetBrains Mono",monospace}
   .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
 
   /* ambient background */
@@ -44,9 +44,9 @@
   /* HERO */
   .hero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;
     padding:clamp(2.5rem,6vw,5rem) 0}
-  .hero .eb{font-family:"Space Mono";font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--warm);margin-bottom:1.4rem}
-  .hero h1{font-size:clamp(2.6rem,6.5vw,4.8rem);line-height:1;letter-spacing:-.03em;font-weight:800}
-  .hero p{color:var(--mute);font-size:1.1rem;max-width:38ch;margin:1.5rem 0 2rem}
+  .hero .eb{font-family:"JetBrains Mono";font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);margin-bottom:1.4rem}
+  .hero h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.02;letter-spacing:-.03em;font-weight:800}
+  .hero p{color:var(--mute);font-size:1.1rem;max-width:40ch;margin:1.5rem 0 2rem}
   .stores{display:flex;gap:.8rem;flex-wrap:wrap}
   .store{border:1px solid var(--line);border-radius:12px;padding:.7rem 1.1rem;font-weight:600;font-size:.88rem;
     display:flex;flex-direction:column;transition:.2s}
@@ -58,7 +58,7 @@
     border-radius:var(--radius);padding:1.8rem;backdrop-filter:blur(8px)}
   .mixer .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
   .mixer .top h3{font-size:1.15rem}
-  .mixer .top .now{font-family:"Space Mono";font-size:.74rem;color:var(--mute)}
+  .mixer .top .now{font-family:"JetBrains Mono";font-size:.74rem;color:var(--mute)}
   .play{display:flex;align-items:center;gap:1rem;margin-bottom:1.6rem}
   .playbtn{width:56px;height:56px;border-radius:50%;border:none;background:var(--warm);color:var(--bg);
     font-size:1.4rem;cursor:pointer;display:grid;place-items:center;transition:.2s;flex:none}
@@ -68,7 +68,7 @@
   .track{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;padding:.7rem 0;border-top:1px solid var(--line)}
   .track .name{font-weight:600;font-size:.95rem;display:flex;align-items:center;gap:.6rem;min-width:6.5rem}
   .track .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#1a2c54;font-size:.95rem}
-  .track .val{font-family:"Space Mono";font-size:.74rem;color:var(--mute);width:2.6rem;text-align:right}
+  .track .val{font-family:"JetBrains Mono";font-size:.74rem;color:var(--mute);width:2.6rem;text-align:right}
   input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;
     background:#22345c;outline:none}
   input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;
@@ -107,69 +107,69 @@
 <nav class="wrap">
   <div class="nr">
     <div class="brand"><span class="moon"></span>Tidal</div>
-    <div class="nl"><a href="#mix">Mixer</a><a href="#features">Features</a></div>
-    <a href="#features" class="get">Get Tidal</a>
+    <div class="nl"><a href="#mix">Микшер</a><a href="#features">Возможности</a></div>
+    <a href="#features" class="get">Скачать Tidal</a>
   </div>
 </nav>
 
 <header class="wrap hero">
   <div>
-    <div class="eb">Real audio · no files, synthesized live</div>
-    <h1>Build the quiet you fall asleep to.</h1>
-    <p>Layer rain, waves, and wind into one soundscape. Set a fade timer and Tidal drifts to silence after you are gone.</p>
+    <div class="eb">Настоящий звук · без файлов, синтез вживую</div>
+    <h1>Соберите тишину, под которую засыпаете.</h1>
+    <p>Смешайте дождь, волны и ветер в один саундскейп. Задайте таймер затухания, и Tidal сам уйдёт в тишину, когда вы уснёте.</p>
     <div class="stores">
-      <a class="store" href="#"><small>Download on the</small>App Store</a>
-      <a class="store" href="#"><small>Get it on</small>Google Play</a>
+      <a class="store" href="#"><small>Загрузить в</small>App Store</a>
+      <a class="store" href="#"><small>Доступно в</small>Google Play</a>
     </div>
   </div>
 
   <div class="mixer" id="mix">
-    <div class="top"><h3>Tonight's mix</h3><span class="now" id="now">stopped</span></div>
+    <div class="top"><h3>Микс на вечер</h3><span class="now" id="now">остановлено</span></div>
     <div class="play">
-      <button class="playbtn" id="play" aria-label="Play soundscape">▶</button>
+      <button class="playbtn" id="play" aria-label="Играть саундскейп">▶</button>
       <div class="master">
-        <div class="lbl">Master volume</div>
-        <input type="range" id="master" min="0" max="100" value="70" aria-label="Master volume"/>
+        <div class="lbl">Общая громкость</div>
+        <input type="range" id="master" min="0" max="100" value="70" aria-label="Общая громкость"/>
       </div>
     </div>
     <div class="track" data-sound="waves">
-      <div class="name"><span class="ic">🌊</span>Waves</div>
-      <input type="range" min="0" max="100" value="60" aria-label="Waves volume"/>
+      <div class="name"><span class="ic">🌊</span>Волны</div>
+      <input type="range" min="0" max="100" value="60" aria-label="Громкость волн"/>
       <span class="val">60</span>
     </div>
     <div class="track off" data-sound="rain">
-      <div class="name"><span class="ic">🌧</span>Rain</div>
-      <input type="range" min="0" max="100" value="0" aria-label="Rain volume"/>
+      <div class="name"><span class="ic">🌧</span>Дождь</div>
+      <input type="range" min="0" max="100" value="0" aria-label="Громкость дождя"/>
       <span class="val">0</span>
     </div>
     <div class="track off" data-sound="wind">
-      <div class="name"><span class="ic">🍃</span>Wind</div>
-      <input type="range" min="0" max="100" value="0" aria-label="Wind volume"/>
+      <div class="name"><span class="ic">🍃</span>Ветер</div>
+      <input type="range" min="0" max="100" value="0" aria-label="Громкость ветра"/>
       <span class="val">0</span>
     </div>
-    <div class="hintbar">Press play, then drag each slider to build your own mix.</div>
+    <div class="hintbar">Нажмите «играть», затем двигайте ползунки, чтобы собрать свой микс.</div>
   </div>
 </header>
 
 <section class="wrap" id="features">
-  <div class="sh"><h2>Made to be forgotten</h2><p>The best sleep app is one you stop noticing. Tidal is built to disappear.</p></div>
+  <div class="sh"><h2>Сделано, чтобы о нём забыли</h2><p>Лучшее приложение для сна то, которое перестаёшь замечать. Tidal создан, чтобы исчезать.</p></div>
   <div class="feats">
-    <div class="feat"><div class="fi">⏲</div><h4>Fade timer</h4><p>Set 20, 45, or 90 minutes. The mix fades out gently instead of cutting off and waking you.</p></div>
-    <div class="feat"><div class="fi">💾</div><h4>Saved mixes</h4><p>Found the perfect blend? Save it once and it is one tap away every night.</p></div>
-    <div class="feat"><div class="fi">🔋</div><h4>Kind to battery</h4><p>Sounds are generated on the fly, so there is nothing to stream and nothing to drain overnight.</p></div>
+    <div class="feat"><div class="fi">⏲</div><h4>Таймер затухания</h4><p>20, 45 или 90 минут. Микс плавно затихает, а не обрывается и не будит вас.</p></div>
+    <div class="feat"><div class="fi">💾</div><h4>Сохранённые миксы</h4><p>Нашли идеальное сочетание? Сохраните один раз, и оно в одно касание каждый вечер.</p></div>
+    <div class="feat"><div class="fi">🔋</div><h4>Бережёт батарею</h4><p>Звуки генерируются на лету, так что нечего стримить и нечему разряжаться за ночь.</p></div>
   </div>
 </section>
 
 <section class="wrap">
   <div class="quote">
-    <blockquote>"I have tried every sleep app. This is the first one my brain actually switches off to."</blockquote>
-    <div class="who"><b>Mireille S.</b> · in the reviews, probably</div>
+    <blockquote>«Я перепробовала все приложения для сна. Это первое, под которое мозг реально отключается».</blockquote>
+    <div class="who"><b>Мирей С.</b> · где-то в отзывах</div>
   </div>
 </section>
 
 <footer class="wrap">
-  <span>Tidal · concept demo · audio synthesized with the Web Audio API</span>
-  <a href="../index.html">← back to portfolio</a>
+  <span>Tidal · концепт-демо · звук синтезируется через Web Audio API</span>
+  <a href="../index.html">← назад в портфолио</a>
 </footer>
 
 <script>
@@ -177,6 +177,7 @@
   let ctx, master, playing=false;
   const nodes={}; // per sound: {gain, filter, src, target}
   const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const RU={waves:'волны',rain:'дождь',wind:'ветер'};
 
   function noiseBuffer(type){
     const len=2*ctx.sampleRate, buf=ctx.createBuffer(1,len,ctx.sampleRate), d=buf.getChannelData(0);
@@ -229,12 +230,12 @@
     if(ctx.state==='suspended')ctx.resume();
     playing=!playing;
     playBtn.textContent=playing?'❚❚':'▶';
-    now.textContent=playing?'playing · '+activeList():'stopped';
+    now.textContent=playing?'играет · '+activeList():'остановлено';
     document.querySelectorAll('.track').forEach(t=>applyGain(t.dataset.sound,t.querySelector('input').value/100));
   });
   function activeList(){
-    const on=[...document.querySelectorAll('.track')].filter(t=>+t.querySelector('input').value>0).map(t=>t.dataset.sound);
-    return on.length?on.join(' + '):'silence';
+    const on=[...document.querySelectorAll('.track')].filter(t=>+t.querySelector('input').value>0).map(t=>RU[t.dataset.sound]);
+    return on.length?on.join(' + '):'тишина';
   }
 
   document.querySelectorAll('.track input').forEach(inp=>{
@@ -243,7 +244,7 @@
       val.textContent=inp.value;
       track.classList.toggle('off',+inp.value===0);
       if(ctx){applyGain(track.dataset.sound,inp.value/100);}
-      if(playing)now.textContent='playing · '+activeList();
+      if(playing)now.textContent='играет · '+activeList();
     });
   });
   document.getElementById('master').addEventListener('input',e=>{

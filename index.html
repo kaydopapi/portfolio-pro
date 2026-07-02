@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rostislav — Frontend works</title>
-<meta name="description" content="Ten original frontend concepts, each built from a different idea. Type foundry, coffee brand, devtool, sleep app and more." />
+<title>Ростислав · Фронтенд-работы</title>
+<meta name="description" content="Десять оригинальных фронтенд-проектов, каждый из своей идеи. Type foundry, кофейный бренд, devtool, приложение для сна и другое." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root{ --bg:#0b0b0d; --panel:#131316; --line:#26262b; --text:#ededf0; --mute:#82828c; --accent:#d6ff3f; --radius:12px; }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:"Space Grotesk",system-ui,sans-serif;
+  body{background:var(--bg);color:var(--text);font-family:"Manrope",system-ui,sans-serif;
     line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--accent);color:#000}
@@ -93,19 +93,19 @@
   <div class="wrap nr">
     <div class="brand">Rostislav<b>.</b></div>
     <div class="navmeta">
-      <span>10 works / 2026</span>
-      <a href="#index">Index</a>
-      <a class="mail" href="mailto:rostislavharin341@gmail.com">Email</a>
+      <span>10 работ / 2026</span>
+      <a href="#index">Индекс</a>
+      <a class="mail" href="mailto:rostislavharin341@gmail.com">Почта</a>
     </div>
   </div>
 </nav>
 
 <header class="wrap">
-  <div class="eb">Frontend / concept-driven builds</div>
-  <h1>Ten sites, ten <em>ideas</em>, no template underneath.</h1>
+  <div class="eb">Фронтенд / проекты на основе идей</div>
+  <h1>Десять сайтов, десять <em>идей</em>, без шаблона внутри.</h1>
   <div class="hsub">
-    <p>Each project starts from a different concept and gets its own type, palette, and motion. Hover any title to see it running, live.</p>
-    <div class="cnt">TYPE · BRAND · TOOLS<br>INTERACTIVE · <b>ALL LIVE</b><br>BUILT 2026</div>
+    <p>Каждый проект вырастает из своей идеи и получает свою типографику, палитру и анимацию. Наведи на любой заголовок, и он откроется живым справа.</p>
+    <div class="cnt">ТИПОГРАФИКА · БРЕНД · ИНСТРУМЕНТЫ<br>ИНТЕРАКТИВ · <b>ВСЁ ЖИВОЕ</b><br>СДЕЛАНО В 2026</div>
   </div>
 </header>
 
@@ -115,40 +115,40 @@
   </div>
   <aside class="preview">
     <div class="frame">
-      <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url" id="pvUrl">hover a project</span></div>
+      <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url" id="pvUrl">наведи на проект</span></div>
       <div class="viewport" id="viewport">
-        <div class="empty" id="pvEmpty">◦ hover a title on the left<br>to load the real site here</div>
+        <div class="empty" id="pvEmpty">◦ наведи на заголовок слева,<br>и здесь загрузится настоящий сайт</div>
       </div>
     </div>
-    <div class="previewnote">live preview · click a title to open full screen</div>
+    <div class="previewnote">живое превью · клик по заголовку открывает на весь экран</div>
   </aside>
 </div>
 
 <footer>
   <div class="wrap">
     <div class="fgrid">
-      <div class="big">Want one of<br>these for <em>you</em>?</div>
+      <div class="big">Хочешь такой<br>же <em>себе</em>?</div>
       <div class="links">
         <a href="mailto:rostislavharin341@gmail.com">rostislavharin341@gmail.com</a>
         <a href="https://github.com/kaydopapi">github.com/kaydopapi</a>
       </div>
     </div>
-    <div class="fbtm"><span>Rostislav · frontend portfolio</span><span>Built by hand · deployed on GitHub Pages</span></div>
+    <div class="fbtm"><span>Ростислав · фронтенд-портфолио</span><span>Собрано вручную · развёрнуто на GitHub Pages</span></div>
   </div>
 </footer>
 
 <script>
   const projects=[
-    {slug:'meridian',name:'Meridian',cat:'Type foundry',year:'2026',rc:'#ff3b1f',desc:'Independent type foundry with a live specimen tester and kinetic hero.'},
-    {slug:'aurora',name:'Aurora Roasters',cat:'Coffee brand',year:'2026',rc:'#c67a24',desc:'Specialty coffee brand, editorial layout, forest and amber palette.'},
-    {slug:'nullpointer',name:'Null Pointer',cat:'Dev tool',year:'2026',rc:'#3ddc84',desc:'Error-tracking devtool with a live event stream and bento features.'},
-    {slug:'volt',name:'Volt',cat:'EV network',year:'2026',rc:'#1f5bff',desc:'EV charging network, animated charge ring and count-up network stats.'},
-    {slug:'kiln',name:'Kiln',cat:'Ceramics studio',year:'2026',rc:'#c1573b',desc:'Handmade ceramics with an interactive glaze selector and gallery.'},
-    {slug:'cadence',name:'Cadence',cat:'Run club',year:'2026',rc:'#d6f000',desc:'Brutalist run club with a live race countdown and pace calculator.'},
-    {slug:'frame24',name:'Frame 24',cat:'Photography',year:'2026',rc:'#c9a271',desc:'Film photography portfolio with a keyboard-driven lightbox.'},
-    {slug:'botanica',name:'Botanica',cat:'Plant shop',year:'2026',rc:'#b0472e',desc:'Houseplant shop with a light-based plant finder and filtering.'},
-    {slug:'orbit',name:'Orbit',cat:'Interactive',year:'2026',rc:'#f5b942',desc:'Canvas Solar System you can click and tilt to explore each planet.'},
-    {slug:'tidal',name:'Tidal',cat:'Sleep app',year:'2026',rc:'#e9a15f',desc:'Sleep-sound app with a real Web Audio mixer, synthesized live.'},
+    {slug:'meridian',name:'Meridian',cat:'Type foundry',year:'2026',rc:'#ff3b1f',desc:'Независимая шрифтовая студия с живым тестером начертаний и кинетическим героем.'},
+    {slug:'aurora',name:'Aurora Roasters',cat:'Кофейный бренд',year:'2026',rc:'#c67a24',desc:'Спешелти-кофе, editorial-вёрстка, палитра леса и янтаря.'},
+    {slug:'nullpointer',name:'Null Pointer',cat:'Devtool',year:'2026',rc:'#3ddc84',desc:'Инструмент трекинга ошибок с живым потоком событий и бенто-секцией.'},
+    {slug:'volt',name:'Volt',cat:'Сеть зарядок',year:'2026',rc:'#1f5bff',desc:'Сеть EV-зарядок: анимированное кольцо заряда и счётчики статистики.'},
+    {slug:'kiln',name:'Kiln',cat:'Керамика',year:'2026',rc:'#c1573b',desc:'Керамическая студия с интерактивным подбором глазури и галереей.'},
+    {slug:'cadence',name:'Cadence',cat:'Беговой клуб',year:'2026',rc:'#d6f000',desc:'Брутальный беговой клуб с живым отсчётом до забега и калькулятором темпа.'},
+    {slug:'frame24',name:'Frame 24',cat:'Фотография',year:'2026',rc:'#c9a271',desc:'Портфолио плёночной фотографии с лайтбоксом и управлением с клавиатуры.'},
+    {slug:'botanica',name:'Botanica',cat:'Магазин растений',year:'2026',rc:'#b0472e',desc:'Магазин комнатных растений с подбором по освещению и фильтрами.'},
+    {slug:'orbit',name:'Orbit',cat:'Интерактив',year:'2026',rc:'#f5b942',desc:'Солнечная система на canvas: кликай по планетам и наклоняй вид.'},
+    {slug:'tidal',name:'Tidal',cat:'Приложение для сна',year:'2026',rc:'#e9a15f',desc:'Приложение для сна с настоящим микшером на Web Audio, звук синтезируется вживую.'},
   ];
   const pad=n=>String(n+1).padStart(2,'0');
   const index=document.getElementById('index');
@@ -156,7 +156,7 @@
     <a class="row" href="${p.slug}/index.html" data-src="${p.slug}/index.html" data-url="/${p.slug}" style="--rc:${p.rc}">
       <span class="num">${pad(i)}</span>
       <span class="main"><span class="name">${p.name}</span><span class="desc">${p.desc}</span></span>
-      <span class="cat">${p.cat}<br>${p.year}<br><span class="open">open →</span></span>
+      <span class="cat">${p.cat}<br>${p.year}<br><span class="open">открыть →</span></span>
     </a>`).join('');
 
   // Live preview on hover (lazy: iframe only set on first hover)

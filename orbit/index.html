@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Orbit — An interactive tour of the Solar System</title>
-<meta name="description" content="Orbit is an interactive map of the Solar System. Click a planet, learn where it is and why it matters." />
+<title>Orbit — интерактивный тур по Солнечной системе</title>
+<meta name="description" content="Orbit — интерактивная карта Солнечной системы. Кликните по планете и узнайте, где она и чем интересна." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   :root{ --bg:#06070f; --panel:#0d1122; --line:#1e2540; --text:#e9ecf7; --mute:#8890b0; --amber:#f5b942; }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:"Familjen Grotesk",system-ui,sans-serif;
+  body{background:var(--bg);color:var(--text);font-family:"Sofia Sans",system-ui,sans-serif;
     line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--amber);color:var(--bg)}
-  .mono{font-family:"Space Mono",monospace}
+  .mono{font-family:"JetBrains Mono",monospace}
   .wrap{max-width:1300px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
 
   nav{position:relative;z-index:10}
@@ -31,24 +31,24 @@
   .stage{position:relative;height:calc(100dvh - 70px);min-height:560px;overflow:hidden}
   #stars{position:absolute;inset:0;z-index:0}
   #system{position:absolute;inset:0;z-index:1;cursor:grab}
-  .overlay{position:absolute;top:clamp(1rem,4vw,3rem);left:clamp(1.25rem,4vw,3rem);z-index:2;max-width:26rem;pointer-events:none}
-  .overlay .eb{font-family:"Space Mono";font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
-  .overlay h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:.98;letter-spacing:-.03em;font-weight:700}
+  .overlay{position:absolute;top:clamp(1rem,4vw,3rem);left:clamp(1.25rem,4vw,3rem);z-index:2;max-width:27rem;pointer-events:none}
+  .overlay .eb{font-family:"JetBrains Mono";font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+  .overlay h1{font-size:clamp(2.2rem,5.5vw,4rem);line-height:1.02;letter-spacing:-.03em;font-weight:700}
   .overlay p{color:var(--mute);margin-top:1rem;font-size:1.02rem}
-  .hint{margin-top:1.2rem;font-family:"Space Mono";font-size:.76rem;color:var(--mute);pointer-events:none}
+  .hint{margin-top:1.2rem;font-family:"JetBrains Mono";font-size:.76rem;color:var(--mute);pointer-events:none}
   .hint b{color:var(--text)}
 
   /* INFO PANEL */
   .panel{position:absolute;right:clamp(1rem,4vw,3rem);bottom:clamp(1rem,4vw,3rem);z-index:3;
-    width:min(340px,80vw);background:color-mix(in srgb,var(--panel) 90%,transparent);
+    width:min(350px,82vw);background:color-mix(in srgb,var(--panel) 90%,transparent);
     backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:16px;padding:1.5rem;
     transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
   .panel .dot{width:44px;height:44px;border-radius:50%;margin-bottom:1rem}
   .panel h3{font-size:1.5rem;letter-spacing:-.02em}
-  .panel .type{font-family:"Space Mono";font-size:.74rem;color:var(--amber);text-transform:uppercase;letter-spacing:.14em}
+  .panel .type{font-family:"JetBrains Mono";font-size:.74rem;color:var(--amber);text-transform:uppercase;letter-spacing:.14em}
   .panel p{color:var(--mute);font-size:.92rem;margin:.8rem 0 1rem}
   .panel .facts{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;border-top:1px solid var(--line);padding-top:1rem}
-  .panel .facts div .k{font-family:"Space Mono";font-size:.68rem;color:var(--mute);text-transform:uppercase;letter-spacing:.1em}
+  .panel .facts div .k{font-family:"JetBrains Mono";font-size:.68rem;color:var(--mute);text-transform:uppercase;letter-spacing:.1em}
   .panel .facts div .v{font-weight:600;font-size:.95rem}
 
   /* TONIGHT */
@@ -57,7 +57,7 @@
   .sh p{color:var(--mute);margin-top:.6rem;max-width:52ch}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.5rem}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.6rem}
-  .card .icon{font-family:"Space Mono";color:var(--amber);font-size:.8rem;letter-spacing:.1em;margin-bottom:1rem}
+  .card .icon{font-family:"JetBrains Mono";color:var(--amber);font-size:.8rem;letter-spacing:.1em;margin-bottom:1rem}
   .card h4{font-size:1.15rem;margin-bottom:.4rem}
   .card p{color:var(--mute);font-size:.92rem}
   @media(max-width:760px){.cards{grid-template-columns:1fr}}
@@ -72,7 +72,7 @@
 <nav class="wrap">
   <div class="nr">
     <div class="brand"><span class="o"></span>Orbit</div>
-    <div class="nl"><a href="#tonight">Tonight's sky</a><a href="#about">About</a></div>
+    <div class="nl"><a href="#tonight">Небо сегодня</a><a href="#about">О проекте</a></div>
   </div>
 </nav>
 
@@ -80,35 +80,35 @@
   <canvas id="stars"></canvas>
   <canvas id="system"></canvas>
   <div class="overlay">
-    <div class="eb">Interactive · to scale by order, not distance</div>
-    <h1>Click a world.<br>Meet the neighbourhood.</h1>
-    <p>Eight planets, drifting where they belong. Tap any of them to see how far out it sits and what makes it strange.</p>
-    <div class="hint">◦ <b>Click</b> a planet · <b>drag</b> to tilt the view</div>
+    <div class="eb">Интерактив · масштаб по порядку, не по расстоянию</div>
+    <h1>Кликните по миру.<br>Познакомьтесь с соседями.</h1>
+    <p>Восемь планет, каждая на своём месте. Нажмите на любую, чтобы узнать, как далеко она и чем необычна.</p>
+    <div class="hint">◦ <b>Клик</b> по планете · <b>тяните</b>, чтобы наклонить вид</div>
   </div>
   <aside class="panel" id="panel">
     <div class="dot" id="pDot" style="background:var(--amber);box-shadow:0 0 20px var(--amber)"></div>
-    <div class="type" id="pType">The star</div>
-    <h3 id="pName">The Sun</h3>
-    <p id="pDesc">A middle-aged yellow dwarf holding everything else in place. It is 99.8 percent of all the mass in the Solar System.</p>
+    <div class="type" id="pType">Звезда</div>
+    <h3 id="pName">Солнце</h3>
+    <p id="pDesc">Жёлтый карлик среднего возраста, удерживающий всё остальное на месте. На него приходится 99,8 процента всей массы Солнечной системы.</p>
     <div class="facts">
-      <div><div class="k">Distance</div><div class="v" id="pDist">0 AU</div></div>
-      <div><div class="k">Day length</div><div class="v" id="pDay">25 Earth days</div></div>
+      <div><div class="k">Расстояние</div><div class="v" id="pDist">0 а.е.</div></div>
+      <div><div class="k">Длина суток</div><div class="v" id="pDay">25 земных суток</div></div>
     </div>
   </aside>
 </div>
 
 <section class="wrap" id="tonight">
-  <div class="sh"><h2>What is up there tonight</h2><p>A quick orientation for the naked eye. No telescope needed for any of this.</p></div>
+  <div class="sh"><h2>Что там сегодня вечером</h2><p>Быстрая ориентация для невооружённого глаза. Телескоп ни для чего из этого не нужен.</p></div>
   <div class="cards">
-    <div class="card"><div class="icon">◦ 001</div><h4>Find the bright one</h4><p>The brightest "star" near the horizon after sunset is almost always Venus, not a star at all.</p></div>
-    <div class="card"><div class="icon">◦ 002</div><h4>Follow the belt</h4><p>Three stars in a short row are Orion's belt. From there you can hop to most winter constellations.</p></div>
-    <div class="card"><div class="icon">◦ 003</div><h4>Catch the ISS</h4><p>A steady, fast-moving dot that does not blink is the Space Station passing overhead in minutes.</p></div>
+    <div class="card"><div class="icon">◦ 001</div><h4>Найдите самую яркую</h4><p>Самая яркая «звезда» у горизонта после заката почти всегда Венера, и это вовсе не звезда.</p></div>
+    <div class="card"><div class="icon">◦ 002</div><h4>Идите по поясу</h4><p>Три звезды в короткий ряд — это пояс Ориона. Оттуда легко перейти к большинству зимних созвездий.</p></div>
+    <div class="card"><div class="icon">◦ 003</div><h4>Поймайте МКС</h4><p>Ровная, быстро летящая и не мигающая точка — это Космическая станция, проходящая над головой за минуты.</p></div>
   </div>
 </section>
 
 <footer class="wrap" id="about">
-  <span>Orbit · concept demo · rendered on canvas</span>
-  <a href="../index.html">← back to portfolio</a>
+  <span>Orbit · концепт-демо · отрисовано на canvas</span>
+  <a href="../index.html">← назад в портфолио</a>
 </footer>
 
 <script>
@@ -143,25 +143,25 @@ function drawStars(t=0){
 const sy=document.getElementById('system'), sysx=sy.getContext('2d');
 let px=0,py=0; // parallax offset -1..1
 const planets=[
-  {name:'Mercury',type:'Rocky planet',color:'#b7a58f',r:5,orbit:70,speed:1.6,dist:'0.39 AU',day:'59 days',
-   desc:'The smallest planet and the fastest, whipping around the Sun in just 88 days.'},
-  {name:'Venus',type:'Rocky planet',color:'#e0b56a',r:8,orbit:105,speed:1.17,dist:'0.72 AU',day:'243 days',
-   desc:'A runaway greenhouse. Its surface is hot enough to melt lead and it spins backwards.'},
-  {name:'Earth',type:'Rocky planet',color:'#4a90d9',r:9,orbit:145,speed:1.0,dist:'1.00 AU',day:'24 hours',
-   desc:'The only place we know of with liquid water on the surface and someone to notice it.'},
-  {name:'Mars',type:'Rocky planet',color:'#c1502e',r:7,orbit:185,speed:0.8,dist:'1.52 AU',day:'24.6 hours',
-   desc:'The rusty one. It has the tallest volcano and the deepest canyon in the Solar System.'},
-  {name:'Jupiter',type:'Gas giant',color:'#c9a678',r:20,orbit:250,speed:0.44,dist:'5.20 AU',day:'10 hours',
-   desc:'A gas giant so large that all other planets would fit inside it, twice over.'},
-  {name:'Saturn',type:'Gas giant',color:'#d8c48f',r:17,orbit:315,speed:0.32,dist:'9.58 AU',day:'10.7 hours',ring:true,
-   desc:'Famous for its rings, made of billions of chunks of ice, most no bigger than a house.'},
-  {name:'Uranus',type:'Ice giant',color:'#8fd0d6',r:13,orbit:370,speed:0.23,dist:'19.2 AU',day:'17 hours',
-   desc:'An ice giant tipped on its side, so it rolls around the Sun like a marble.'},
-  {name:'Neptune',type:'Ice giant',color:'#4a6fd6',r:13,orbit:420,speed:0.18,dist:'30.1 AU',day:'16 hours',
-   desc:'The windiest world, with storms that scream at over 2,000 kilometres per hour.'}
+  {name:'Меркурий',type:'Каменистая планета',color:'#b7a58f',r:5,orbit:70,speed:1.6,dist:'0,39 а.е.',day:'59 суток',
+   desc:'Самая маленькая и самая быстрая планета, облетающая Солнце всего за 88 дней.'},
+  {name:'Венера',type:'Каменистая планета',color:'#e0b56a',r:8,orbit:105,speed:1.17,dist:'0,72 а.е.',day:'243 суток',
+   desc:'Разогнавшийся парниковый эффект. Поверхность раскалена так, что плавится свинец, а вращается она в обратную сторону.'},
+  {name:'Земля',type:'Каменистая планета',color:'#4a90d9',r:9,orbit:145,speed:1.0,dist:'1,00 а.е.',day:'24 часа',
+   desc:'Единственное известное место с жидкой водой на поверхности и с кем-то, кто это заметил.'},
+  {name:'Марс',type:'Каменистая планета',color:'#c1502e',r:7,orbit:185,speed:0.8,dist:'1,52 а.е.',day:'24,6 часа',
+   desc:'Ржавая планета. Здесь самый высокий вулкан и самый глубокий каньон Солнечной системы.'},
+  {name:'Юпитер',type:'Газовый гигант',color:'#c9a678',r:20,orbit:250,speed:0.44,dist:'5,20 а.е.',day:'10 часов',
+   desc:'Газовый гигант настолько огромный, что все остальные планеты уместились бы в нём дважды.'},
+  {name:'Сатурн',type:'Газовый гигант',color:'#d8c48f',r:17,orbit:315,speed:0.32,dist:'9,58 а.е.',day:'10,7 часа',ring:true,
+   desc:'Знаменит кольцами из миллиардов кусков льда, большинство из которых не больше дома.'},
+  {name:'Уран',type:'Ледяной гигант',color:'#8fd0d6',r:13,orbit:370,speed:0.23,dist:'19,2 а.е.',day:'17 часов',
+   desc:'Ледяной гигант, завалившийся на бок, поэтому он катится вокруг Солнца, как шарик.'},
+  {name:'Нептун',type:'Ледяной гигант',color:'#4a6fd6',r:13,orbit:420,speed:0.18,dist:'30,1 а.е.',day:'16 часов',
+   desc:'Самый ветреный мир, где бури воют со скоростью более 2000 километров в час.'}
 ];
-const sun={name:'The Sun',type:'The star',color:'#f5b942',dist:'0 AU',day:'25 Earth days',
-  desc:'A middle-aged yellow dwarf holding everything else in place. It is 99.8 percent of all the mass in the Solar System.'};
+const sun={name:'Солнце',type:'Звезда',color:'#f5b942',dist:'0 а.е.',day:'25 земных суток',
+  desc:'Жёлтый карлик среднего возраста, удерживающий всё остальное на месте. На него приходится 99,8 процента всей массы Солнечной системы.'};
 let t0=performance.now();
 let cx,cy,scale;
 function layout(){cx=W*0.62;cy=H*0.5;scale=Math.min(1,Math.min(W,H)/920);}
@@ -189,7 +189,7 @@ function drawSystem(now=performance.now()){
     sysx.fillStyle=p.color;sysx.beginPath();sysx.arc(pos.x,pos.y,p.r*scale,0,7);sysx.fill();
     if(p._hover){sysx.strokeStyle='rgba(255,255,255,.8)';sysx.lineWidth=1.5;
       sysx.beginPath();sysx.arc(pos.x,pos.y,p.r*scale+6,0,7);sysx.stroke();
-      sysx.fillStyle='#e9ecf7';sysx.font='12px "Space Mono",monospace';sysx.textAlign='center';
+      sysx.fillStyle='#e9ecf7';sysx.font='13px "JetBrains Mono",monospace';sysx.textAlign='center';
       sysx.fillText(p.name,pos.x,pos.y-p.r*scale-12);}
   }
 }

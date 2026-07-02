@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Frame 24 — Film photography by Elias Vogt</title>
-<meta name="description" content="Frame 24 is the film photography portfolio of Elias Vogt. Portraits and places, shot on 35mm and medium format." />
+<title>Frame 24 — плёночная фотография, Элиас Вогт</title>
+<meta name="description" content="Frame 24 — портфолио плёночной фотографии Элиаса Вогта. Портреты и места на 35мм и среднем формате." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opt@0,6..96;1,6..96&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{ --bg:#0c0b0a; --panel:#141210; --text:#ece7df; --mute:#8b847a; --tan:#c9a271; --line:#26221d; }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -16,12 +16,12 @@
     -webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
   ::selection{background:var(--tan);color:var(--bg)}
-  .serif{font-family:"Bodoni Moda",serif}
+  .serif{font-family:"Prata",serif}
   .wrap{max-width:1320px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:40;mix-blend-mode:difference}
   .nr{display:flex;align-items:center;justify-content:space-between;height:76px}
-  .brand{font-family:"Bodoni Moda";font-size:1.5rem;letter-spacing:.02em;color:#fff}
+  .brand{font-family:"Prata";font-size:1.4rem;letter-spacing:.02em;color:#fff}
   .nl{display:flex;gap:2rem;font-size:.82rem;text-transform:uppercase;letter-spacing:.16em;color:#fff}
   @media(max-width:760px){.nl{display:none}}
 
@@ -31,14 +31,14 @@
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,10,.5),transparent 30%,rgba(12,11,10,.85))}
   .hero .cap{position:absolute;left:0;right:0;bottom:0;padding:clamp(1.5rem,4vw,3rem)}
   .hero .cap .idx{font-size:.78rem;text-transform:uppercase;letter-spacing:.24em;color:var(--tan);margin-bottom:1rem}
-  .hero .cap h1{font-family:"Bodoni Moda";font-weight:400;font-size:clamp(2.8rem,9vw,7rem);line-height:.95;letter-spacing:-.01em}
-  .hero .cap h1 i{color:var(--tan)}
+  .hero .cap h1{font-family:"Prata";font-weight:400;font-size:clamp(2.6rem,8vw,6.5rem);line-height:1;letter-spacing:0}
+  .hero .cap h1 i{color:var(--tan);font-style:normal}
   .hero .cap .sub{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:1.5rem;
     border-top:1px solid rgba(236,231,223,.2);padding-top:1.2rem;font-size:.9rem;color:var(--mute)}
 
   section{padding:clamp(3.5rem,8vw,7rem) 0}
   .sh{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:2.5rem}
-  .sh h2{font-family:"Bodoni Moda";font-weight:400;font-size:clamp(1.8rem,4.5vw,3rem)}
+  .sh h2{font-family:"Prata";font-weight:400;font-size:clamp(1.7rem,4.5vw,2.8rem)}
   .sh span{font-size:.8rem;text-transform:uppercase;letter-spacing:.16em;color:var(--mute)}
 
   /* GALLERY masonry */
@@ -50,7 +50,7 @@
     background:linear-gradient(transparent,rgba(12,11,10,.8));opacity:0;transition:.3s;
     display:flex;justify-content:space-between;align-items:end;font-size:.82rem}
   .shot:hover .meta{opacity:1}
-  .shot .meta .t{font-family:"Bodoni Moda";font-size:1.15rem}
+  .shot .meta .t{font-family:"Prata";font-size:1.15rem}
   .shot .meta .f{color:var(--tan);font-size:.72rem;text-transform:uppercase;letter-spacing:.12em}
   @media(max-width:900px){.masonry{columns:2}}
   @media(max-width:560px){.masonry{columns:1}}
@@ -59,7 +59,7 @@
   .about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
   .about .portrait{overflow:hidden}
   .about .portrait img{width:100%;filter:grayscale(.2)}
-  .about h3{font-family:"Bodoni Moda";font-weight:400;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;margin-bottom:1.2rem}
+  .about h3{font-family:"Prata";font-weight:400;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.15;margin-bottom:1.2rem}
   .about p{color:var(--mute);margin-bottom:1rem;max-width:46ch}
   .about .gear{display:flex;gap:2rem;margin-top:1.5rem;flex-wrap:wrap;font-size:.85rem}
   .about .gear div .k{color:var(--tan);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;margin-bottom:.3rem}
@@ -67,7 +67,7 @@
 
   /* CONTACT */
   .contact{text-align:center;border-top:1px solid var(--line)}
-  .contact .big{font-family:"Bodoni Moda";font-weight:400;font-size:clamp(2.2rem,7vw,5rem);line-height:1;margin-bottom:1.5rem}
+  .contact .big{font-family:"Prata";font-weight:400;font-size:clamp(2rem,7vw,4.6rem);line-height:1.05;margin-bottom:1.5rem}
   .contact a.mail{color:var(--tan);border-bottom:1px solid var(--tan);font-size:1.1rem;padding-bottom:3px}
   .contact .socials{display:flex;gap:1.5rem;justify-content:center;margin-top:2rem;font-size:.82rem;
     text-transform:uppercase;letter-spacing:.14em;color:var(--mute)}
@@ -83,7 +83,7 @@
   .lb.open{display:flex}
   .lb img{max-width:92vw;max-height:82vh;object-fit:contain}
   .lb .cap{position:absolute;bottom:1.5rem;left:0;right:0;text-align:center;color:var(--mute);font-size:.85rem}
-  .lb .cap b{font-family:"Bodoni Moda";color:var(--text);font-weight:400}
+  .lb .cap b{font-family:"Prata";color:var(--text);font-weight:400}
   .lb .close{position:absolute;top:1.2rem;right:1.5rem;color:var(--text);font-size:1.6rem;background:none;border:none;cursor:pointer}
   .lb .nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text);
     font-size:2.5rem;cursor:pointer;padding:1rem;opacity:.6;transition:.2s}
@@ -97,63 +97,63 @@
 <nav>
   <div class="wrap nr">
     <div class="brand">Frame 24</div>
-    <div class="nl"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+    <div class="nl"><a href="#work">Работы</a><a href="#about">О себе</a><a href="#contact">Контакты</a></div>
   </div>
 </nav>
 
 <header class="hero">
-  <img src="https://picsum.photos/seed/frame24-hero-fog/1800/1200" alt="Foggy mountain road on film" />
+  <img src="https://picsum.photos/seed/frame24-hero-fog/1800/1200" alt="Туманная горная дорога на плёнке" />
   <div class="cap wrap">
-    <div class="idx">Series 04 / Northbound</div>
-    <h1>Grain, and<br>the <i>quiet</i> of it.</h1>
-    <div class="sub"><span>Portraits & places on 35mm and 120</span><span>Elias Vogt · Reykjavík</span></div>
+    <div class="idx">Серия 04 / На север</div>
+    <h1>Зерно, и <i>тишина</i><br>в нём.</h1>
+    <div class="sub"><span>Портреты и места на 35мм и 120</span><span>Элиас Вогт · Рейкьявик</span></div>
   </div>
 </header>
 
 <section class="wrap" id="work">
-  <div class="sh"><h2>Selected frames</h2><span>click to enlarge</span></div>
+  <div class="sh"><h2>Избранные кадры</h2><span>кликните, чтобы увеличить</span></div>
   <div class="masonry" id="gallery">
-    <figure class="shot" data-title="Low tide" data-film="Portra 400 · 35mm"><img src="https://picsum.photos/seed/frame24-a/700/900" alt="Low tide"/><figcaption class="meta"><span class="t">Low tide</span><span class="f">Portra 400</span></figcaption></figure>
-    <figure class="shot" data-title="Kára" data-film="HP5 · 120"><img src="https://picsum.photos/seed/frame24-b/700/700" alt="Portrait"/><figcaption class="meta"><span class="t">Kára</span><span class="f">HP5 · 120</span></figcaption></figure>
-    <figure class="shot" data-title="Ridge line" data-film="Ektar 100 · 35mm"><img src="https://picsum.photos/seed/frame24-c/700/1000" alt="Ridge line"/><figcaption class="meta"><span class="t">Ridge line</span><span class="f">Ektar 100</span></figcaption></figure>
-    <figure class="shot" data-title="Diner, 6am" data-film="Cinestill 800T"><img src="https://picsum.photos/seed/frame24-d/700/800" alt="Diner"/><figcaption class="meta"><span class="t">Diner, 6am</span><span class="f">Cinestill 800T</span></figcaption></figure>
-    <figure class="shot" data-title="Salt" data-film="Tri-X 400 · 120"><img src="https://picsum.photos/seed/frame24-e/700/700" alt="Salt flat"/><figcaption class="meta"><span class="t">Salt</span><span class="f">Tri-X 400</span></figcaption></figure>
-    <figure class="shot" data-title="Window seat" data-film="Gold 200 · 35mm"><img src="https://picsum.photos/seed/frame24-f/700/900" alt="Window seat"/><figcaption class="meta"><span class="t">Window seat</span><span class="f">Gold 200</span></figcaption></figure>
+    <figure class="shot" data-title="Отлив" data-film="Portra 400 · 35мм"><img src="https://picsum.photos/seed/frame24-a/700/900" alt="Отлив"/><figcaption class="meta"><span class="t">Отлив</span><span class="f">Portra 400</span></figcaption></figure>
+    <figure class="shot" data-title="Кара" data-film="HP5 · 120"><img src="https://picsum.photos/seed/frame24-b/700/700" alt="Портрет"/><figcaption class="meta"><span class="t">Кара</span><span class="f">HP5 · 120</span></figcaption></figure>
+    <figure class="shot" data-title="Гребень" data-film="Ektar 100 · 35мм"><img src="https://picsum.photos/seed/frame24-c/700/1000" alt="Гребень горы"/><figcaption class="meta"><span class="t">Гребень</span><span class="f">Ektar 100</span></figcaption></figure>
+    <figure class="shot" data-title="Кафе, 6 утра" data-film="Cinestill 800T"><img src="https://picsum.photos/seed/frame24-d/700/800" alt="Кафе"/><figcaption class="meta"><span class="t">Кафе, 6 утра</span><span class="f">Cinestill 800T</span></figcaption></figure>
+    <figure class="shot" data-title="Соль" data-film="Tri-X 400 · 120"><img src="https://picsum.photos/seed/frame24-e/700/700" alt="Солончак"/><figcaption class="meta"><span class="t">Соль</span><span class="f">Tri-X 400</span></figcaption></figure>
+    <figure class="shot" data-title="У окна" data-film="Gold 200 · 35мм"><img src="https://picsum.photos/seed/frame24-f/700/900" alt="Место у окна"/><figcaption class="meta"><span class="t">У окна</span><span class="f">Gold 200</span></figcaption></figure>
   </div>
 </section>
 
 <section class="wrap" id="about">
   <div class="about">
     <div>
-      <h3>I shoot film because it makes me slower.</h3>
-      <p>Twenty-four frames on a roll is a budget you feel. It forces a decision before the shutter, not after, in an editing app.</p>
-      <p>Available for editorial portraits, travel commissions, and the occasional wedding for people who do not want it to look like everyone else's.</p>
+      <h3>Снимаю на плёнку, потому что она меня замедляет.</h3>
+      <p>Двадцать четыре кадра на плёнке — это бюджет, который чувствуешь. Он заставляет решать до спуска затвора, а не потом в редакторе.</p>
+      <p>Открыт для съёмок портретов для изданий, тревел-заказов и иногда свадеб для тех, кто не хочет, чтобы это выглядело как у всех.</p>
       <div class="gear">
-        <div><div class="k">Bodies</div>Leica M6 · Mamiya 7</div>
-        <div><div class="k">Develops at</div>Home, C-41 kit</div>
-        <div><div class="k">Based</div>Reykjavík, travels often</div>
+        <div><div class="k">Камеры</div>Leica M6 · Mamiya 7</div>
+        <div><div class="k">Проявка</div>Дома, набор C-41</div>
+        <div><div class="k">База</div>Рейкьявик, часто в разъездах</div>
       </div>
     </div>
-    <div class="portrait"><img src="https://picsum.photos/seed/frame24-selfportrait/700/840" alt="Self portrait of the photographer"/></div>
+    <div class="portrait"><img src="https://picsum.photos/seed/frame24-selfportrait/700/840" alt="Автопортрет фотографа"/></div>
   </div>
 </section>
 
 <section class="wrap contact" id="contact">
-  <div class="big">Let's make<br>something on film.</div>
+  <div class="big">Давайте снимем<br>что-то на плёнку.</div>
   <a class="mail" href="mailto:elias@frame24.photo">elias@frame24.photo</a>
-  <div class="socials"><a href="#">Instagram</a><a href="#">Grainery</a><a href="../index.html">Portfolio</a></div>
+  <div class="socials"><a href="#">Instagram</a><a href="#">Telegram</a><a href="../index.html">Портфолио</a></div>
 </section>
 
 <footer class="wrap">
-  <span>Frame 24 · concept demo · photos via picsum.photos</span>
-  <a href="../index.html">← back to portfolio</a>
+  <span>Frame 24 · концепт-демо · фото через picsum.photos</span>
+  <a href="../index.html">← назад в портфолио</a>
 </footer>
 
 <div class="lb" id="lb" aria-hidden="true">
-  <button class="close" id="lbClose" aria-label="Close">✕</button>
-  <button class="nav prev" id="lbPrev" aria-label="Previous">‹</button>
+  <button class="close" id="lbClose" aria-label="Закрыть">✕</button>
+  <button class="nav prev" id="lbPrev" aria-label="Назад">‹</button>
   <img id="lbImg" alt="" />
-  <button class="nav next" id="lbNext" aria-label="Next">›</button>
+  <button class="nav next" id="lbNext" aria-label="Вперёд">›</button>
   <div class="cap"><b id="lbTitle"></b> · <span id="lbFilm"></span></div>
 </div>
 

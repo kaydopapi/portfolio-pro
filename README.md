@@ -1,19 +1,20 @@
-# Portfolio — ten original frontend concepts
+# Портфолио — десять оригинальных фронтенд-концепций
 
-Live: https://kaydopapi.github.io/portfolio-pro/
+Живая версия: https://kaydopapi.github.io/portfolio-pro/
 
-Ten independent, concept-driven frontend builds. No shared template: each has its own
-typography, palette, layout and interaction. Vanilla HTML/CSS/JS, no build step.
+Десять независимых фронтенд-проектов на основе идей. Общего шаблона нет: у каждого своя
+типографика, палитра, вёрстка и интерактив. Чистый HTML/CSS/JS, без сборки. Весь текст на русском,
+шрифты подобраны с поддержкой кириллицы.
 
-| # | Project | Concept | Live |
-|---|---------|---------|------|
-| 01 | Meridian | Type foundry with a live specimen tester | `/meridian` |
-| 02 | Aurora Roasters | Specialty coffee brand, editorial | `/aurora` |
-| 03 | Null Pointer | Error-tracking devtool, live event stream | `/nullpointer` |
-| 04 | Volt | EV charging network, animated charge ring | `/volt` |
-| 05 | Kiln | Ceramics studio, interactive glaze selector | `/kiln` |
-| 06 | Cadence | Run club, race countdown + pace calculator | `/cadence` |
-| 07 | Frame 24 | Film photography portfolio with lightbox | `/frame24` |
-| 08 | Botanica | Plant shop with light-based plant finder | `/botanica` |
-| 09 | Orbit | Canvas Solar System explorer | `/orbit` |
-| 10 | Tidal | Sleep-sound app, real Web Audio mixer | `/tidal` |
+| # | Проект | Идея | Ссылка |
+|---|--------|------|--------|
+| 01 | Meridian | шрифтовая студия с живым тестером начертаний | `/meridian` |
+| 02 | Aurora Roasters | спешелти-кофе, editorial | `/aurora` |
+| 03 | Null Pointer | devtool трекинга ошибок, живой поток событий | `/nullpointer` |
+| 04 | Volt | сеть EV-зарядок, анимация кольца заряда | `/volt` |
+| 05 | Kiln | керамическая студия, подбор глазури | `/kiln` |
+| 06 | Cadence | беговой клуб, отсчёт и калькулятор темпа | `/cadence` |
+| 07 | Frame 24 | плёночная фотография, лайтбокс | `/frame24` |
+| 08 | Botanica | магазин растений, подбор по свету | `/botanica` |
+| 09 | Orbit | Солнечная система на canvas | `/orbit` |
+| 10 | Tidal | приложение для сна, микшер на Web Audio | `/tidal` |

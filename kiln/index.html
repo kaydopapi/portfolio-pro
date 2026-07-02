@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kiln — Handmade ceramics studio</title>
-<meta name="description" content="Kiln is a small ceramics studio throwing tableware by hand and firing it in a wood kiln twice a month." />
+<title>Kiln — студия ручной керамики</title>
+<meta name="description" content="Kiln — небольшая керамическая студия. Точим посуду вручную и обжигаем в дровяной печи дважды в месяц." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Onest:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
     /* Terracotta + slate: warm rust on cool grey, no beige, no brass */
@@ -16,17 +16,17 @@
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{background:var(--paper);color:var(--slate);font-family:"Figtree",system-ui,sans-serif;line-height:1.6;
+  body{background:var(--paper);color:var(--slate);font-family:"Onest",system-ui,sans-serif;line-height:1.6;
     -webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
   ::selection{background:var(--terra);color:#fff}
-  .serif{font-family:"Cormorant Garamond",serif}
+  .serif{font-family:"Yeseva One",serif}
   .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
 
   nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 88%,transparent);
     backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .nr{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .brand{font-family:"Cormorant Garamond";font-weight:600;font-size:1.7rem;letter-spacing:.02em}
+  .brand{font-family:"Yeseva One";font-size:1.6rem;letter-spacing:.02em}
   .nl{display:flex;gap:2rem;font-size:.9rem;color:var(--mute)}
   .nl a:hover{color:var(--slate)}
   .visit{border:1px solid var(--slate);padding:.5rem 1.2rem;border-radius:999px;font-size:.85rem;transition:.25s}
@@ -37,8 +37,8 @@
   .hero{padding:clamp(2.5rem,6vw,5rem) 0 clamp(2rem,4vw,3rem)}
   .hero .lead{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.5rem,4vw,3rem);align-items:end}
   .hero .kick{font-size:.82rem;text-transform:uppercase;letter-spacing:.2em;color:var(--terra);margin-bottom:1.5rem}
-  .hero h1{font-family:"Cormorant Garamond";font-weight:500;font-size:clamp(3rem,8.5vw,7rem);line-height:.98;letter-spacing:-.01em}
-  .hero h1 i{color:var(--terra)}
+  .hero h1{font-family:"Yeseva One";font-size:clamp(2.6rem,7.5vw,6rem);line-height:1;letter-spacing:0}
+  .hero h1 i{color:var(--terra);font-style:normal}
   .hero .intro{color:var(--mute);font-size:1.08rem;max-width:38ch}
   .hero .intro .btn{display:inline-block;margin-top:1.5rem;color:var(--terra);border-bottom:1px solid var(--terra);padding-bottom:2px;font-weight:600}
   .hero .big-img{margin-top:2.5rem;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/7}
@@ -48,14 +48,14 @@
   section{padding:clamp(3rem,7vw,5.5rem) 0}
   .sh{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:2.5rem;
     border-bottom:1px solid var(--line);padding-bottom:1rem}
-  .sh h2{font-family:"Cormorant Garamond";font-weight:600;font-size:clamp(1.8rem,4.5vw,3rem)}
+  .sh h2{font-family:"Yeseva One";font-size:clamp(1.7rem,4.5vw,2.8rem)}
   .sh span{color:var(--mute);font-size:.9rem}
 
   /* GLAZE selector */
   .glaze{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
   .glaze .stage{border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;background:var(--card)}
   .glaze .stage img{width:100%;height:100%;object-fit:cover;transition:opacity .4s}
-  .glaze h3{font-family:"Cormorant Garamond";font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:600}
+  .glaze h3{font-family:"Yeseva One";font-size:clamp(1.5rem,3.5vw,2.2rem)}
   .glaze .desc{color:var(--mute);margin:.8rem 0 1.8rem;max-width:40ch}
   .swatches{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1.8rem}
   .sw{width:52px;height:52px;border-radius:50%;cursor:pointer;border:2px solid transparent;
@@ -64,8 +64,8 @@
   .sw span{position:absolute;bottom:-1.4rem;left:50%;transform:translateX(-50%);font-size:.68rem;
     color:var(--mute);white-space:nowrap;opacity:0;transition:.2s}
   .sw:hover span{opacity:1}
-  .glaze .price{font-family:"Cormorant Garamond";font-size:1.5rem;display:flex;align-items:center;gap:1.2rem}
-  .glaze .price .buy{background:var(--slate);color:var(--paper);font-family:"Figtree";font-size:.9rem;
+  .glaze .price{font-family:"Yeseva One";font-size:1.5rem;display:flex;align-items:center;gap:1.2rem}
+  .glaze .price .buy{background:var(--slate);color:var(--paper);font-family:"Onest";font-size:.9rem;
     padding:.7rem 1.4rem;border-radius:999px;border:none;cursor:pointer;transition:.25s}
   .glaze .price .buy:hover{background:var(--terra)}
   @media(max-width:820px){.glaze{grid-template-columns:1fr}}
@@ -77,7 +77,7 @@
   .piece img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
   .piece:hover img{transform:scale(1.04)}
   .piece .cap{position:absolute;left:0;right:0;bottom:0;padding:1rem;background:linear-gradient(transparent,rgba(40,46,52,.75));
-    color:#fff;font-family:"Cormorant Garamond";font-size:1.3rem;opacity:0;transition:.3s}
+    color:#fff;font-family:"Yeseva One";font-size:1.2rem;opacity:0;transition:.3s}
   .piece:hover .cap{opacity:1}
   @media(max-width:720px){.gallery{grid-template-columns:1fr 1fr}.piece:nth-child(1){grid-row:auto;aspect-ratio:1}}
 
@@ -86,7 +86,7 @@
     display:grid;grid-template-columns:1fr 1fr}
   .workshop .txt{padding:clamp(2rem,5vw,4rem)}
   .workshop .txt .kick{color:#e8a58f;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;margin-bottom:1.2rem}
-  .workshop h2{font-family:"Cormorant Garamond";font-weight:600;font-size:clamp(2rem,5vw,3.5rem);line-height:1}
+  .workshop h2{font-family:"Yeseva One";font-size:clamp(1.9rem,5vw,3.4rem);line-height:1.05}
   .workshop p{color:#b3bbc2;margin:1.2rem 0 2rem;max-width:40ch}
   .workshop .book{background:var(--terra);color:#fff;padding:.85rem 1.6rem;border-radius:999px;font-weight:600;display:inline-block;transition:.25s}
   .workshop .book:hover{filter:brightness(1.08)}
@@ -103,69 +103,69 @@
 <nav>
   <div class="wrap nr">
     <div class="brand">Kiln</div>
-    <div class="nl"><a href="#shop">Shop</a><a href="#collection">Collection</a><a href="#workshop">Workshops</a></div>
-    <a href="#workshop" class="visit">Visit the studio</a>
+    <div class="nl"><a href="#shop">Магазин</a><a href="#collection">Коллекция</a><a href="#workshop">Мастер-классы</a></div>
+    <a href="#workshop" class="visit">В студию</a>
   </div>
 </nav>
 
 <header class="wrap hero">
   <div class="lead">
-    <h1>Thrown by<br>hand, fired<br>in <i>wood</i>.</h1>
+    <h1>Вручную на<br>круге, обжиг<br>на <i>дровах</i>.</h1>
     <div class="intro">
-      <div class="kick">Ceramics studio · est. 2016</div>
-      <p>Everything here is made one piece at a time and fired twice a month in our wood kiln. No two are identical, and that is the point.</p>
-      <a href="#shop" class="btn">Shop the current firing →</a>
+      <div class="kick">Керамическая студия · с 2016</div>
+      <p>Всё здесь делается по одному изделию за раз и обжигается дважды в месяц в дровяной печи. Двух одинаковых нет, и в этом весь смысл.</p>
+      <a href="#shop" class="btn">Купить из текущего обжига →</a>
     </div>
   </div>
   <div class="big-img">
-    <img src="https://picsum.photos/seed/kiln-studio-wide/1600/700" alt="Ceramics drying on studio shelves" loading="eager"/>
+    <img src="https://picsum.photos/seed/kiln-studio-wide/1600/700" alt="Керамика на полках студии" loading="eager"/>
   </div>
 </header>
 
 <section class="wrap" id="shop">
-  <div class="sh"><h2>The everyday bowl</h2><span>choose a glaze</span></div>
+  <div class="sh"><h2>Пиала на каждый день</h2><span>выберите глазурь</span></div>
   <div class="glaze">
-    <div class="stage"><img id="stageImg" src="https://picsum.photos/seed/kiln-bowl-rust/800/1000" alt="Handmade bowl" loading="lazy"/></div>
+    <div class="stage"><img id="stageImg" src="https://picsum.photos/seed/kiln-bowl-rust/800/1000" alt="Пиала ручной работы" loading="lazy"/></div>
     <div>
-      <h3 id="glazeName">Rust ash</h3>
-      <p class="desc" id="glazeDesc">Deep iron-red where the flame licked the rim, fading to warm stone at the foot. Our signature wood-ash glaze.</p>
+      <h3 id="glazeName">Ржавый пепел</h3>
+      <p class="desc" id="glazeDesc">Глубокий железисто-красный там, где пламя лизнуло край, и тёплый камень у основания. Наша фирменная глазурь на древесной золе.</p>
       <div class="swatches" id="swatches">
-        <button class="sw active" style="background:#c1573b" data-name="Rust ash" data-seed="rust" data-desc="Deep iron-red where the flame licked the rim, fading to warm stone at the foot. Our signature wood-ash glaze."><span>Rust ash</span></button>
-        <button class="sw" style="background:#3d4a44" data-name="Pine celadon" data-seed="celadon" data-desc="A cool green-grey celadon that pools thick and glassy in the well of the bowl."><span>Pine celadon</span></button>
-        <button class="sw" style="background:#2b2f34" data-name="Iron black" data-seed="black" data-desc="A near-black tenmoku that breaks to rust brown over every raised edge."><span>Iron black</span></button>
-        <button class="sw" style="background:#dcd6c9" data-name="Bone matte" data-seed="bone" data-desc="An unglazed, sanded exterior with a soft matte interior. Quiet and dry to the touch."><span>Bone matte</span></button>
+        <button class="sw active" style="background:#c1573b" data-name="Ржавый пепел" data-seed="rust" data-desc="Глубокий железисто-красный там, где пламя лизнуло край, и тёплый камень у основания. Наша фирменная глазурь на древесной золе."><span>Ржавый пепел</span></button>
+        <button class="sw" style="background:#3d4a44" data-name="Сосновый селадон" data-seed="celadon" data-desc="Холодный зелёно-серый селадон, стекающий толстым стеклянным слоем в чашу пиалы."><span>Сосновый селадон</span></button>
+        <button class="sw" style="background:#2b2f34" data-name="Железный чёрный" data-seed="black" data-desc="Почти чёрный тэммоку, распадающийся в ржаво-коричневый на каждом выступе."><span>Железный чёрный</span></button>
+        <button class="sw" style="background:#dcd6c9" data-name="Костяной мат" data-seed="bone" data-desc="Снаружи без глазури, шлифованная, с мягкой матовой поверхностью внутри. Тихая и сухая на ощупь."><span>Костяной мат</span></button>
       </div>
-      <div class="price"><span id="price">$48</span><button class="buy" id="buy">Add to cart</button></div>
+      <div class="price"><span id="price">3900 ₽</span><button class="buy" id="buy">В корзину</button></div>
     </div>
   </div>
 </section>
 
 <section class="wrap" id="collection">
-  <div class="sh"><h2>This firing</h2><span>hover a piece</span></div>
+  <div class="sh"><h2>Этот обжиг</h2><span>наведите на изделие</span></div>
   <div class="gallery">
-    <div class="piece"><img src="https://picsum.photos/seed/kiln-tall-vase/700/1000" alt="Tall vase" loading="lazy"/><div class="cap">Ash vase, 28 cm</div></div>
-    <div class="piece"><img src="https://picsum.photos/seed/kiln-mug/600/600" alt="Mug" loading="lazy"/><div class="cap">Morning mug</div></div>
-    <div class="piece"><img src="https://picsum.photos/seed/kiln-plate/600/600" alt="Dinner plate" loading="lazy"/><div class="cap">Supper plate</div></div>
-    <div class="piece"><img src="https://picsum.photos/seed/kiln-teapot/600/600" alt="Teapot" loading="lazy"/><div class="cap">Cast-iron teapot</div></div>
-    <div class="piece"><img src="https://picsum.photos/seed/kiln-cups/600/600" alt="Cups" loading="lazy"/><div class="cap">Tumbler set of four</div></div>
+    <div class="piece"><img src="https://picsum.photos/seed/kiln-tall-vase/700/1000" alt="Высокая ваза" loading="lazy"/><div class="cap">Ваза «Пепел», 28 см</div></div>
+    <div class="piece"><img src="https://picsum.photos/seed/kiln-mug/600/600" alt="Кружка" loading="lazy"/><div class="cap">Утренняя кружка</div></div>
+    <div class="piece"><img src="https://picsum.photos/seed/kiln-plate/600/600" alt="Тарелка" loading="lazy"/><div class="cap">Тарелка для ужина</div></div>
+    <div class="piece"><img src="https://picsum.photos/seed/kiln-teapot/600/600" alt="Чайник" loading="lazy"/><div class="cap">Чугунный чайник</div></div>
+    <div class="piece"><img src="https://picsum.photos/seed/kiln-cups/600/600" alt="Стаканы" loading="lazy"/><div class="cap">Набор из четырёх стаканов</div></div>
   </div>
 </section>
 
 <section class="wrap" id="workshop">
   <div class="workshop">
     <div class="txt">
-      <div class="kick">Small classes · max 6 seats</div>
-      <h2>Sit at the wheel for an afternoon.</h2>
-      <p>A three-hour introduction to throwing. You leave clay under your nails and two pieces to collect after firing.</p>
-      <a href="#" class="book">Book a seat · $75</a>
+      <div class="kick">Маленькие группы · до 6 мест</div>
+      <h2>Сядьте за круг на полдня.</h2>
+      <p>Трёхчасовое знакомство с точением на круге. Уходите с глиной под ногтями и двумя изделиями, которые заберёте после обжига.</p>
+      <a href="#" class="book">Записаться · 3500 ₽</a>
     </div>
-    <div class="ph"><img src="https://picsum.photos/seed/kiln-wheel-hands/800/700" alt="Hands throwing clay on a wheel" loading="lazy"/></div>
+    <div class="ph"><img src="https://picsum.photos/seed/kiln-wheel-hands/800/700" alt="Руки за гончарным кругом" loading="lazy"/></div>
   </div>
 </section>
 
 <footer class="wrap">
-  <span>Kiln Ceramics · concept demo · photos via picsum.photos</span>
-  <a href="../index.html">← back to portfolio</a>
+  <span>Kiln Ceramics · концепт-демо · фото через picsum.photos</span>
+  <a href="../index.html">← назад в портфолио</a>
 </footer>
 
 <script>
@@ -180,8 +180,8 @@
     name.textContent=b.dataset.name; desc.textContent=b.dataset.desc;
   });
   const buy=document.getElementById('buy');
-  buy.addEventListener('click',()=>{buy.textContent='Added ✓';buy.style.background='var(--terra)';
-    setTimeout(()=>{buy.textContent='Add to cart';buy.style.background=''},1400);});
+  buy.addEventListener('click',()=>{buy.textContent='Добавлено ✓';buy.style.background='var(--terra)';
+    setTimeout(()=>{buy.textContent='В корзину';buy.style.background=''},1400);});
 </script>
 </body>
 </html>

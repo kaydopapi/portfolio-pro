@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Meridian — Independent Type Foundry</title>
-<meta name="description" content="Meridian is an independent type foundry drawing letterforms for screens that never stop moving." />
+<title>Meridian — независимая шрифтовая студия</title>
+<meta name="description" content="Meridian — независимая шрифтовая студия, рисующая буквы для экранов, которые никогда не стоят на месте." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&family=Newsreader:ital,opt@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&family=Unbounded:wght@400;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;700;900&family=Golos+Text:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
     --ink:#0d0d0d; --paper:#f5f4ef; --mute:#6d6b64; --line:#d9d7cf;
@@ -17,7 +17,7 @@
   html{scroll-behavior:smooth}
   body{
     background:var(--paper);color:var(--ink);
-    font-family:"Space Grotesk",system-ui,sans-serif;
+    font-family:"Manrope",system-ui,sans-serif;
     -webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden;
   }
   a{color:inherit;text-decoration:none}
@@ -28,7 +28,7 @@
   nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);
     backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .navrow{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .brand{font-family:"Syne";font-weight:800;font-size:1.35rem;letter-spacing:-.02em}
+  .brand{font-family:"Unbounded";font-weight:900;font-size:1.25rem;letter-spacing:-.02em}
   .brand b{color:var(--accent)}
   .navlinks{display:flex;gap:2rem;font-size:.82rem;text-transform:uppercase;letter-spacing:.14em}
   .navlinks a{color:var(--mute);transition:color .25s}
@@ -42,13 +42,13 @@
   header{padding:clamp(3rem,8vw,6rem) 0 clamp(2rem,5vw,4rem)}
   .eyebrow{font-family:"JetBrains Mono";font-size:.72rem;letter-spacing:.28em;
     text-transform:uppercase;color:var(--mute);margin-bottom:2rem}
-  .hero-type{font-family:"Syne";font-weight:800;line-height:.86;letter-spacing:-.03em;
-    font-size:clamp(3.6rem,15vw,13rem)}
+  .hero-type{font-family:"Unbounded";font-weight:900;line-height:.9;letter-spacing:-.03em;
+    font-size:clamp(3rem,12vw,11rem)}
   .hero-type .flick{display:inline-block;transition:transform .5s cubic-bezier(.16,1,.3,1)}
   .hero-type .r{color:var(--accent)}
   .hero-sub{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;
     margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1.5rem}
-  .hero-sub p{max-width:34ch;color:var(--mute);font-size:1.02rem}
+  .hero-sub p{max-width:38ch;color:var(--mute);font-size:1.02rem}
   .hero-sub .meta{font-family:"JetBrains Mono";font-size:.78rem;color:var(--ink);
     text-align:right;letter-spacing:.04em}
 
@@ -64,7 +64,7 @@
   .specimen{padding:clamp(3.5rem,8vw,7rem) 0}
   .sechead{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
     border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:2.5rem}
-  .sechead h2{font-family:"Syne";font-weight:700;font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:-.02em}
+  .sechead h2{font-family:"Unbounded";font-weight:700;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:-.02em}
   .sechead span{font-family:"JetBrains Mono";font-size:.78rem;color:var(--mute)}
   .play-controls{display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;align-items:center;margin-bottom:2rem;
     font-family:"JetBrains Mono";font-size:.8rem}
@@ -81,14 +81,14 @@
   .canvas{border:1px solid var(--line);padding:clamp(1.5rem,4vw,3rem);background:#fff;min-height:240px;
     display:flex;align-items:center}
   #specimenText{width:100%;border:none;outline:none;background:none;resize:none;overflow:hidden;
-    line-height:1.02;letter-spacing:-.02em;color:var(--ink);font-family:"Syne",sans-serif}
+    line-height:1.02;letter-spacing:-.02em;color:var(--ink);font-family:"Unbounded",sans-serif}
 
   /* CATALOG */
   .catalog{padding:clamp(2rem,5vw,4rem) 0 clamp(4rem,9vw,7rem)}
   .face{border-top:1px solid var(--line);padding:2.2rem 0;cursor:default;
     display:grid;grid-template-columns:1fr;gap:.6rem;transition:padding .3s}
   .face:hover{padding-left:1.2rem}
-  .face .glyph{font-size:clamp(2.4rem,9vw,6rem);line-height:1;letter-spacing:-.02em;transition:color .3s}
+  .face .glyph{font-size:clamp(2.2rem,8vw,5.4rem);line-height:1;letter-spacing:-.02em;transition:color .3s}
   .face:hover .glyph{color:var(--accent)}
   .face .info{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 1.5rem;
     font-family:"JetBrains Mono";font-size:.78rem;color:var(--mute)}
@@ -97,7 +97,7 @@
   /* FOOTER */
   footer{background:var(--ink);color:var(--paper);padding:clamp(3rem,7vw,5.5rem) 0 2.5rem}
   .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:2rem}
-  .foot-big{font-family:"Syne";font-weight:800;font-size:clamp(2rem,6vw,4rem);line-height:.95;letter-spacing:-.02em}
+  .foot-big{font-family:"Unbounded";font-weight:900;font-size:clamp(1.8rem,5vw,3.4rem);line-height:.98;letter-spacing:-.02em}
   .foot-big em{color:var(--accent);font-style:normal}
   footer h4{font-family:"JetBrains Mono";font-size:.74rem;text-transform:uppercase;letter-spacing:.18em;
     color:#8a8880;margin-bottom:1rem}
@@ -121,103 +121,103 @@
   <div class="wrap navrow">
     <div class="brand">Meri<b>d</b>ian</div>
     <div class="navlinks">
-      <a href="#specimen">Specimen</a>
-      <a href="#catalog">Catalogue</a>
-      <a href="#studio">Studio</a>
+      <a href="#specimen">Тестер</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#studio">Студия</a>
     </div>
-    <a href="#catalog" class="buy">License</a>
+    <a href="#catalog" class="buy">Лицензия</a>
   </div>
 </nav>
 
 <header class="wrap">
-  <div class="eyebrow">Independent type foundry / est. 2021 / 14 families</div>
+  <div class="eyebrow">Независимая шрифтовая студия / с 2021 / 14 семейств</div>
   <h1 class="hero-type" id="heroType">
-    <span class="flick">D</span><span class="flick">r</span><span class="flick r">a</span><span class="flick">w</span><span class="flick">n</span><br>
-    <span class="flick">t</span><span class="flick">o</span> <span class="flick">m</span><span class="flick">o</span><span class="flick">v</span><span class="flick">e</span>
+    <span class="flick">Б</span><span class="flick r">у</span><span class="flick">к</span><span class="flick">в</span><span class="flick">ы</span><br>
+    <span class="flick">в</span> <span class="flick">д</span><span class="flick">в</span><span class="flick">и</span><span class="flick">ж</span><span class="flick">е</span><span class="flick">н</span><span class="flick">и</span><span class="flick">и</span>
   </h1>
   <div class="hero-sub">
-    <p>We cut letterforms for screens that never sit still. Variable axes, optical sizing, and mono companions built to survive real interfaces.</p>
-    <div class="meta">TYPE / VARIABLE / LATIN-EXT<br>WEB · DESKTOP · APP<br>SINCE MMXXI</div>
+    <p>Мы режем буквы для экранов, которые ни секунды не стоят на месте. Вариативные оси, оптический размер и моноспутники, готовые к настоящим интерфейсам.</p>
+    <div class="meta">ШРИФТ / ВАРИАТИВ / КИРИЛЛИЦА<br>ВЕБ · ДЕСКТОП · ПРИЛОЖЕНИЯ<br>С 2021 ГОДА</div>
   </div>
 </header>
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>SYNE</span><span class="o">◦</span><span>BRICOLAGE</span><span class="o">◦</span><span>UNBOUNDED</span><span class="o">◦</span><span>NEWSREADER</span><span class="o">◦</span>
-    <span>SYNE</span><span class="o">◦</span><span>BRICOLAGE</span><span class="o">◦</span><span>UNBOUNDED</span><span class="o">◦</span><span>NEWSREADER</span><span class="o">◦</span>
+    <span>UNBOUNDED</span><span class="o">◦</span><span>GOLOS</span><span class="o">◦</span><span>PLAYFAIR</span><span class="o">◦</span><span>MANROPE</span><span class="o">◦</span>
+    <span>UNBOUNDED</span><span class="o">◦</span><span>GOLOS</span><span class="o">◦</span><span>PLAYFAIR</span><span class="o">◦</span><span>MANROPE</span><span class="o">◦</span>
   </div>
 </div>
 
 <section class="specimen wrap" id="specimen">
   <div class="sechead">
-    <h2>Test the letters</h2>
-    <span>type below · drag the size</span>
+    <h2>Попробуйте буквы</h2>
+    <span>печатайте ниже · тяните за размер</span>
   </div>
   <div class="play-controls">
     <div class="fontpick" id="fontpick">
-      <button class="active" data-font="Syne">Syne Display</button>
-      <button data-font="Bricolage Grotesque">Bricolage</button>
-      <button data-font="Unbounded">Unbounded</button>
-      <button data-font="Newsreader">Newsreader</button>
+      <button class="active" data-font="Unbounded">Unbounded</button>
+      <button data-font="Golos Text">Golos Text</button>
+      <button data-font="Playfair Display">Playfair</button>
+      <button data-font="Manrope">Manrope</button>
     </div>
     <div class="ctl">
-      <label>size</label>
+      <label>размер</label>
       <input type="range" id="sizeRange" min="28" max="140" value="82" />
       <span id="sizeVal" style="color:var(--accent)">82px</span>
     </div>
   </div>
   <div class="canvas">
-    <textarea id="specimenText" rows="1" style="font-size:82px">Handgloves</textarea>
+    <textarea id="specimenText" rows="1" style="font-size:82px">Съешь ещё</textarea>
   </div>
 </section>
 
 <section class="catalog wrap" id="catalog">
   <div class="sechead">
-    <h2>The catalogue</h2>
-    <span>hover a family</span>
+    <h2>Каталог</h2>
+    <span>наведите на семейство</span>
   </div>
   <div class="face">
-    <div class="glyph" style="font-family:Syne;font-weight:800">Aa Gg 24</div>
-    <div class="info"><b>Syne Display</b> <span>8 weights · variable</span> <span>Display / poster</span> <span>from $60</span></div>
+    <div class="glyph" style="font-family:Unbounded;font-weight:900">Аа Бб 24</div>
+    <div class="info"><b>Unbounded</b> <span>9 начертаний · вариатив</span> <span>Дисплейный / постер</span> <span>от $80</span></div>
   </div>
   <div class="face">
-    <div class="glyph" style="font-family:'Bricolage Grotesque';font-weight:700">Aa Gg 24</div>
-    <div class="info"><b>Bricolage Grotesque</b> <span>opsz 12-96 · variable</span> <span>Text / UI</span> <span>from $45</span></div>
+    <div class="glyph" style="font-family:'Golos Text';font-weight:700">Аа Бб 24</div>
+    <div class="info"><b>Golos Text</b> <span>7 начертаний · вариатив</span> <span>Текст / интерфейс</span> <span>от $45</span></div>
   </div>
   <div class="face">
-    <div class="glyph" style="font-family:Unbounded;font-weight:900">Aa Gg 24</div>
-    <div class="info"><b>Unbounded</b> <span>9 weights · variable</span> <span>Brand / headline</span> <span>from $80</span></div>
+    <div class="glyph" style="font-family:'Playfair Display';font-style:italic;font-weight:600">Аа Бб 24</div>
+    <div class="info"><b>Playfair Display Italic</b> <span>оптический · антиква</span> <span>Издания / лонгриды</span> <span>от $55</span></div>
   </div>
   <div class="face">
-    <div class="glyph" style="font-family:Newsreader;font-style:italic">Aa Gg 24</div>
-    <div class="info"><b>Newsreader Italic</b> <span>optical · serif</span> <span>Editorial / long-read</span> <span>from $55</span></div>
+    <div class="glyph" style="font-family:Manrope;font-weight:700">Аа Бб 24</div>
+    <div class="info"><b>Manrope</b> <span>8 начертаний · вариатив</span> <span>Бренд / заголовки</span> <span>от $60</span></div>
   </div>
 </section>
 
 <footer id="studio">
   <div class="wrap">
     <div class="foot-grid">
-      <div class="foot-big">Letters that<br>keep <em>up</em>.</div>
+      <div class="foot-big">Буквы,<br>что <em>успевают</em>.</div>
       <div>
-        <h4>Foundry</h4>
+        <h4>Студия</h4>
         <ul>
-          <li><a href="#catalog">Catalogue</a></li>
-          <li><a href="#specimen">Type tester</a></li>
-          <li><a href="#studio">Licensing</a></li>
+          <li><a href="#catalog">Каталог</a></li>
+          <li><a href="#specimen">Тестер шрифта</a></li>
+          <li><a href="#studio">Лицензирование</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h4>Контакты</h4>
         <ul>
           <li><a href="mailto:hello@meridian.type">hello@meridian.type</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="../index.html">Back to portfolio</a></li>
+          <li><a href="#">Telegram</a></li>
+          <li><a href="../index.html">Назад в портфолио</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-btm">
       <span>MERIDIAN TYPE FOUNDRY</span>
-      <span>Concept demo · fonts via Google Fonts</span>
+      <span>Концепт-демо · шрифты через Google Fonts</span>
     </div>
   </div>
 </footer>
@@ -242,8 +242,8 @@
     b.classList.add('active');
     const f=b.dataset.font;
     area.style.fontFamily=`'${f}',sans-serif`;
-    area.style.fontStyle=f==='Newsreader'?'italic':'normal';
-    area.style.fontWeight=f==='Bricolage Grotesque'?700:800;
+    area.style.fontStyle=f==='Playfair Display'?'italic':'normal';
+    area.style.fontWeight=f==='Golos Text'?700:900;
   });
 
   // Hero letters lift toward the cursor (motivated: playful for a foundry, honors reduced motion)
